@@ -1,10 +1,9 @@
-# oplsaa.ff (kJ/mol, A, deg) version 2012/11/08
+# oplsaa.ff (kJ/mol, A, deg) version 2013/04/30
 # A. Padua
 # K. Vaucher (aromatics)
 # A. Podgorsek (alkenes, styrene, amines, alcohols, acetate, trifluoroacetate)
 # J. Garcia, P. Husson (esters)
 # K. Shimizu (akylsulfonates)
-# V. Bernales
 
 ATOMS
 # i  m/uma    q/e    field  a      b        c
@@ -33,22 +32,22 @@ CTT  12.011  -0.197  lj     3.50   0.27614  0.0
 HAT   1.008   0.148  lj     2.42   0.12552  0.0
 HT    1.008   0.092  lj     2.42   0.12552  0.0
 # amines OPLS-AA
-HN   1.008   0.350   lj    0.00    0.0000   0.0
-NH2  14.007  -0.900  lj    3.25    0.71118  0.0
-CTN  12.011  0.080   lj    3.50    0.27630  0.0
-H    1.008   0.06    lj    2.50    0.12552  0.0
+HN   1.008    0.350  lj     0.00   0.00000  0.0
+NH2  14.007  -0.900  lj     3.25   0.71118  0.0
+CTN  12.011   0.080  lj     3.50   0.27630  0.0
+H    1.008    0.06   lj     2.50   0.12552  0.0
 # nitriles OPLS-AA JCC 22: 1340 (2001)
 NZ   14.007  -0.56   lj     3.20   0.71128  0.0
 CZ   12.011   0.46   lj     3.30   0.27614  0.0  
 CTZ  12.011  -0.08   lj     3.30   0.27614  0.0
-H1Z   1.008   0.06   lj     2.5    0.06276  0.0
+H1Z   1.008   0.06   lj     2.50   0.06276  0.0
 # alcohols OPLS-AA JACS 118: 11225 (1996); J Phys Chem 100: 18010 (1996)
 CTO  12.011   0.145  lj     3.50   0.27614  0.0  
+CET  12.011  -0.140  lj     3.50   0.27614  0.0  
+C2T  12.011  -0.080  lj     3.50   0.27614  0.0  
 H1O   1.008   0.040  lj     2.50   0.12552  0.0
 OH   15.999  -0.683  lj     3.21   0.71128  0.0
 HO    1.008   0.418  lj     0.00   0.00000  0.0
-CEOH 12.011  -0.14   lj     3.50   0.27614  0.0
-C2OH 12.011  -0.08   lj     3.50   0.27614  0.0
 # acetate OPLS-AA JPCB (2004)
 O2   15.999  -0.80   lj     2.96   0.87860  0.0
 CO2  12.011   0.70   lj     3.75   0.43930  0.0
@@ -104,8 +103,8 @@ CT C2H
 CT C4H
 CT C4C
 CT CTO
-CT CEOH
-CT C2OH
+CT CET
+CT C2T
 CT CTZ
 CT CHB
 CT CMO
