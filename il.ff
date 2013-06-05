@@ -1,5 +1,5 @@
 # il.ff (kJ/mol, A, deg)
-# Molecular force field for ionic liquids, version 2012/06/05
+# Molecular force field for ionic liquids, version 2013/05/31
 # DL_POLY format except dihedral functions that may have 4 cosine terms.
 # K. Shimizu, A. Podgorsek, F. Hammami, L. Gontrani, M. Mishra
 # J. Canongia Lopes, A. Padua
@@ -44,16 +44,24 @@ H1O   1.008   0.040  lj     2.50   0.12552  0.0
 OH   15.999  -0.683  lj     3.21   0.71128  0.0
 HO    1.008   0.418  lj     0.00   0.00000  0.0
 # alkoxy imidazolium JPCB114:3592(2010)
-C2O  12.011   0.275  lj     3.50   0.27614  0.0  
+C2O  12.011   0.275  lj     3.50   0.27614  0.0
 # esters OPLS-AA JCC22:1340(2001)
 CC   12.011   0.51   lj     3.75   0.43932  0.0  
 OC   15.999  -0.43   lj     2.96   0.87864  0.0
 OS   15.999  -0.33   lj     3.00   0.71176  0.0
 HOS   1.008   0.03   lj     2.42   0.06276  0.0
-CMO  12.011   0.16   lj     3.50   0.27614  0.0
+#CMO  12.011   0.16   lj     3.50   0.27614  0.0
 CEO  12.011   0.19   lj     3.50   0.27614  0.0
 # ether OPLS-AA
-OE   15.999   0.00   lj     2.96   0.87864  0.0
+OE   15.999  -0.40   lj     2.96   0.87864  0.0
+COE  12.011   0.11   lj     3.50   0.27614  0.0
+C2E  12.011   0.27   lj     3.50   0.27614  0.0
+# thiols OPLS-AA JACS118:11225(1996)
+SH   32.066  -0.435  lj     3.55   1.04600  0.0
+HS    1.008   0.255  lj     0.00   0.00000  0.0
+CTS  12.011   0.060  lj     3.50   0.27614  0.0
+# thioimidazolium
+C2S  12.011   0.190  lj     3.50   0.27614  0.0
 # fluoroalkylimidazolium JPCB114:3592(2010) 
 C1H  12.011  -0.05   lj     3.50   0.27614  0.0
 C3F  12.011   0.12   lj     3.50   0.27614  0.0
@@ -139,6 +147,7 @@ HA HNA
 HA HAP
 HA HAT
 HC H1
+HC HCM
 HC HOS
 HC HAL
 HC HT
@@ -156,8 +165,12 @@ CT C1P
 CT C1T
 CT CTO
 CT C2O
+CT CTS
+CT C2S
 CT CMO
 CT CEO
+CT COE
+CT C2E
 CT CTA
 CT CAL
 CT C1M
@@ -183,6 +196,9 @@ CW CWH
 NA NAH
 NA NAM
 NA NAP
+OS OS4
+OS OS3
+OC OC4
 OBT OTF
 
 BONDS
@@ -203,18 +219,21 @@ NA   HA   harm    1.010  -3632
 CR   CT   harm    1.510   2653
 # alkenylimidazolium OPLS-AA
 CT   CM   harm    1.510   2652.65
-HCM  CM   harm    1.080  -2845.12
+HC   CM   harm    1.080  -2845.12
 CM   CM   harm    1.340   4594.03
 # alcohols OPLS-AA JACS118:11225(1996); JPC100:18010(1996)
-CT   OH   harm    1.410   2678
-HO   OH   harm    0.945  -4628
+CT   OH   harm    1.410   2678.0
+HO   OH   harm    0.945  -4628.0
 # esters OPLS-AA JCC22:1340(2001)
 CC   OC   harm    1.200   4770.0
 CT   CC   harm    1.522   2653.0
 CC   OS   harm    1.344   1791.0
 CT   OS   harm    1.437   2678.0
 # ethers OPLS-AA
-CT   OE   harm    1.437   2678.0
+CT   OE   harm    1.410   2678.0
+# thiols OPLS-AA JACS118:11225(1996)
+CT   SH   harm    1.810   1857.7
+SH   HS   harm    1.336  -2292.8
 # pyridinium OPLS-AA Theochem424:145(1998)
 CA   HA   harm    1.080  -3071
 CA   CA   harm    1.380   3925
@@ -247,12 +266,11 @@ CT   CF   harm    1.529   2242.62
 N3A  CZA  harm    1.310   4206
 CZA  NZA  harm    1.157   7746
 # alkylsulfates JPCB112:5039(2008)
-CT   OC4  harm    1.402    745.8
-OS4  SO   harm    1.455   5331
-OC4  SO   harm    1.633   1789.6
+CT   OC   harm    1.402    745.8
+OS   SO   harm    1.455   5331
+OC   SO   harm    1.633   1789.6
 # alkylsulfonates JPCB112:5039(2008)
 CT   SO   harm    1.792   1970
-OS3  SO   harm    1.455   5331
 # acetate OPLS-AA JPCB (2004)
 CO2  O2   harm    1.250   5489.0
 CT   CO2  harm    1.522   2653.0
@@ -301,14 +319,18 @@ HC   CT   CC    harm      109.50   313.80
 OS   CC   OC    harm      125.00   694.50
 OS   CC   CT    harm      110.00   677.80
 CT   OS   CC    harm      115.00   694.50
-HC   CT   OS    harm      109.50   418.40
+HC   CT   OS    harm      109.50   292.88
 CT   CT   OS    harm      109.50   418.40
 CT   CT   CC    harm      111.10   527.18
 NA   CT   CC    harm      112.7    500.00
 # ethers OPLS-AA
-#CT   CT   OE    harm      109.50   418.40
-#CT   OE   CT    harm      115.00   694.50
-#HC   CT   OE    harm      109.50   418.40
+CT   OE   CT    harm      109.50   502.08
+CT   CT   OE    harm      109.50   418.40
+HC   CT   OE    harm      109.50   292.88
+# thiols OPLS-AA JACS118:11225(1996)
+CT   SH   HS    harm       96.00   368.19
+CT   CT   SH    harm      108.60   418.40
+HC   CT   SH    harm      109.50   292.88
 # semifluorinated alkanes JPCA106:10116(2002)
 HC   CT   CF    harm      110.70   313.80
 F    CF   CT    harm      109.50   418.40
@@ -358,14 +380,13 @@ CF   CF   CF    harm      112.70   488.27
 CZA  N3A  CZA   harm      118.5    362
 N3A  CZA  NZA   harm      175.2    425
 # alkylsulfates JPCB112:5039(2008)
-OS4  SO   OS4   harm      114.00   969.00
-OC4  SO   OS4   harm      103.50  1239.62
-CT   OC4  SO    harm      116.60   300.45
-HC   CT   OC4   harm      109.70   488.68
-CT   CT   OC4   harm      107.80   765.57
+OS   SO   OS    harm      114.00   969.00
+OC   SO   OS    harm      103.50  1239.62
+CT   OC   SO    harm      116.60   300.45
+HC   CT   OC    harm      109.70   488.68
+CT   CT   OC    harm      107.80   765.57
 # alkylsulfonates JPCB112:5039(2008)
-OS3  SO   OS3   harm      114.00   969.00
-CT   SO   OS3   harm      104.50   870.00
+CT   SO   OS    harm      104.50   870.00
 HC   CT   SO    harm      107.30   390.30
 CT   CT   SO    harm      113.30   583.00
 # acetate OPLS-AA JPCB (2004)
@@ -459,22 +480,26 @@ CR   NA   CT   CC   cos3     0.0000     0.0000      0.0000      0.0000
 NA   CT   CC   OC   cos3    -9.1642    14.1359      1.0771      0.0000
 NA   CT   CC   OS   cos3     0.0000     0.0000      0.0000      0.0000
 # ethers OPLS-AA
-#HC   CT   CT   OE   cos3     0.0000     0.0000      0.0000      0.0000
-#CT   CT   CT   OE   cos3     0.0000     0.0000      0.0000      0.0000     
-#OS   CT   CT   OE   cos3     0.0000     0.0000      0.0000      0.0000     
-#OE   CT   CT   OE   cos3     0.0000     0.0000      0.0000      0.0000     
-#HC   CT   OE   CT   cos3     0.0000     0.0000      0.0000      0.0000
-#CT   CT   OE   CT   cos3     0.0000     0.0000      0.0000      0.0000
+HC   CT   CT   OE   cos3     0.0000     0.0000      1.9581      0.0000
+HC   CT   OE   CT   cos3     0.0000     0.0000      3.1798      0.0000
+CT   CT   OE   CT   cos3     2.7196    -1.0460      2.8033      0.0000
+NA   CT   CT   OE   cos3     7.1588    -2.0920      2.7740      0.0000     
+# thiols OPLS-AA JACS118:11225(1996)
+CT   CT   SH   HS   cos3    -3.1757    -1.1799      2.5230      0.0000
+HC   CT   SH   HS   cos3     0.0000     0.0000      1.8870      0.0000
+HC   CT   CT   SH   cos3     0.0000     0.0000      1.8912      0.0000
+# thioimidazolium
+NA   CT   CT   SH   cos3     2.4393    -4.8660      0.5899      0.0000
 # semifluorinated alkanes JPCA:106:10116(2002)
-HC  CT   CF   F     cos3     0.0000     0.0000      1.2134      0.0000
-F   CF   CT   HC    cos3     0.0000     0.0000      1.2134      0.0000
-F   CF   CT   CT    cos3     0.0000     0.0000      1.9372      0.0000
-F   CF   CF   CT    cos3     0.0000     0.0000      2.7656      0.0000
-HC  CT   CT   CF    cos3     0.0000     0.0000      0.5565      0.0000
-HC  CT   CF   CF    cos3     0.0000     0.0000      0.7573      0.0000
-CF  CF   CF   CT    cos4    14.6750    -0.9179     -2.8980     -2.0174
-CF  CF   CT   CT    cos4    -0.5881    -0.7642     -0.3170     -0.3179
-CF  CT   CT   NA    cos3     0.0000     0.0000      0.0000      0.0000
+HC   CT   CF   F    cos3     0.0000     0.0000      1.2134      0.0000
+F    CF   CT   HC   cos3     0.0000     0.0000      1.2134      0.0000
+F    CF   CT   CT   cos3     0.0000     0.0000      1.9372      0.0000
+F    CF   CF   CT   cos3     0.0000     0.0000      2.7656      0.0000
+HC   CT   CT   CF   cos3     0.0000     0.0000      0.5565      0.0000
+HC   CT   CF   CF   cos3     0.0000     0.0000      0.7573      0.0000
+CF   CF   CF   CT   cos4    14.6750    -0.9179     -2.8980     -2.0174
+CF   CF   CT   CT   cos4    -0.5881    -0.7642     -0.3170     -0.3179
+CF   CT   CT   NA   cos3     0.0000     0.0000      0.0000      0.0000
 # pyridinium AMBER (cycle) JPCB110:19586(2006)
 CA   CA   CA   CA   cos3     0.0000    30.3340      0.0000      0.0000
 NA   CA   CA   CA   cos3     0.0000    30.3340      0.0000      0.0000
@@ -525,14 +550,14 @@ CF   CF   CF   CF   cos4    27.7064     3.9664     -5.8074     -8.8617
 # dicyanamide JPCB110:19586(2006)
 NZA  CZA  N3A  CZA  cos3     4.0800     0.0000      0.0000      0.0000
 # alkylsulfates JPCB112:5039(2008)
-OS4  SO   OC4  CT   cos3     0.0000     0.0000      2.4815      0.0000
-SO   OC4  CT   HC   cos3     0.0000     0.0000      1.6858      0.0000
-SO   OC4  CT   CT   cos3    -6.0142    -3.1133      1.4941      0.0000
-OC4  CT   CT   HC   cos3     0.0000     0.0000      2.0698      0.0000
-OC4  CT   CT   CT   cos3     4.3893    -1.8273      2.9705      0.0000
+OS   SO   OC   CT   cos3     0.0000     0.0000      2.4815      0.0000
+SO   OC   CT   HC   cos3     0.0000     0.0000      1.6858      0.0000
+SO   OC   CT   CT   cos3    -6.0142    -3.1133      1.4941      0.0000
+OC   CT   CT   HC   cos3     0.0000     0.0000      2.0698      0.0000
+OC   CT   CT   CT   cos3     4.3893    -1.8273      2.9705      0.0000
 # alkylsulfonates JPCB112:5039(2008)
-OS3  SO   CT   HC   cos3     0.0000     0.0000      1.6250      0.0000
-OS3  SO   CT   CT   cos3     0.0000     0.0000      1.3938      0.0000
+OS   SO   CT   HC   cos3     0.0000     0.0000      1.6250      0.0000
+OS   SO   CT   CT   cos3     0.0000     0.0000      1.3938      0.0000
 SO   CT   CT   HC   cos3     0.0000     0.0000      1.3797      0.0000
 SO   CT   CT   CT   cos3   -16.1000    -2.0046      0.7674      0.0000
 # acetate OPLS-AA JPCB (2004)
