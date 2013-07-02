@@ -1,5 +1,5 @@
-# il.ff (kJ/mol, A, deg)
-# Molecular force field for ionic liquids, version 2013/05/31
+# il.ff (kJ/mol, A, deg), version 2013/07/02
+# Molecular force field for ionic liquids
 # DL_POLY format except dihedral functions that may have 4 cosine terms.
 # K. Shimizu, A. Podgorsek, F. Hammami, L. Gontrani, M. Mishra
 # J. Canongia Lopes, A. Padua
@@ -41,7 +41,7 @@ C1M  12.011  -0.04   lj     3.50   0.27614  0.0
 # alcohols OPLS-AA JACS118:11225(1996); JPC100:18010(1996)
 CTO  12.011   0.145  lj     3.50   0.27614  0.0  
 H1O   1.008   0.040  lj     2.50   0.12552  0.0
-OH   15.999  -0.683  lj     3.21   0.71128  0.0
+OH   15.999  -0.683  lj     3.12   0.71128  0.0
 HO    1.008   0.418  lj     0.00   0.00000  0.0
 # alkoxy imidazolium JPCB114:3592(2010)
 C2O  12.011   0.275  lj     3.50   0.27614  0.0
