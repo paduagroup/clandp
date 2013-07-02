@@ -1,4 +1,4 @@
-# oplsaa.ff (kJ/mol, A, deg) version 2013/05/24
+# oplsaa.ff (kJ/mol, A, deg) version 2013/07/02
 # A. Padua
 # K. Vaucher (aromatics)
 # A. Podgorsek (alkenes, styrene, amines, alcohols, acetate, trifluoroacetate)
@@ -45,7 +45,7 @@ CTO  12.011   0.145  lj     3.50   0.27614  0.0
 CET  12.011  -0.140  lj     3.50   0.27614  0.0  
 C2T  12.011  -0.080  lj     3.50   0.27614  0.0  
 H1O   1.008   0.040  lj     2.50   0.12552  0.0
-OH   15.999  -0.683  lj     3.21   0.71128  0.0
+OH   15.999  -0.683  lj     3.12   0.71128  0.0
 HO    1.008   0.418  lj     0.00   0.00000  0.0
 # acetate OPLS-AA JPCB (2004)
 O2   15.999  -0.80   lj     2.96   0.87860  0.0
