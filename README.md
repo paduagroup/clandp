@@ -10,18 +10,21 @@ Contents
 --------
 
 * `fftool.py`: python script to build simulation box of ionic or
-    molecular liquids and their mixtures. Requires the Packmol software
+    molecular liquids and their mixtures. Requires the
+    [Packmol](http://www.ime.unicamp.br/~martinez/packmol/) software
     to create coordinates. Force field files are written in formats
-    suitable for the LAMMPS or DL_POLY molecular dynamics packages.
+    suitable for the [LAMMPS](http://lammps.sandia.gov/) or
+    [DL_POLY](http://www.stfc.ac.uk/CSE/randd/ccg/software/DL_POLY/25526.aspx)
+    molecular dynamics packages.
 
-* `il.ff`: Database of force field parameters for ions of several ionic
+* `il.ff`: database of force field parameters for ions of several ionic
     liquids.
 
-* `improper_im.dlp`: "Improper" dihedrals for the aromatic ring in
+* `improper_im.dlp`: "improper" dihedrals for the aromatic ring in
     imidazolium cations. Retrieved from the AMBER paper.
 
-* `oplsaa.ff`: Database of OPLS-AA force field parameters for some
-    molecular compouds. Retrieved from several publications of the
+* `oplsaa.ff`: database of OPLS-AA force field parameters for some
+    molecular compounds. Retrieved from several publications of the
     W.L. Jorgensen group.
 
 * `examples`: directory with some `molecule.zmat` files.
@@ -46,7 +49,7 @@ How to build an initial configuration of a molecular or ionic system.
    parameters (`database.ff`) must be supplied. See the `examples`
    directory. The connectivity (which atoms are linked by covalent
    bonds) is determined by the z-matrix. Cyclic molecules require
-   additional `connect` records to close cycles (see the example for
+   additional `connect` records to close rings (see the example for
    benzene).
 
 2. Use the `fftool.py` script to create `.xyz` files for the molecules
@@ -67,7 +70,8 @@ How to build an initial configuration of a molecular or ionic system.
     instead of the atom names of the force field).
 
 4. Use `fftool.py` to build the input files for LAMMPS or DL_POLY
-   containing the force field parameters and the coordinates:
+   containing the force field parameters and the coordinates (read
+   from `simbox.xyz`):
 
         fftool.py 20 c4c1im.zmat 20 ntf2.zmat --dlpoly
 
