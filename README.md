@@ -38,8 +38,16 @@ Requirements
 * [Packmol](http://www.ime.unicamp.br/~martinez/packmol/)
 
 
-Instructions
-------------
+Obtaining
+---------
+
+Download the files or else clone the repository (easier to stay updated):
+
+    git clone https://github.com/agiliopadua/ilff.git
+
+
+How to use
+----------
 
 How to build an initial configuration of a molecular or ionic system.
 
