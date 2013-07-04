@@ -64,9 +64,9 @@ How to build an initial configuration of a molecular or ionic system.
 
         packmol < pack.inp
 
-    Coordinates of will be written to the file `simbox.xyz`. You can
+    Coordinates will be written to the file `simbox.xyz`. You can
     use a molecular viewer such as RasMol or VMD to look at the `.xyz`
-    files (fftool has an option to write the IUPAC atomic symbols
+    files (`fftool.py` has an option to write the IUPAC atomic symbols
     instead of the atom names of the force field).
 
 4. Use `fftool.py` to build the input files for LAMMPS or DL_POLY
