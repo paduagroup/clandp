@@ -9,8 +9,8 @@ B (since 2004)_
 Contents
 --------
 
-* `fftool.py`: python script to build simulation box of ionic,
-    molecular liquids and their mixtures. Needs the Packmol software
+* `fftool.py`: python script to build simulation box of ionic or
+    molecular liquids and their mixtures. Requires the Packmol software
     to create coordinates. Force field files are written in formats
     suitable for the LAMMPS or DL_POLY molecular dynamics packages.
 
@@ -38,14 +38,16 @@ Requirements
 Instructions
 ------------
 
-How to build an initial configuration of a molecular system.
+How to build an initial configuration of a molecular or ionic system.
 
-1. Prepare one file (`molecule.zmat`) containing a z-matrix describing
-   each molecule. A database of force field parameters (`database.ff`)
-   has to be specified at the end. See the `examples` directory. The
-   connectivity (which atoms are linked by covalent bonds) is
-   determined by the z-matrix. Cyclic molecules require additional
-   `connect` records to close cycles (see the example for benzene).
+1. Prepare a file (`molecule.zmat`) containing a z-matrix describing
+   each molecule. Check the Wikipedia entry for "Z-matrix
+   (chemistry)". After the z-matrix there must be a reference a
+   database of force field parameters (`database.ff`) must be
+   supplied. See the `examples` directory. The connectivity (which
+   atoms are linked by covalent bonds) is determined by the
+   z-matrix. Cyclic molecules require additional `connect` records to
+   close cycles (see the example for benzene).
 
 2. Use the `fftool.py` script to create `.xyz` files for the molecules
    in your system and an input file for `packmol`. For help type
