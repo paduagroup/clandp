@@ -1,10 +1,10 @@
 Force field builder for molecular and ionic liquids
 ===================================================
 
-_[Agilio Padua](http://tim.univ-bpclermont.fr/apadua), Jose Nuno
-Canongia Lopes et al._
+_[Agilio Padua](http://tim.univ-bpclermont.fr/apadua)_
 
-_series of papers in J Phys Chem B since 2004_
+_series of papers by A. Padua, J.N. Canongia Lopes et al. J Phys Chem
+B (since 2004)_
 
 Contents
 --------
