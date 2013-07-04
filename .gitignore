@@ -1,0 +1,6 @@
+examples/*.ff
+examples/*.xyz
+examples/*.inp
+examples/*.lmp
+examples/FIELD
+examples/CONFIG
