@@ -5,7 +5,7 @@
 # questions to: agilio.padua@univ-bpclermont.fr
 
 Atoms
-#          m/u     q/e    pot   pars
+#     typ  m/u     q/e    pot   pars
 # dialkylimidazolium JPCB 108(2004)2038
 C1    CT  12.011  -0.17   lj    3.50   0.27614
 C2    CT  12.011   0.01   lj    3.50   0.27614
@@ -19,30 +19,49 @@ HCW   HA   1.008   0.21   lj    2.42   0.12552
 HC    HC   1.008   0.06   lj    2.50   0.12552
 H1    HC   1.008   0.13   lj    2.50   0.12552
 NA    NA  14.007   0.15   lj    3.25   0.71128
+# dialkylmethylmidazolium JPCB112(2008)5039
+CRM   CR  12.011   0.19   lj    3.55   0.29288
+NAM   NA  14.007   0.04   lj    3.25   0.71128
+CCR   CT  12.011  -0.26   lj    3.50   0.27614
+# chloride JPCB108(2004)2038
+Cl    Cl  35.453  -1.00   lj    3.65   0.83000
+# bromide JPCB110(2006)19586
+Br    Br  79.904  -1.00   lj    3.97   0.86000
 # bistriflamide JPCB108(2004)16893
 F1    F   18.998  -0.16   lj    2.95   0.22175
 CBT   CF  12.011   0.35   lj    3.50   0.27614
 SBT   SB  32.066   1.02   lj    3.55   1.04600
 OBT   OB  15.999  -0.53   lj    2.96   0.87864
 NBT   NB  14.000  -0.66   lj    3.25   0.71128
+# triflate JPCB108(2004)16893
+OTF   OB  15.999  -0.63   lj    2.96   0.87864
+# dicyanamide JPCB110(2006)19586
+N3A   N3  14.000  -0.76   lj    3.25   0.71128
+CZA   CZ  12.011   0.64   lj    3.30   0.27614
+NZA   NZ  14.000  -0.76   lj    3.20   0.71128
 
 Bonds
 # i j    pot    re/A    ka/kJmol-1
 # alkanes OPLS-AA JACS118(1996)11225; JPC100(1996)18010
 HC  CT   cons   1.090   2845.0
 CT  CT   harm   1.529   2242.0
-# dialkylimidazolium JPCB108:2038(2004)
+# dialkylimidazolium JPCB108(2004)2038
 CR  HA   cons   1.080   2845.0
 CW  HA   cons   1.080   2845.0
 CR  NA   harm   1.315   3992.0
 CW  NA   harm   1.378   3574.0
 CW  CW   harm   1.341   4352.0
 NA  CT   harm   1.466   2820.0
-# triflate and bistriflylamide JPCB108(2004)16893
+# dialkylimethylmidazolium JPCB112(2008)5039
+CR  CT   harm   1.510   2653.0
+# triflate and bistriflamide JPCB108(2004)16893
 F   CF   harm   1.323   3698.0
 CF  SB   harm   1.818   1950.0
 SB  OB   harm   1.437   5331.0
 NB  SB   harm   1.570   3137.0
+# dicyanamide JPCB110(2006)19586
+N3  CZ   harm   1.310   4206.0
+CZ  NZ   harm   1.157   7746.0
 
 Angles
 # i j   k    pot    th/deg  ka/kjmol-1
@@ -61,7 +80,10 @@ NA  CW  HA   harm   122.0   292.9
 CW  CW  HA   harm   130.9   292.9
 NA  CT  HC   harm   110.7   313.8
 NA  CT  CT   harm   112.7   488.3
-# triflate and bistriflylamide JPCB108(2004)16893
+# dialkylimethylmidazolium JPCB112(2008)5039
+CT  CR  NA   harm   125.8   585.8
+CR  CT  HC   harm   110.7   313.8  
+# triflate and bistriflamide JPCB108(2004)16893
 F   CF  F    harm   107.1   781.0
 F   CF  SB   harm   111.7   694.0
 OB  SB  OB   harm   118.5   969.0
@@ -69,6 +91,9 @@ CF  SB  OB   harm   102.6   870.0
 NB  SB  OB   harm   113.6   789.0 
 NB  SB  CF   harm   103.5   764.0 
 SB  NB  SB   harm   125.6   671.0   
+# dicyanamide JPCB110(2006)19586
+CZ  N3  CZ   harm   118.5   362.0
+N3  CZ  NZ   harm   175.2   425.0
 
 DIHEDRALS
 # i j   k   l    pot    v1        v2        v3        v4
@@ -94,12 +119,18 @@ CW  NA  CT  CT   opls  -7.1535    6.1064    0.7939    0.0000
 CR  NA  CT  CT   opls  -5.2691    0.0000    0.0000    0.0000
 NA  CT  CT  CT   opls  -7.4797    3.1642   -1.2026    0.0000
 NA  CT  CT  HC   opls   0.0000    0.0000    0.3670    0.0000
+# dialkylimethylmidazolium JPCB112(2008)5039
+CW  NA  CR  CT   opls   0.0000   19.4600    0.0000    0.0000
+CT  NA  CR  CT   opls   0.0000   19.4600    0.0000    0.0000
+NA  CR  CT  HC   opls   0.0000    0.0000    0.0000    0.0000
 # improper imidazolium ring AMBER JACS 117(1995)5179
 #CR  CW  NA  C1   opls   0.0000    8.3700    0.0000    0.0000
 #NA  NA  CR  HA   opls   0.0000    9.2000    0.0000    0.0000
 #NA  CW  CW  HA   opls   0.0000    9.2000    0.0000    0.0000
-# triflate and bistriflylamide JPCB108(2004)16893
+# triflate and bistriflamide JPCB108(2004)16893
 OB  SB  CF  F    opls   0.0000    0.0000    1.4510    0.0000
 NB  SB  CF  F    opls   0.0000    0.0000    1.3220    0.0000
 OB  SB  NB  SB   opls   0.0000    0.0000   -0.0150    0.0000
 SB  NB  SB  CF   opls  32.7730  -10.4200   -3.1950    0.0000
+# dicyanamide JPCB110(2006)19586
+NZ  CZ  N3  CZ   opls   4.0800    0.0000    0.0000    0.0000

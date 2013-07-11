@@ -1009,13 +1009,13 @@ class system:
                 
             fd.write('\nBond Coeffs\n\n')
             for bdt in self.bdtype:
-                fd.write('%4d %9.2f %6.3f  # %s\n' % \
+                fd.write('%4d %7.1f %6.3f  # %s\n' % \
                          (bdt.ityp + 1, float(bdt.par[1]) / kcal, float(bdt.par[0]),
                           bdt.name))
             
             fd.write('\nAngle Coeffs\n\n')
             for ant in self.antype:
-                fd.write('%4d %8.2f %7.2f  # %s\n' % \
+                fd.write('%4d %7.2f %7.2f  # %s\n' % \
                          (ant.ityp + 1, float(ant.par[1]) / kcal, float(ant.par[0]),
                           ant.name))
                     
@@ -1115,20 +1115,20 @@ class system:
                 f.write('constraints %d\n' % ncons)
                 for bd in mol.bond:
                     if bd.pot == 'cons':
-                        f.write('%4d %4d %7.4f  # %s\n' % \
+                        f.write('%4d %4d %6.3f  # %s\n' % \
                                 (bd.i + 1, bd.j + 1, float(bd.par[0]),
                                  bd.name))
                 f.write('bonds %d\n' % (len(mol.bond) - ncons))
                 for bd in mol.bond:
                     if bd.pot != 'cons':
-                        f.write('%4s %4d %4d %9.3f %7.2f  # %s\n' % \
+                        f.write('%4s %4d %4d %7.1f %6.3f  # %s\n' % \
                                 (bd.pot, bd.i + 1, bd.j + 1,
                                  float(bd.par[1]), float(bd.par[0]),
                                  bd.name))
                                                                   
                 f.write('angles %d\n' % len(mol.angle))
                 for an in mol.angle:
-                    f.write('%4s %4d %4d %4d %9.3f %8.3f  # %s\n' % \
+                    f.write('%4s %4d %4d %4d %7.2f %7.2f  # %s\n' % \
                             (an.pot, an.i + 1, an.j + 1, an.k + 1,
                              float(an.par[1]), float(an.par[0]), an.name))
                              
@@ -1136,7 +1136,7 @@ class system:
                 for dh in mol.dihed:
                     if cos4:
                         pot = 'cos4'
-                        f.write('%4s %4d %4d %4d %4d %9.5f %9.5f %9.5f %9.5f'\
+                        f.write('%4s %4d %4d %4d %4d %9.4f %9.4f %9.4f %9.4f'\
                                 ' %6.3f %6.3f  # %s\n' % \
                                 (pot, dh.i + 1, dh.j + 1, dh.k + 1, dh.l + 1,
                                  float(dh.par[0]), float(dh.par[1]),
@@ -1144,7 +1144,7 @@ class system:
                                  dh.name))
                     else:
                         pot = 'cos3'
-                        f.write('%4s %4d %4d %4d %4d %9.5f %9.5f %9.5f'\
+                        f.write('%4s %4d %4d %4d %4d %9.4f %9.4f %9.4f'\
                                 ' %6.3f %6.3f  # %s\n' % \
                                 (pot, dh.i + 1, dh.j + 1, dh.k + 1, dh.l + 1,
                                  float(dh.par[0]), float(dh.par[1]),

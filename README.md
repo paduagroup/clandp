@@ -18,14 +18,20 @@ Contents
     molecular dynamics packages.
 
 * `il.ff`: database of force field parameters for ions of several ionic
-    liquids.
+    liquids (under construction, compatible with `fftool.py`).
+
+* `old.il.ff`: database of force field parameters for ions of several ionic
+    liquids (previous format, complete with many ions).
 
 * `improper_im.dlp`: "improper" dihedrals for the aromatic ring in
     imidazolium cations. Retrieved from the AMBER paper.
 
 * `oplsaa.ff`: database of OPLS-AA force field parameters for some
     molecular compounds. Retrieved from several publications of the
-    W.L. Jorgensen group.
+    W.L. Jorgensen group (under construction, compatible with `fftool.py`).
+
+* `old.oplsaa.ff`: database of force field parameters for some
+    molecular compounds (previous format, more molecules).
 
 * `examples`: directory with some `molecule.zmat` files.
 
