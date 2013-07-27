@@ -60,3 +60,6 @@ OH  CT  CT  OH   opls    0.0000   -9.8324    1.2050    0.0000
 CA  CA  CA  CA   opls    0.0000    30.334    0.0000    0.0000
 CA  CA  CA  HA   opls    0.0000    30.334    0.0000    0.0000
 HA  CA  CA  HA   opls    0.0000    30.334    0.0000    0.0000
+# improper aromatics AMBER JACS 117(1995)5179
+CA  CA  CA  HA   opls    0.0000    9.2048    0.0000    0.0000
+CA  CA  CA  CT   opls    0.0000    9.2048    0.0000    0.0000
