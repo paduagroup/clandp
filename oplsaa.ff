@@ -1,4 +1,4 @@
-# oplsaa.ff (kJ/mol, A, deg) version 2013/05/24
+# oplsaa.ff (kJ/mol, A, deg) version 2013/05/27
 
 Atoms
 #   type  m/uma    q/e    pot   pars
@@ -18,6 +18,14 @@ HO    HO   1.008   0.418  lj    0.00   0.00000
 # aromatics OPLS-AA JACS 118(1996)11225
 CA    CA  12.011  -0.115  lj    3.55   0.43932
 HA    HA   1.008   0.115  lj    2.42   0.12552
+# toluene OPLS-AA JACS 118(1996)11217, JCC 25(2004)1322
+CAP   CA  12.011  -0.154  lj    3.55   0.43932
+CAM   CA  12.011  -0.145  lj    3.55   0.43932
+CAO   CA  12.011  -0.147  lj    3.55   0.43932
+CAT   CA  12.011  -0.081  lj    3.55   0.43932
+CTT   CT  12.011  -0.197  lj    3.50   0.27614
+HAT   HA   1.008   0.148  lj    2.42   0.12552
+HT    HC   1.008   0.092  lj    2.42   0.12552
 
 Bonds
 # i j    pot    re/A    ka/kJmol-1
@@ -30,6 +38,8 @@ HO  OH   cons   0.945   4627.50
 # aromatics AMBER JACS 117(1995)5179
 CA  CA   harm   1.400   3924.6
 CA  HA   cons   1.080   3071.1
+# toluene AMBER JACS 117(1995)5179
+CA  CT   harm   1.510   2652.7
 
 Angles
 # i  j  k    pot    th/deg   ka/kjmol-1
@@ -43,7 +53,10 @@ HC  CT  OH   harm   109.50   292.88
 CT  OH  HO   harm   108.50   460.24
 # aromatics AMBER JACS 117(1995)5179
 CA  CA  HA   harm   120.00   292.88
-CA  CA  CA   harm   120.00   527.184
+CA  CA  CA   harm   120.00   527.18
+# toluene AMBER JACS 117(1995)5179
+CA  CA  CT   harm   120.00   585.76
+CA  CT  HC   harm   109.50   418.4  
 
 Dihedrals
 # i j   k   l    pot     v1        v2        v3        v4
@@ -62,4 +75,9 @@ CA  CA  CA  HA   opls    0.0000    30.334    0.0000    0.0000
 HA  CA  CA  HA   opls    0.0000    30.334    0.0000    0.0000
 # improper aromatics AMBER JACS 117(1995)5179
 CA  CA  CA  HA   opls    0.0000    9.2048    0.0000    0.0000
+# toluene AMBER JACS 117: 5179 (1995)
+CT  CA  CA  CA   opls    0.0000    30.334    0.0000    0.0000
+CT  CA  CA  HA   opls    0.0000    30.334    0.0000    0.0000
+CA  CA  CT  HC   opls    0.0000    0.0000    0.0000    0.0000
+# improper toluene AMBER JACS 117: 5179 (1995)
 CA  CA  CA  CT   opls    0.0000    9.2048    0.0000    0.0000

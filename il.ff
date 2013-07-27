@@ -69,7 +69,7 @@ NA  CT   harm   1.466   2820.0
 CR  CT   harm   1.510   2653.0
 # ammonium, pyrrolidinium OPLS-AA JACS121(1999)4827, AMBER
 NT  CT   harm   1.471   3071.0
-HN  NT   harm   1.010  -3632.0
+HN  NT   cons   1.010   3632.0
 # phosphonium OPLS-AA JPCB110(2006)19586
 PT  CT   harm   1.81    3550.0
 # tetrafluoroborate
