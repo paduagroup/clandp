@@ -23,6 +23,19 @@ NA    NA  14.007   0.15   lj    3.25   0.71128
 CRM   CR  12.011   0.19   lj    3.55   0.29288
 NAM   NA  14.007   0.04   lj    3.25   0.71128
 CCR   CT  12.011  -0.26   lj    3.50   0.27614
+# ammonium, pyrrolidinium JPCB108(2004)16893
+N4    NT  14.007   0.12   lj    3.25   0.71128
+N3    NT  14.007   0.03   lj    3.25   0.71128
+H3    HN   1.008   0.31   lj    0.00   0.00000
+# phosphonium OPLS-AA, JPCB110(2006)19586
+P3    PT  30.974   0.68   lj    3.74   0.83680
+C1P   CT  12.011  -0.31   lj    3.50   0.27614
+# tetrafluoroborate anion
+B     B   10.811   0.96   lj    3.58   0.39750
+FB    F   18.998  -0.49   lj    3.12   0.25520
+# hexafluorophosphate JCSPerkin2(1999)2365
+P     P   30.974   1.34   lj    3.74   0.83680
+FP    F   18.998  -0.39   lj    3.12   0.25520
 # chloride JPCB108(2004)2038
 Cl    Cl  35.453  -1.00   lj    3.65   0.83000
 # bromide JPCB110(2006)19586
@@ -42,7 +55,7 @@ NZA   NZ  14.000  -0.76   lj    3.20   0.71128
 
 Bonds
 # i j    pot    re/A    ka/kJmol-1
-# alkanes OPLS-AA JACS118(1996)11225; JPC100(1996)18010
+# alkanes OPLS-AA JACS118(1996)11225, JPC100(1996)18010
 HC  CT   cons   1.090   2845.0
 CT  CT   harm   1.529   2242.0
 # dialkylimidazolium JPCB108(2004)2038
@@ -54,6 +67,15 @@ CW  CW   harm   1.341   4352.0
 NA  CT   harm   1.466   2820.0
 # dialkylimethylmidazolium JPCB112(2008)5039
 CR  CT   harm   1.510   2653.0
+# ammonium, pyrrolidinium OPLS-AA JACS121(1999)4827, AMBER
+NT  CT   harm   1.471   3071.0
+HN  NT   harm   1.010  -3632.0
+# phosphonium OPLS-AA JPCB110(2006)19586
+PT  CT   harm   1.81    3550.0
+# tetrafluoroborate
+B   F    harm   1.394   3235.0
+# hexafluorophosphate JCSPerkin2(1999)2365
+P   F    harm   1.606   3100.0
 # triflate and bistriflamide JPCB108(2004)16893
 F   CF   harm   1.323   3698.0
 CF  SB   harm   1.818   1950.0
@@ -65,7 +87,7 @@ CZ  NZ   harm   1.157   7746.0
 
 Angles
 # i j   k    pot    th/deg  ka/kjmol-1
-# alkyl OPLS-AA JACS118(1996)11225; JPC100(1996)18010
+# alkyl OPLS-AA JACS118(1996)11225, JPC100(1996)18010
 CT  CT  CT   harm   112.7   488.3
 CT  CT  HC   harm   110.7   313.8 
 HC  CT  HC   harm   107.8   276.1 
@@ -82,7 +104,20 @@ NA  CT  HC   harm   110.7   313.8
 NA  CT  CT   harm   112.7   488.3
 # dialkylimethylmidazolium JPCB112(2008)5039
 CT  CR  NA   harm   125.8   585.8
-CR  CT  HC   harm   110.7   313.8  
+CR  CT  HC   harm   110.7   313.8
+# ammonium, pyrrolidinium OPLS-AA JACS121(1999)4827, AMBER
+NT  CT  CT   harm   109.5   669.4
+CT  NT  CT   harm   109.5   418.4
+HC  CT  NT   harm   109.5   209.2
+HN  NT  CT   harm   109.5   418.4
+# phosphonium OPLS-AA, JPCB110(2006)19586
+CT  PT  CT   harm   109.5   607.8
+HC  CT  PT   harm   110.1   389.9
+CT  CT  PT   harm   115.2   509.1
+# tetrafluoroborate anion
+F   B   F    harm   109.5   669.5
+# hexafluorophosphate JCSPerkin2(1999)2365
+F   P   F    harm    90.0  1165.0  
 # triflate and bistriflamide JPCB108(2004)16893
 F   CF  F    harm   107.1   781.0
 F   CF  SB   harm   111.7   694.0
@@ -97,7 +132,7 @@ N3  CZ  NZ   harm   175.2   425.0
 
 DIHEDRALS
 # i j   k   l    pot    v1        v2        v3        v4
-# alkanes OPLS-AA JACS118(1996)11225; JPC100(1996)18010
+# alkanes OPLS-AA JACS118(1996)11225, JPC100(1996)18010
 HC  CT  CT  HC   opls   0.0000    0.0000    1.3305    0.0000
 CT  CT  CT  HC   opls   0.0000    0.0000    1.5313    0.0000
 CT  CT  CT  CT   opls   7.2800   -0.6569    1.1673    0.0000
@@ -127,8 +162,24 @@ NA  CR  CT  HC   opls   0.0000    0.0000    0.0000    0.0000
 CW  CR  NA  CT   opls   0.0000    8.3700    0.0000    0.0000
 CR  CW  NA  CT   opls   0.0000    8.3700    0.0000    0.0000
 NA  NA  CR  HA   opls   0.0000    9.2000    0.0000    0.0000
+NA  NA  CR  CT   opls   0.0000    9.2000    0.0000    0.0000
 NA  CW  CW  HA   opls   0.0000    9.2000    0.0000    0.0000
 CW  NA  CW  HA   opls   0.0000    9.2000    0.0000    0.0000
+# ammonium, pyrrolidinium OPLS-AA JACS121(1999)4827
+HC  CT  CT  NT   opls  -4.2384   -2.9665    1.9790    0.0000
+CT  CT  CT  NT   opls  10.0081   -2.8200    2.3012    0.0000
+CT  NT  CT  CT   opls   1.7405   -0.5356    2.9079    0.0000
+HC  CT  NT  CT   opls   0.0000    0.0000    2.3430    0.0000
+HN  NT  CT  HC   opls   0.0000    0.0000    0.0000    0.0000
+HN  NT  CT  CT   opls   0.0000    0.0000    0.0000    0.0000
+# cholinium: unpublished
+OH  CT  CT  NT   opls -44.0515   -5.4349    0.0000    0.0000
+#OH  CT  CT  NT   cos4 -44.0515   -5.0148    0.0000   -3.1510
+# phosphonium OPLS-AA, JPCB110(2006)19586
+CT  PT  CT  HC   opls   0.0000    0.0000    0.9270    0.0000
+CT  PT  CT  CT   opls   0.0000    0.0000    1.1330    0.0000
+PT  CT  CT  HC   opls   0.0000    0.0000    0.4650    0.0000
+PT  CT  CT  CT   opls  -3.2480    0.9880   -0.7150    0.0000
 # triflate and bistriflamide JPCB108(2004)16893
 OB  SB  CF  F    opls   0.0000    0.0000    1.4510    0.0000
 NB  SB  CF  F    opls   0.0000    0.0000    1.3220    0.0000

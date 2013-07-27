@@ -285,7 +285,7 @@ class bond:
             return 'bond %5d %5d' % (self.i + 1, self.j + 1)
 
     def setpar(self, iatp, jatp, pot, par):
-        self.name = '%2s-%2s' % (iatp, jatp)
+        self.name = '%s-%s' % (iatp, jatp)
         self.iatp = iatp
         self.jatp = jatp
         self.pot = pot
@@ -578,6 +578,12 @@ class mol:
         return 'molecule %s  %d atoms  m = %8.4f' % \
             (self.name, len(self.atom), self.m)
             
+    def charge(self):
+        q = 0.0
+        for at in self.atom:
+            q += at.q
+        return q
+
     def show(self):
         print '%s: %d molecules' % (self.name, self.nmols)
         print '%d atoms' % len(self.atom)
@@ -1268,6 +1274,9 @@ def main():
 
     s = system(m)
     if not args.quiet:
+        print 'charges'
+        for spec in m:
+            print '  %+.3f' % spec.charge() 
         print 'packmol input\n  pack.inp'
     s.writepackmol(args.rho)
 
