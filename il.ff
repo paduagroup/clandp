@@ -123,10 +123,12 @@ NA  CT  CT  HC   opls   0.0000    0.0000    0.3670    0.0000
 CW  NA  CR  CT   opls   0.0000   19.4600    0.0000    0.0000
 CT  NA  CR  CT   opls   0.0000   19.4600    0.0000    0.0000
 NA  CR  CT  HC   opls   0.0000    0.0000    0.0000    0.0000
-# improper imidazolium ring AMBER JACS 117(1995)5179
-#CR  CW  NA  C1   opls   0.0000    8.3700    0.0000    0.0000
-#NA  NA  CR  HA   opls   0.0000    9.2000    0.0000    0.0000
-#NA  CW  CW  HA   opls   0.0000    9.2000    0.0000    0.0000
+# improper imidazolium ring AMBER JACS117(1995)5179
+CW  CR  NA  CT   opls   0.0000    8.3700    0.0000    0.0000
+CR  CW  NA  CT   opls   0.0000    8.3700    0.0000    0.0000
+NA  NA  CR  HA   opls   0.0000    9.2000    0.0000    0.0000
+NA  CW  CW  HA   opls   0.0000    9.2000    0.0000    0.0000
+CW  NA  CW  HA   opls   0.0000    9.2000    0.0000    0.0000
 # triflate and bistriflamide JPCB108(2004)16893
 OB  SB  CF  F    opls   0.0000    0.0000    1.4510    0.0000
 NB  SB  CF  F    opls   0.0000    0.0000    1.3220    0.0000

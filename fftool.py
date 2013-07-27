@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # fftool.py - generate force field parameters for molecular system
-# Agilio Padua <agilio.padua@univ-bpclermont.fr>, version 2013/07/04
+# Agilio Padua <agilio.padua@univ-bpclermont.fr>, version 2013/07/27
 # http://tim.univ-bpclermont.fr/apadua
 
 # Copyright (C) 2013 Agilio A.H. Padua
@@ -138,7 +138,8 @@ class zmat:
         self.nmols = nmols
         self.zatom = []
         self.connect = []
-
+        self.improper = []
+        
         # TODO: add code to handle z-matrix with tokens
         
         with open(filename, 'r') as f:
@@ -187,6 +188,18 @@ class zmat:
                 atomi = int(tok[1])
                 atomj = int(tok[2])
                 self.connect.append([atomi, atomj])
+                line = f.readline().strip()
+
+            # read improper dihedrals
+            while line.startswith('#') or line == '':
+                line = f.readline().strip()            
+            while line.startswith('improper'):
+                tok = line.split()
+                atomi = int(tok[1])
+                atomj = int(tok[2])
+                atomk = int(tok[3])
+                atoml = int(tok[4])
+                self.improper.append([atomi, atomj, atomk, atoml])
                 line = f.readline().strip()
                 
             # read force field file
@@ -537,6 +550,9 @@ class mol:
                         j += 1
                 l += 1
             k += 1
+
+        for im in z.improper:                 # add improper dihedrals
+            self.dihed.append(dihed(im[0] - 1, im[1] - 1, im[2] - 1, im[3] - 1))
 
         self.ff = z.ff
         return self

@@ -23,9 +23,6 @@ Contents
 * `old.il.ff`: database of force field parameters for ions of several ionic
     liquids (previous format, complete with many ions).
 
-* `improper_im.dlp`: "improper" dihedrals for the aromatic ring in
-    imidazolium cations. Retrieved from the AMBER paper.
-
 * `oplsaa.ff`: database of OPLS-AA force field parameters for some
     molecular compounds. Retrieved from several publications of the
     W.L. Jorgensen group (under construction, compatible with `fftool.py`).
@@ -59,12 +56,13 @@ How to build an initial configuration of a molecular or ionic system.
 
 1. Prepare a file (`molecule.zmat`) containing a z-matrix describing
    each molecule. Check the Wikipedia entry for "Z-matrix
-   (chemistry)". After the z-matrix a database of force field
-   parameters (`database.ff`) must be supplied. See the `examples`
-   directory. The connectivity (which atoms are linked by covalent
-   bonds) is determined by the z-matrix. Cyclic molecules require
-   additional `connect` records to close rings (see the example for
-   benzene).
+   (chemistry)". See the `examples` directory. The connectivity (which
+   atoms are linked by covalent bonds) is determined by the
+   z-matrix. Cyclic molecules require additional `connect` records to
+   close rings. Improper dihedrals cannot be inferred from
+   connectivity and must be indicated by `improper` records. After the
+   z-matrix a database of force field parameters (`database.ff`) must
+   be supplied.
 
 2. Use the `fftool.py` script to create `.xyz` files for the molecules
    in your system and an input file for `packmol`. For help type
