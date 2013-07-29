@@ -1065,57 +1065,50 @@ class system:
                     nmol += 1
 
             fd.write('\nBonds\n\n')
-            i = 1
-            nmol = natoms = 0
+            i = shift = 1
             for m in self.mol:
+                natoms = len(m.atom)
                 im = 0
                 while im < m.nmols:
-                    shift = 1 + nmol * natoms
                     for bd in m.bond:
                         fd.write('%7d %4d %7d %7d  # %s\n' % \
                                  (i, bd.ityp + 1, bd.i + shift, bd.j + shift,
                                   bd.name))
                         i += 1
-                    nmol += 1
+                    shift += natoms
                     im += 1
-                natoms = len(m.atom)
 
             fd.write('\nAngles\n\n')
-            i = 1
-            nmol = 0
+            i = shift = 1
             for m in self.mol:
+                natoms = len(m.atom)
                 im = 0
                 while im < m.nmols:
-                    shift = 1 + nmol * natoms
                     for an in m.angle:
                         fd.write('%7d %4d %7d %7d %7d  # %s\n' % \
                                  (i, an.ityp + 1, an.i + shift,
                                   an.j + shift, an.k + shift, an.name))
                         i += 1
-                    nmol += 1
+                    shift += natoms
                     im += 1
-                natoms = len(m.atom)
 
             fd.write('\nDihedrals\n\n')
-            i = 1
-            nmol = 0
+            i = shift = 1
             for m in self.mol:
+                natoms = len(m.atom)
                 im = 0
                 while im < m.nmols:
-                    shift = 1 + nmol * natoms
                     for dh in m.dihed:
                         fd.write('%7d %4d %7d %7d %7d %7d  # %s\n' % \
                                  (i, dh.ityp + 1, dh.i + shift, dh.j + shift,
                                   dh.k + shift, dh.l + shift, dh.name))
                         i += 1
-                    nmol += 1
+                    shift += natoms
                     im += 1
-                natoms = len(m.atom)
-
                     
             fd.write('\n')
                     
-            
+
     def writedlp(self, cos4 = False):
         with open('FIELD', 'w') as f:
             f.write('created by fftool\n')
