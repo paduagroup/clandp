@@ -1066,9 +1066,8 @@ class system:
 
             fd.write('\nBonds\n\n')
             i = 1
-            nmol = 0
+            nmol = natoms = 0
             for m in self.mol:
-                natoms = len(m.atom)
                 im = 0
                 while im < m.nmols:
                     shift = 1 + nmol * natoms
@@ -1077,14 +1076,14 @@ class system:
                                  (i, bd.ityp + 1, bd.i + shift, bd.j + shift,
                                   bd.name))
                         i += 1
-                    im += 1
                     nmol += 1
+                    im += 1
+                natoms = len(m.atom)
 
             fd.write('\nAngles\n\n')
             i = 1
             nmol = 0
             for m in self.mol:
-                natoms = len(m.atom)
                 im = 0
                 while im < m.nmols:
                     shift = 1 + nmol * natoms
@@ -1093,14 +1092,14 @@ class system:
                                  (i, an.ityp + 1, an.i + shift,
                                   an.j + shift, an.k + shift, an.name))
                         i += 1
-                    im += 1
                     nmol += 1
+                    im += 1
+                natoms = len(m.atom)
 
             fd.write('\nDihedrals\n\n')
             i = 1
             nmol = 0
             for m in self.mol:
-                natoms = len(m.atom)
                 im = 0
                 while im < m.nmols:
                     shift = 1 + nmol * natoms
@@ -1109,9 +1108,11 @@ class system:
                                  (i, dh.ityp + 1, dh.i + shift, dh.j + shift,
                                   dh.k + shift, dh.l + shift, dh.name))
                         i += 1
-                    im += 1
                     nmol += 1
+                    im += 1
+                natoms = len(m.atom)
 
+                    
             fd.write('\n')
                     
             
