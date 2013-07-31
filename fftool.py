@@ -894,7 +894,7 @@ class system:
         nmols = 0
         for m in self.mol:
             nmols += m.nmols
-        boxlen = math.pow(nmols / (rho * 6.022e+23 * 1.0e-27), 1./3.) 
+        boxlen = math.pow(nmols / (rho * 6.022e+23 * 1.0e-27), 1./3.) / 2.0 
         with open('pack.inp', 'w') as f:
             f.write('# created by fftool\n')
             f.write('# density %.1f mol/L\n\n' % rho)
@@ -1032,14 +1032,14 @@ class system:
             fd.write('\nBond Coeffs\n\n')
             for bdt in self.bdtype:
                 fd.write('%4d %7.1f %6.3f  # %s\n' % \
-                         (bdt.ityp + 1, float(bdt.par[1]) / kcal, float(bdt.par[0]),
-                          bdt.name))
+                         (bdt.ityp + 1, float(bdt.par[1]) / (2.0 * kcal),
+                          float(bdt.par[0]), bdt.name))
             
             fd.write('\nAngle Coeffs\n\n')
             for ant in self.antype:
                 fd.write('%4d %7.2f %7.2f  # %s\n' % \
-                         (ant.ityp + 1, float(ant.par[1]) / kcal, float(ant.par[0]),
-                          ant.name))
+                         (ant.ityp + 1, float(ant.par[1]) / (2.0 * kcal),
+                          float(ant.par[0]), ant.name))
                     
             fd.write('\nDihedral Coeffs\n\n')
             for dht in self.dhtype:
