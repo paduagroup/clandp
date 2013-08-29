@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # fftool.py - generate force field parameters for molecular system
-# Agilio Padua <agilio.padua@univ-bpclermont.fr>, version 2013/07/31
+# Agilio Padua <agilio.padua@univ-bpclermont.fr>, version 2013/08/29
 # http://tim.univ-bpclermont.fr/apadua
 
 # Copyright (C) 2013 Agilio A.H. Padua
@@ -962,7 +962,7 @@ class system:
 
             fi.write('velocity all create ${temperature} 12345\n\n')
 
-            fi.write('fix fNPT all npt temp ${temperature} ${temperature} 100.0'\
+            fi.write('fix fNPT all npt temp ${temperature} ${temperature} 100.0 '\
                      'iso ${pressure} ${pressure} 1000.0\n\n')
 
             fi.write('thermo_style multi\n')
