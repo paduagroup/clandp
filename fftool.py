@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # fftool.py - generate force field parameters for molecular system
-# Agilio Padua <agilio.padua@univ-bpclermont.fr>, version 2013/08/29
+# Agilio Padua <agilio.padua@univ-bpclermont.fr>, version 2013/09/03
 # http://tim.univ-bpclermont.fr/apadua
 
 # Copyright (C) 2013 Agilio A.H. Padua
@@ -323,7 +323,7 @@ class angle:
 
 
 class dihed:
-    '''dihedral angle (torsion, improper)'''
+    '''dihedral angle (torsion)'''
 
     def __init__(self, i = -1, j = -1, k = -1, l = -1, phi = 0.0):
         self.i = i
@@ -344,6 +344,40 @@ class dihed:
                   (self.name, self.pot, str(self.par))                
         else:
             return 'dihedral %5d %5d %5d %5d' % \
+              (self.i + 1, self.j + 1, self.k + 1, self.l + 1)
+
+    def setpar(self, iatp, jatp, katp, latp, pot, par):
+        self.name = '%s-%s-%s-%s' % (iatp, jatp, katp, latp)
+        self.iatp = iatp
+        self.jatp = jatp
+        self.katp = katp
+        self.latp = latp
+        self.pot = pot
+        self.par = par
+
+
+class dimpr:
+    '''dihedral angle (improper)'''
+
+    def __init__(self, i = -1, j = -1, k = -1, l = -1, phi = 0.0):
+        self.i = i
+        self.j = j
+        self.k = k
+        self.l = l
+        self.phi = phi
+        self.ityp = -1
+
+    def __str__(self):
+        if hasattr(self, 'name'):
+            if self.i != -1:
+                return 'improper %5d %5d %5d %5d  %s  %s %s' % \
+                  (self.i + 1, self.j + 1, self.k + 1, self.l + 1, \
+                   self.name, self.pot, str(self.par))
+            else:
+                return 'improper %s  %s %s' % \
+                  (self.name, self.pot, str(self.par))                
+        else:
+            return 'improper %5d %5d %5d %5d' % \
               (self.i + 1, self.j + 1, self.k + 1, self.l + 1)
 
     def setpar(self, iatp, jatp, katp, latp, pot, par):
@@ -551,8 +585,9 @@ class mol:
                 l += 1
             k += 1
 
-        for im in z.improper:                 # add improper dihedrals
-            self.dihed.append(dihed(im[0] - 1, im[1] - 1, im[2] - 1, im[3] - 1))
+        # add improper dihedrals
+        for di in z.improper:                 
+            self.dimpr.append(dihed(di[0] - 1, di[1] - 1, di[2] - 1, di[3] - 1))
 
         self.ff = z.ff
         return self
@@ -562,6 +597,7 @@ class mol:
         self.bond = []
         self.angle = []
         self.dihed = []
+        self.dimpr = []
         self.m = 0
         
         try:                              # read from zmat file
@@ -598,6 +634,9 @@ class mol:
         print '%d dihedrals' % len(self.dihed)
         for dh in self.dihed:
             print dh
+        print '%d improper' % len(self.dimpr)
+        for di in self.dimpr:
+            print di
 
     def showxyz(self, symbol = False):
         print len(self.atom)
@@ -633,9 +672,10 @@ class forcefield:
         self.bond = []
         self.angle = []
         self.dihed = []
+        self.dimpr = []
         
         with open(self.filename, 'r') as f:
-            i = ib = ia = id = 0
+            i = ib = ia = ih = im = 0
             for line in f:
                 if line.startswith('#') or line.strip() == '':
                     continue
@@ -651,6 +691,9 @@ class forcefield:
                     continue
                 elif line.lower().startswith('dihe'):
                     section = 'dihedrals'
+                    continue
+                elif line.lower().startswith('impro'):
+                    section = 'improper'
                     continue
 
                 tok = line.strip().split()
@@ -693,8 +736,19 @@ class forcefield:
                     pot = tok[4]
                     par = [float(p) for p in tok[5:]]
                     self.dihed.append(dihed())
-                    self.dihed[id].setpar(iatp, jatp, katp, latp, pot, par)
-                    id += 1
+                    self.dihed[ih].setpar(iatp, jatp, katp, latp, pot, par)
+                    ih += 1
+
+                elif section == 'improper':
+                    iatp = tok[0]
+                    jatp = tok[1]
+                    katp = tok[2]
+                    latp = tok[3]
+                    pot = tok[4]
+                    par = [float(p) for p in tok[5:]]
+                    self.dimpr.append(dimpr())
+                    self.dimpr[im].setpar(iatp, jatp, katp, latp, pot, par)
+                    im += 1
 
     def show(self):
         for at in self.atom:
@@ -705,6 +759,8 @@ class forcefield:
             print an
         for dh in self.dihed:
             print dh
+        for di in self.dimpr:
+            print di
 
 
 # --------------------------------------
@@ -774,6 +830,7 @@ class system:
         self.bdtype = []                           # bond types
         self.antype = []                           # angle types
         self.dhtype = []                           # dihedral types
+        self.ditype = []                           # improper types
         self.vdw = []
 
         # set force field parameters
@@ -843,6 +900,24 @@ class system:
                       (m.name, dh.name)
                     error = True
 
+            for di in m.dimpr:
+                di.name = '%s-%s-%s-%s' % (m.atom[di.i].type, m.atom[di.j].type,
+                                           m.atom[di.k].type, m.atom[di.l].type)
+                found = False
+                for ffdi in ff.dimpr:
+                    namestr = '%s-%s-%s-%s' % \
+                      (ffdi.iatp, ffdi.jatp, ffdi.katp, ffdi.latp)
+                    namerev = '%s-%s-%s-%s' % \
+                      (ffdi.latp, ffdi.katp, ffdi.jatp, ffdi.iatp)
+                    if di.name == namestr or di.name == namerev:
+                        di.setpar(ffdi.iatp, ffdi.jatp, ffdi.katp, ffdi.latp,
+                                  ffdi.pot, ffdi.par)
+                        found = True
+                if not found:
+                    print 'error in molecule %s: no parameters for improper %s' % \
+                      (m.name, di.name)
+                    error = True
+
         if atomerror or error:
             sys.exit(2)
                     
@@ -854,11 +929,13 @@ class system:
             build_type_list(m.bond, self.bdtype)
             build_type_list(m.angle, self.antype)
             build_type_list(m.dihed, self.dhtype)
+            build_type_list(m.dimpr, self.ditype)
 
         nattypes = len(self.attype)
         nbdtypes = len(self.bdtype)
         nantypes = len(self.antype)
         ndhtypes = len(self.dhtype)
+        nditypes = len(self.ditype)
 
         # assign the type index for all atoms and bonded terms in the system
         for m in self.mol:
@@ -866,6 +943,7 @@ class system:
             assign_type_index(m.bond, self.bdtype)
             assign_type_index(m.angle, self.antype)
             assign_type_index(m.dihed, self.dhtype)
+            assign_type_index(m.dimpr, self.ditype)
 
         # set non-bonded parameters for all i-j pairs
         i = 0
@@ -887,6 +965,8 @@ class system:
                 print an
             for dh in m.dihed:
                 print dh
+            for di in m.dimpr:
+                print di
         for nb in self.vdw:
             print nb
 
@@ -894,19 +974,19 @@ class system:
         nmols = 0
         for m in self.mol:
             nmols += m.nmols
-        boxlen = math.pow(nmols / (rho * 6.022e+23 * 1.0e-27), 1./3.) / 2.0 
+        boxlen = math.pow(nmols / (rho * 6.022e+23 * 1.0e-27), 1./3.) 
         with open('pack.inp', 'w') as f:
             f.write('# created by fftool\n')
             f.write('# density %.1f mol/L\n\n' % rho)
-            f.write('tolerance 2.0\n')
+            f.write('tolerance 3.0\n')
             f.write('filetype xyz\n')
             f.write('output simbox.xyz\n')
             for m in self.mol:
                 xyzfile = (m.filename).rsplit('.', 1)[0] + '.xyz'
                 f.write('\nstructure %s\n' % xyzfile)
                 f.write('  number %s\n' % m.nmols)
-                f.write('  inside box 0. 0. 0. %.1f %.1f %.1f\n' % \
-                        (boxlen, boxlen, boxlen))
+                f.write('  inside box %.1f %.1f %.1f %.1f %.1f %.1f\n' % \
+                        (-boxlen/2., -boxlen/2., -boxlen/2., boxlen/2.0, boxlen/2., boxlen/2.))
                 f.write('end structure\n')
             
     def writelmp(self):
@@ -981,21 +1061,23 @@ class system:
 
         with open('data.lmp', 'w') as fd:
             fd.write('created by fftool\n\n')
-            natoms = nbonds = nangles = ndiheds = 0
+            natoms = nbonds = nangles = ndiheds = ndimprs = 0
             for m in self.mol:
                 natoms += m.nmols * len(m.atom)
                 nbonds += m.nmols * len(m.bond)
                 nangles += m.nmols * len(m.angle)
-                ndiheds += m.nmols * len(m.dihed)             
+                ndiheds += m.nmols * len(m.dihed)
+                ndimprs += m.nmols * len(m.dimpr)
             fd.write('%d atoms\n' % natoms)
             fd.write('%d bonds\n' % nbonds)
             fd.write('%d angles\n' % nangles)
-            fd.write('%d dihedrals\n\n' % ndiheds)
+            fd.write('%d dihedrals\n\n' % (ndiheds + ndimprs))
 
             fd.write('%d atom types\n' % len(self.attype))
             fd.write('%d bond types\n' % len(self.bdtype))
             fd.write('%d angle types\n' % len(self.antype))
-            fd.write('%d dihedral types\n\n' % len(self.dhtype))
+            ndht = len(self.dhtype)     # needed later
+            fd.write('%d dihedral types\n\n' % (ndht + len(self.ditype)))
 
             x = []
             y = []
@@ -1011,19 +1093,16 @@ class system:
                     z.append(float(tok[3]))
                     i += 1
         
-            tol = 4.0
-            xl = round(max(x) + abs(min(x)), 1) + tol
-            yl = round(max(y) + abs(min(y)), 1) + tol
-            zl = round(max(z) + abs(min(z)), 1) + tol
-            bxl = xl
-            if yl > bxl:
-                bxl = yl
-            if zl > bxl:
-                bxl = zl
-            
-            fd.write('%f %f xlo xhi\n' % (-bxl, bxl))
-            fd.write('%f %f ylo yhi\n' % (-bxl, bxl))
-            fd.write('%f %f zlo zhi\n' % (-bxl, bxl))
+            tol = 2.0
+            xhi = round(max(x) + tol, 1)
+            xlo = round(min(x) - tol, 1)
+            yhi = round(max(y) + tol, 1)
+            ylo = round(min(y) - tol, 1)
+            zhi = round(max(z) + tol, 1)
+            zlo = round(min(z) - tol, 1)
+            fd.write('%f %f xlo xhi\n' % (xlo, xhi))
+            fd.write('%f %f ylo yhi\n' % (ylo, yhi))
+            fd.write('%f %f zlo zhi\n' % (zlo, zhi))
 
             fd.write('\nMasses\n\n')
             for att in self.attype:
@@ -1048,6 +1127,12 @@ class system:
                           float(dht.par[0]) / kcal, float(dht.par[1]) / kcal,
                           float(dht.par[2]) / kcal, float(dht.par[3]) / kcal,
                           dht.name))
+            for dit in self.ditype:
+                fd.write('%4d %9.4f %9.4f %9.4f %9.4f  # %s\n' % \
+                         (ndht + dit.ityp + 1,
+                          float(dit.par[0]) / kcal, float(dit.par[1]) / kcal,
+                          float(dit.par[2]) / kcal, float(dit.par[3]) / kcal,
+                          dit.name))
 
             fd.write('\nAtoms\n\n')
             i = 0
@@ -1103,6 +1188,11 @@ class system:
                                  (i, dh.ityp + 1, dh.i + shift, dh.j + shift,
                                   dh.k + shift, dh.l + shift, dh.name))
                         i += 1
+                    for di in m.dimpr:
+                        fd.write('%7d %4d %7d %7d %7d %7d  # %s\n' % \
+                                 (i, ndht + di.ityp + 1, di.i + shift, di.j + shift,
+                                  di.k + shift, di.l + shift, di.name))
+                        i += 1
                     shift += natoms
                     im += 1
                     
@@ -1148,7 +1238,7 @@ class system:
                             (an.pot, an.i + 1, an.j + 1, an.k + 1,
                              float(an.par[1]), float(an.par[0]), an.name))
                              
-                f.write('dihedrals %d\n' % len(mol.dihed))
+                f.write('dihedrals %d\n' % (len(mol.dihed) + len(mol.dimpr)))
                 for dh in mol.dihed:
                     if cos4:
                         pot = 'cos4'
@@ -1166,6 +1256,23 @@ class system:
                                  float(dh.par[0]), float(dh.par[1]),
                                  float(dh.par[2]), 0.5, 0.5,
                                  dh.name))
+                for di in mol.dimpr:
+                    if cos4:
+                        pot = 'cos4'
+                        f.write('%4s %4d %4d %4d %4d %9.4f %9.4f %9.4f %9.4f'\
+                                ' %6.3f %6.3f  # %s\n' % \
+                                (pot, di.i + 1, di.j + 1, di.k + 1, di.l + 1,
+                                 float(di.par[0]), float(di.par[1]),
+                                 float(di.par[2]), float(di.par[3]), 0.5, 0.5,
+                                 di.name))
+                    else:
+                        pot = 'cos3'
+                        f.write('%4s %4d %4d %4d %4d %9.4f %9.4f %9.4f'\
+                                ' %6.3f %6.3f  # %s\n' % \
+                                (pot, di.i + 1, di.j + 1, di.k + 1, di.l + 1,
+                                 float(di.par[0]), float(di.par[1]),
+                                 float(di.par[2]), 0.5, 0.5,
+                                 di.name))
                 f.write('finish\n')
 
             f.write('vdw %d\n' % len(self.vdw))
@@ -1194,9 +1301,9 @@ class system:
                     i += 1
         
             tol = 4.0
-            xl = round(max(x) + abs(min(x)), 1) + tol
-            yl = round(max(y) + abs(min(y)), 1) + tol
-            zl = round(max(z) + abs(min(z)), 1) + tol
+            xl = round(max(x) - min(x), 1) + tol
+            yl = round(max(y) - min(y), 1) + tol
+            zl = round(max(z) - min(z), 1) + tol
             bxl = xl
             if yl > bxl:
                 bxl = yl
