@@ -970,14 +970,9 @@ class system:
         for nb in self.vdw:
             print nb
 
-    def writepackmol(self, rho = 5.0):
-        nmols = 0
-        for m in self.mol:
-            nmols += m.nmols
-        boxlen = math.pow(nmols / (rho * 6.022e+23 * 1.0e-27), 1./3.) 
+    def writepackmol(self, boxlen):
         with open('pack.inp', 'w') as f:
             f.write('# created by fftool\n')
-            f.write('# density %.1f mol/L\n\n' % rho)
             f.write('tolerance 3.0\n')
             f.write('filetype xyz\n')
             f.write('output simbox.xyz\n')
@@ -988,8 +983,9 @@ class system:
                 f.write('  inside box %.1f %.1f %.1f %.1f %.1f %.1f\n' % \
                         (-boxlen/2., -boxlen/2., -boxlen/2., boxlen/2.0, boxlen/2., boxlen/2.))
                 f.write('end structure\n')
-            
-    def writelmp(self):
+        return boxlen
+                
+    def writelmp(self, boxlen):
         try:
             with open('simbox.xyz', 'r') as fx:
                 pass
@@ -1094,15 +1090,9 @@ class system:
                     i += 1
         
             tol = 2.0
-            xhi = round(max(x) + tol, 1)
-            xlo = round(min(x) - tol, 1)
-            yhi = round(max(y) + tol, 1)
-            ylo = round(min(y) - tol, 1)
-            zhi = round(max(z) + tol, 1)
-            zlo = round(min(z) - tol, 1)
-            fd.write('%f %f xlo xhi\n' % (xlo, xhi))
-            fd.write('%f %f ylo yhi\n' % (ylo, yhi))
-            fd.write('%f %f zlo zhi\n' % (zlo, zhi))
+            fd.write('%f %f xlo xhi\n' % (-boxlen/2. - tol, boxlen/2. + tol))
+            fd.write('%f %f ylo yhi\n' % (-boxlen/2. - tol, boxlen/2. + tol))
+            fd.write('%f %f zlo zhi\n' % (-boxlen/2. - tol, boxlen/2. + tol))
 
             fd.write('\nMasses\n\n')
             for att in self.attype:
@@ -1199,7 +1189,7 @@ class system:
             fd.write('\n')
                     
 
-    def writedlp(self, cos4 = False):
+    def writedlp(self, boxlen, cos4 = False):
         with open('FIELD', 'w') as f:
             f.write('created by fftool\n')
             f.write('units kJ\n\n')
@@ -1300,22 +1290,13 @@ class system:
                     z.append(float(tok[3]))
                     i += 1
         
-            tol = 4.0
-            xl = round(max(x) - min(x), 1) + tol
-            yl = round(max(y) - min(y), 1) + tol
-            zl = round(max(z) - min(z), 1) + tol
-            bxl = xl
-            if yl > bxl:
-                bxl = yl
-            if zl > bxl:
-                bxl = zl
-
             with open('CONFIG', 'w') as fc:
                 fc.write(title + '\n')
                 fc.write(' %9d %9d %9d\n' % (0, 1, natoms))
-                fc.write(' %19.9f %19.9f %19.9f\n' % (bxl, 0.0, 0.0))
-                fc.write(' %19.9f %19.9f %19.9f\n' % (0.0, bxl, 0.0))
-                fc.write(' %19.9f %19.9f %19.9f\n' % (0.0, 0.0, bxl))
+                tol = 4.0
+                fc.write(' %19.9f %19.9f %19.9f\n' % (boxlen + tol, 0.0, 0.0))
+                fc.write(' %19.9f %19.9f %19.9f\n' % (0.0, boxlen + tol, 0.0))
+                fc.write(' %19.9f %19.9f %19.9f\n' % (0.0, 0.0, boxlen + tol))
                 i = 0
                 while i < natoms:
                     fc.write('%-8s %9d\n' % (name[i], i + 1))
@@ -1363,15 +1344,19 @@ def main():
 
     m = []
     i = 0
+    nmol = 0
     if not args.quiet:
         print 'atomic coordinates'
     for zfile in files:
         m.append(mol(zfile))
         m[i].nmols = int(nmols[i])
+        nmol += m[i].nmols
         if not args.quiet:
             print '  ' + zfile.rsplit('.', 1)[0] + '.xyz'
         m[i].writexyz(args.symbol)
         i += 1
+
+    boxlen = math.pow(nmol / (args.rho * 6.022e+23 * 1.0e-27), 1./3.) 
 
     s = system(m)
     if not args.quiet:
@@ -1379,16 +1364,16 @@ def main():
         for spec in m:
             print '  %+.3f' % spec.charge() 
         print 'packmol input\n  pack.inp'
-    s.writepackmol(args.rho)
+        s.writepackmol(boxlen)
 
     if args.lammps:
         if not args.quiet:
             print 'force field and coordinates\n  in.lmp\n  data.lmp'
-        s.writelmp()
+        s.writelmp(boxlen)
     elif args.dlpoly:
         if not args.quiet:
             print 'force field and coordinates\n  FIELD\n  CONFIG'
-        s.writedlp(args.cos4)
+        s.writedlp(boxlen, args.cos4)
 
 
 if __name__ == '__main__':
