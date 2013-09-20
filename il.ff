@@ -30,6 +30,8 @@ H3    HN   1.008   0.31   lj    0.00   0.00000
 # phosphonium OPLS-AA, JPCB110(2006)19586
 P3    PT  30.974   0.68   lj    3.74   0.83680
 C1P   CT  12.011  -0.31   lj    3.50   0.27614
+# sodium cation
+Na    Na  22.990  +1.00   lj    3.33   0.01160
 # tetrafluoroborate anion
 B     B   10.811   0.96   lj    3.58   0.39750
 FB    F   18.998  -0.49   lj    3.12   0.25520
@@ -52,6 +54,10 @@ OTF   OB  15.999  -0.63   lj    2.96   0.87864
 N3A   N3  14.000  -0.76   lj    3.25   0.71128
 CZA   CZ  12.011   0.64   lj    3.30   0.27614
 NZA   NZ  14.000  -0.76   lj    3.20   0.71128
+# acetate OPLS-AA
+O2    O2  15.999  -0.80   lj    2.96   0.87860
+CO2   CO  12.011   0.70   lj    3.75   0.43930
+CTA   CT  12.011  -0.28   lj    3.50   0.27614
 
 BONDS
 # i j    pot    re/A    ka/kJmol-1
@@ -84,6 +90,9 @@ NB  SB   harm   1.570   3137.0
 # dicyanamide JPCB110(2006)19586
 N3  CZ   harm   1.310   4206.0
 CZ  NZ   harm   1.157   7746.0
+# acetate OPLS-AA JPCB (2004)
+CO  O2   harm   1.250   5489.0
+CT  CO   harm   1.522   2653.0
 
 ANGLES
 # i j   k    pot    th/deg  ka/kjmol-1
@@ -129,6 +138,10 @@ SB  NB  SB   harm   125.6   671.0
 # dicyanamide JPCB110(2006)19586
 CZ  N3  CZ   harm   118.5   362.0
 N3  CZ  NZ   harm   175.2   425.0
+# acetate OPLS-AA JPCB (2004)
+O2  CO  O2   harm   126.0   669.4
+CT  CO  O2   harm   117.0   585.8
+HC  CT  CO   harm   109.5   298.9
 
 DIHEDRALS
 # i j   k   l    pot    v1        v2        v3        v4
@@ -180,6 +193,8 @@ OB  SB  NB  SB   opls   0.0000    0.0000   -0.0150    0.0000
 SB  NB  SB  CF   opls  32.7730  -10.4200   -3.1950    0.0000
 # dicyanamide JPCB110(2006)19586
 NZ  CZ  N3  CZ   opls   4.0800    0.0000    0.0000    0.0000
+# acetate OPLS-AA JPCB (2004)
+HC  CT  CO  O2   opls   0.0000    0.0000    0.0000    0.0000
 
 IMPROPER
 # improper imidazolium ring AMBER JACS117(1995)5179
