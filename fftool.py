@@ -981,7 +981,8 @@ class system:
                 f.write('\nstructure %s\n' % xyzfile)
                 f.write('  number %s\n' % m.nmols)
                 f.write('  inside box %.1f %.1f %.1f %.1f %.1f %.1f\n' % \
-                        (-boxlen/2., -boxlen/2., -boxlen/2., boxlen/2.0, boxlen/2., boxlen/2.))
+                        (-boxlen/2., -boxlen/2., -boxlen/2.,
+                         boxlen/2., boxlen/2., boxlen/2.))
                 f.write('end structure\n')
         return boxlen
                 
@@ -993,15 +994,25 @@ class system:
             print 'warning: cannot open simbox.xyz, lammps files not created'
             return
 
+        natoms = nbonds = nangles = ndiheds = 0
+        for m in self.mol:
+            natoms += m.nmols * len(m.atom)
+            nbonds += m.nmols * len(m.bond)
+            nangles += m.nmols * len(m.angle)
+            ndiheds += m.nmols * (len(m.dihed) + len(m.dimpr))
+        
         with open('in.lmp', 'w') as fi:
             fi.write('# created by fftool\n\n')
             fi.write('units real\n')
             fi.write('boundary p p p\n\n')
 
             fi.write('atom_style full\n')
-            fi.write('bond_style harmonic\n')
-            fi.write('angle_style harmonic\n')
-            fi.write('dihedral_style opls\n')
+            if nbonds > 0:
+                fi.write('bond_style harmonic\n')
+            if nangles > 0:
+                fi.write('angle_style harmonic\n')
+            if ndiheds > 0:
+                fi.write('dihedral_style opls\n')
             fi.write('special_bonds lj/coul 0.0 0.0 0.5\n\n')
 
             fi.write('read_data data.lmp\n\n')
@@ -1057,24 +1068,25 @@ class system:
 
         with open('data.lmp', 'w') as fd:
             fd.write('created by fftool\n\n')
-            natoms = nbonds = nangles = ndiheds = ndimprs = 0
-            for m in self.mol:
-                natoms += m.nmols * len(m.atom)
-                nbonds += m.nmols * len(m.bond)
-                nangles += m.nmols * len(m.angle)
-                ndiheds += m.nmols * len(m.dihed)
-                ndimprs += m.nmols * len(m.dimpr)
             fd.write('%d atoms\n' % natoms)
-            fd.write('%d bonds\n' % nbonds)
-            fd.write('%d angles\n' % nangles)
-            fd.write('%d dihedrals\n\n' % (ndiheds + ndimprs))
-
+            if nbonds > 0:
+                fd.write('%d bonds\n' % nbonds)
+            if nangles > 0:
+                fd.write('%d angles\n' % nangles)
+            if ndiheds > 0:
+                fd.write('%d dihedrals\n' % ndiheds)
+            fd.write('\n')
+                
             fd.write('%d atom types\n' % len(self.attype))
-            fd.write('%d bond types\n' % len(self.bdtype))
-            fd.write('%d angle types\n' % len(self.antype))
-            ndht = len(self.dhtype)     # needed later
-            fd.write('%d dihedral types\n\n' % (ndht + len(self.ditype)))
-
+            if nbonds > 0:
+                fd.write('%d bond types\n' % len(self.bdtype))
+            if nangles > 0:
+                fd.write('%d angle types\n' % len(self.antype))
+            if ndiheds > 0:
+                ndht = len(self.dhtype)     # needed later
+                fd.write('%d dihedral types\n' % (ndht + len(self.ditype)))
+            fd.write('\n')
+            
             x = []
             y = []
             z = []
@@ -1097,32 +1109,35 @@ class system:
             fd.write('\nMasses\n\n')
             for att in self.attype:
                 fd.write('%4d %8.3f  # %s\n' % (att.ityp + 1, att.m, att.name))
-                
-            fd.write('\nBond Coeffs\n\n')
-            for bdt in self.bdtype:
-                fd.write('%4d %7.1f %6.3f  # %s\n' % \
-                         (bdt.ityp + 1, float(bdt.par[1]) / (2.0 * kcal),
-                          float(bdt.par[0]), bdt.name))
-            
-            fd.write('\nAngle Coeffs\n\n')
-            for ant in self.antype:
-                fd.write('%4d %7.2f %7.2f  # %s\n' % \
-                         (ant.ityp + 1, float(ant.par[1]) / (2.0 * kcal),
-                          float(ant.par[0]), ant.name))
-                    
-            fd.write('\nDihedral Coeffs\n\n')
-            for dht in self.dhtype:
-                fd.write('%4d %9.4f %9.4f %9.4f %9.4f  # %s\n' % \
-                         (dht.ityp + 1,
-                          float(dht.par[0]) / kcal, float(dht.par[1]) / kcal,
-                          float(dht.par[2]) / kcal, float(dht.par[3]) / kcal,
-                          dht.name))
-            for dit in self.ditype:
-                fd.write('%4d %9.4f %9.4f %9.4f %9.4f  # %s\n' % \
-                         (ndht + dit.ityp + 1,
-                          float(dit.par[0]) / kcal, float(dit.par[1]) / kcal,
-                          float(dit.par[2]) / kcal, float(dit.par[3]) / kcal,
-                          dit.name))
+
+            if nbonds > 0:
+                fd.write('\nBond Coeffs\n\n')
+                for bdt in self.bdtype:
+                    fd.write('%4d %7.1f %6.3f  # %s\n' % \
+                             (bdt.ityp + 1, float(bdt.par[1]) / (2.0 * kcal),
+                              float(bdt.par[0]), bdt.name))
+
+            if nangles > 0:
+                fd.write('\nAngle Coeffs\n\n')
+                for ant in self.antype:
+                    fd.write('%4d %7.2f %7.2f  # %s\n' % \
+                             (ant.ityp + 1, float(ant.par[1]) / (2.0 * kcal),
+                              float(ant.par[0]), ant.name))
+
+            if ndiheds > 0:
+                fd.write('\nDihedral Coeffs\n\n')
+                for dht in self.dhtype:
+                    fd.write('%4d %9.4f %9.4f %9.4f %9.4f  # %s\n' % \
+                             (dht.ityp + 1,
+                              float(dht.par[0]) / kcal, float(dht.par[1]) / kcal,
+                              float(dht.par[2]) / kcal, float(dht.par[3]) / kcal,
+                              dht.name))
+                for dit in self.ditype:
+                    fd.write('%4d %9.4f %9.4f %9.4f %9.4f  # %s\n' % \
+                             (ndht + dit.ityp + 1,
+                              float(dit.par[0]) / kcal, float(dit.par[1]) / kcal,
+                              float(dit.par[2]) / kcal, float(dit.par[3]) / kcal,
+                              dit.name))
 
             fd.write('\nAtoms\n\n')
             i = 0
@@ -1139,52 +1154,55 @@ class system:
                     im += 1
                     nmol += 1
 
-            fd.write('\nBonds\n\n')
-            i = shift = 1
-            for m in self.mol:
-                natoms = len(m.atom)
-                im = 0
-                while im < m.nmols:
-                    for bd in m.bond:
-                        fd.write('%7d %4d %7d %7d  # %s\n' % \
-                                 (i, bd.ityp + 1, bd.i + shift, bd.j + shift,
-                                  bd.name))
-                        i += 1
-                    shift += natoms
-                    im += 1
+            if nbonds > 0:
+                fd.write('\nBonds\n\n')
+                i = shift = 1
+                for m in self.mol:
+                    natoms = len(m.atom)
+                    im = 0
+                    while im < m.nmols:
+                        for bd in m.bond:
+                            fd.write('%7d %4d %7d %7d  # %s\n' % \
+                                     (i, bd.ityp + 1, bd.i + shift, bd.j + shift,
+                                      bd.name))
+                            i += 1
+                        shift += natoms
+                        im += 1
 
-            fd.write('\nAngles\n\n')
-            i = shift = 1
-            for m in self.mol:
-                natoms = len(m.atom)
-                im = 0
-                while im < m.nmols:
-                    for an in m.angle:
-                        fd.write('%7d %4d %7d %7d %7d  # %s\n' % \
-                                 (i, an.ityp + 1, an.i + shift,
-                                  an.j + shift, an.k + shift, an.name))
-                        i += 1
-                    shift += natoms
-                    im += 1
+            if nangles > 0:
+                fd.write('\nAngles\n\n')
+                i = shift = 1
+                for m in self.mol:
+                    natoms = len(m.atom)
+                    im = 0
+                    while im < m.nmols:
+                        for an in m.angle:
+                            fd.write('%7d %4d %7d %7d %7d  # %s\n' % \
+                                     (i, an.ityp + 1, an.i + shift,
+                                      an.j + shift, an.k + shift, an.name))
+                            i += 1
+                        shift += natoms
+                        im += 1
 
-            fd.write('\nDihedrals\n\n')
-            i = shift = 1
-            for m in self.mol:
-                natoms = len(m.atom)
-                im = 0
-                while im < m.nmols:
-                    for dh in m.dihed:
-                        fd.write('%7d %4d %7d %7d %7d %7d  # %s\n' % \
-                                 (i, dh.ityp + 1, dh.i + shift, dh.j + shift,
-                                  dh.k + shift, dh.l + shift, dh.name))
-                        i += 1
-                    for di in m.dimpr:
-                        fd.write('%7d %4d %7d %7d %7d %7d  # %s\n' % \
-                                 (i, ndht + di.ityp + 1, di.i + shift, di.j + shift,
-                                  di.k + shift, di.l + shift, di.name))
-                        i += 1
-                    shift += natoms
-                    im += 1
+            if ndiheds > 0:
+                fd.write('\nDihedrals\n\n')
+                i = shift = 1
+                for m in self.mol:
+                    natoms = len(m.atom)
+                    im = 0
+                    while im < m.nmols:
+                        for dh in m.dihed:
+                            fd.write('%7d %4d %7d %7d %7d %7d  # %s\n' % \
+                                     (i, dh.ityp + 1, dh.i + shift, dh.j + shift,
+                                      dh.k + shift, dh.l + shift, dh.name))
+                            i += 1
+                        for di in m.dimpr:
+                            fd.write('%7d %4d %7d %7d %7d %7d  # %s\n' % \
+                                     (i, ndht + di.ityp + 1, di.i + shift, di.j + shift,
+                                      di.k + shift, di.l + shift, di.name))
+                            i += 1
+                        shift += natoms
+                        im += 1
                     
             fd.write('\n')
                     
