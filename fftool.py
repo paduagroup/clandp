@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # fftool.py - generate force field parameters for molecular system
-# Agilio Padua <agilio.padua@univ-bpclermont.fr>, version 2013/09/03
+# Agilio Padua <agilio.padua@univ-bpclermont.fr>, version 2013/10/08
 # http://tim.univ-bpclermont.fr/apadua
 
 # Copyright (C) 2013 Agilio A.H. Padua
@@ -1029,15 +1029,15 @@ class system:
 
             fi.write('variable nsteps equal 10000\n')
             fi.write('variable nprint equal 1000\n')
-            fi.write('variable ndump equal 500\n')
-            fi.write('variable nrestart equal 10000\n\n')
+            fi.write('variable ndump equal 200\n')
+            fi.write('variable nrestart equal ${nsteps}/10\n\n')
 
             fi.write('variable nevery equal 100\n')
             fi.write('variable nrepeat equal ${nsteps}/${nevery}\n')
             fi.write('variable nfreq equal ${nsteps}\n\n')
 
-            fi.write('variable temperature equal 300.0\n')
-            fi.write('variable pressure equal 1.0\n\n')
+            fi.write('variable temp equal 300.0\n')
+            fi.write('variable press equal 1.0\n\n')
             
             fi.write('fix fSHAKE all shake 0.0001 20 ${nprint} b')
             for bdt in self.bdtype:
@@ -1047,10 +1047,10 @@ class system:
 
             fi.write('neighbor 2.0 bin\n\n')
 
-            fi.write('velocity all create ${temperature} 12345\n\n')
+            fi.write('velocity all create ${temp} 12345\n\n')
 
-            fi.write('fix fNPT all npt temp ${temperature} ${temperature} 100.0 '\
-                     'iso ${pressure} ${pressure} 1000.0\n\n')
+            fi.write('fix fNPT all npt temp ${temp} ${temp} 100.0 '\
+                     'iso ${press} ${press} 1000.0\n\n')
 
             fi.write('thermo_style multi\n')
             fi.write('thermo ${nprint}\n\n')

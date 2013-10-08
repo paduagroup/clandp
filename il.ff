@@ -1,4 +1,4 @@
-# il.ff (kJ/mol, A, deg), version 2013/07/27
+# il.ff (kJ/mol, A, deg), version 2013/10/08
 # Molecular force field for ionic liquids
 # Agilio Padua, J.N. Canongia Lopes
 # contributors: K. Shimizu, A. Podgorsek, F. Hammami, L. Gontrani, M. Mishra
@@ -23,6 +23,13 @@ NA    NA  14.007   0.15   lj    3.25   0.71128
 CRM   CR  12.011   0.19   lj    3.55   0.29288
 NAM   NA  14.007   0.04   lj    3.25   0.71128
 CCR   CT  12.011  -0.26   lj    3.50   0.27614
+# imidazolium fluoroalkyl JPCB114:3592(2010)
+# fluoroalkyl OPLS-AA JPCA105:4118(2001) 
+C1H   CT  12.011  -0.05   lj    3.50   0.27614
+C3F   CF  12.011   0.12   lj    3.50   0.27614
+CTF   CF  12.011   0.36   lj    3.50   0.27614
+CSF   CF  12.011   0.24   lj    3.50   0.27614
+F     F   18.998  -0.12   lj    2.95   0.22175
 # ammonium, pyrrolidinium JPCB108(2004)16893
 N4    NT  14.007   0.12   lj    3.25   0.71128
 N3    NT  14.007   0.03   lj    3.25   0.71128
@@ -73,6 +80,10 @@ CW  CW   harm   1.341   4352.0
 NA  CT   harm   1.466   2820.0
 # dialkylimethylmidazolium JPCB112(2008)5039
 CR  CT   harm   1.510   2653.0
+# fluoroalkyl JPCA105(2001)4118, JPCA106(2002)10116
+CT  CF   harm   1.529   2242.6
+F   CF   harm   1.332   3071.1
+CF  CF   harm   1.529   2242.6
 # ammonium, pyrrolidinium OPLS-AA JACS121(1999)4827, AMBER
 NT  CT   harm   1.471   3071.0
 HN  NT   cons   1.010   3632.0
@@ -114,6 +125,14 @@ NA  CT  CT   harm   112.7   488.3
 # dialkylimethylmidazolium JPCB112(2008)5039
 CT  CR  NA   harm   125.8   585.8
 CR  CT  HC   harm   110.7   313.8
+# fluoroalkyl JPCA105(2001)4118, JPCA106(2002)10116
+HC  CT  CF   harm   110.7   313.8
+F   CF  CT   harm   109.5   418.4
+CT  CF  CF   harm   112.7   488.3
+CT  CT  CF   harm   112.7   488.3
+F   CF  F    harm   109.1   644.3
+F   CF  CF   harm   109.5   418.4
+CF  CF  CF   harm   112.7   488.3
 # ammonium, pyrrolidinium OPLS-AA JACS121(1999)4827, AMBER
 NT  CT  CT   harm   109.5   669.4
 CT  NT  CT   harm   109.5   418.4
@@ -171,6 +190,19 @@ NA  CT  CT  HC   opls   0.0000    0.0000    0.3670    0.0000
 CW  NA  CR  CT   opls   0.0000   19.4600    0.0000    0.0000
 CT  NA  CR  CT   opls   0.0000   19.4600    0.0000    0.0000
 NA  CR  CT  HC   opls   0.0000    0.0000    0.0000    0.0000
+# fluoroalkyl JPCA105(2001)4118 JPCA106(2002)10116
+HC  CT  CF  F    opls   0.0000    0.0000    1.2134    0.0000
+F   CF  CT  HC   opls   0.0000    0.0000    1.2134    0.0000
+F   CF  CT  CT   opls   0.0000    0.0000    1.9372    0.0000
+F   CF  CF  CT   opls   0.0000    0.0000    2.7656    0.0000
+HC  CT  CT  CF   opls   0.0000    0.0000    0.5565    0.0000
+HC  CT  CF  CF   opls   0.0000    0.0000    0.7573    0.0000
+CF  CF  CF  CT   opls  14.6750   -0.9179   -2.8980   -2.0174
+CF  CF  CT  CT   opls  -0.5881   -0.7642   -0.3170   -0.3179
+CF  CT  CT  NA   opls   0.0000    0.0000    0.0000    0.0000
+F   CF  CF  F    opls -10.4600    0.0000    1.0460    0.0000
+F   CF  CF  CF   opls   1.2552    0.0000    1.6736    0.0000
+CF  CF  CF  CF   opls  27.7064    3.9664   -5.8074   -8.8617
 # ammonium, pyrrolidinium OPLS-AA JACS121(1999)4827
 HC  CT  CT  NT   opls  -4.2384   -2.9665    1.9790    0.0000
 CT  CT  CT  NT   opls  10.0081   -2.8200    2.3012    0.0000
