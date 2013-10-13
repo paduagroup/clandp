@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # fftool.py - generate force field parameters for molecular system
-# Agilio Padua <agilio.padua@univ-bpclermont.fr>, version 2013/10/08
+# Agilio Padua <agilio.padua@univ-bpclermont.fr>, version 2013/10/13
 # http://tim.univ-bpclermont.fr/apadua
 
 # Copyright (C) 2013 Agilio A.H. Padua
@@ -772,7 +772,9 @@ class vdw:
     def __init__(self, iat, jat):
         self.i = iat.name
         self.j = jat.name
-
+        self.ityp = iat.ityp
+        self.jtyp = jat.ityp
+        
         if iat.pot != jat.pot:
             print 'error in vdw object: incompatible potential types'
             sys.exit(2)
@@ -986,7 +988,7 @@ class system:
                 f.write('end structure\n')
         return boxlen
                 
-    def writelmp(self, boxlen):
+    def writelmp(self, boxlen, allpairs = False):
         try:
             with open('simbox.xyz', 'r') as fx:
                 pass
@@ -1018,13 +1020,20 @@ class system:
             fi.write('read_data data.lmp\n\n')
 
             fi.write('pair_style hybrid lj/cut/coul/long 12.0 12.0\n')
-            fi.write('pair_modify mix geometric\n')
-            fi.write('kspace_style pppm 1.0e-4\n\n')
-
-            for att in self.attype:
-                fi.write('pair_coeff %4d %4d  %s  %8.4f %8.4f  # %s %s\n' % \
-                         (att.ityp + 1, att.ityp + 1, 'lj/cut/coul/long',
-                          att.par[1] / kcal, att.par[0], att.name, att.name))
+            if not allpairs:
+                fi.write('pair_modify mix geometric tail yes\n')
+                fi.write('kspace_style pppm 1.0e-4\n\n')
+                for att in self.attype:
+                    fi.write('pair_coeff %4d %4d  %s  %8.4f %8.4f  # %s %s\n' % \
+                             (att.ityp + 1, att.ityp + 1, 'lj/cut/coul/long',
+                              att.par[1] / kcal, att.par[0], att.name, att.name))
+            else:
+                fi.write('pair_modify tail yes\n')
+                fi.write('kspace_style pppm 1.0e-4\n\n')
+                for nb in self.vdw:
+                    fi.write('pair_coeff %4d %4d  %s  %8.4f %8.4f  # %s %s\n' % \
+                             (nb.ityp + 1, nb.jtyp + 1, 'lj/cut/coul/long',
+                              nb.par[1] / kcal, nb.par[0], nb.i, nb.j))
             fi.write('\n')
 
             fi.write('variable nsteps equal 10000\n')
@@ -1114,30 +1123,28 @@ class system:
                 fd.write('\nBond Coeffs\n\n')
                 for bdt in self.bdtype:
                     fd.write('%4d %7.1f %6.3f  # %s\n' % \
-                             (bdt.ityp + 1, float(bdt.par[1]) / (2.0 * kcal),
-                              float(bdt.par[0]), bdt.name))
+                             (bdt.ityp + 1, bdt.par[1] / (2.0 * kcal),
+                              bdt.par[0], bdt.name))
 
             if nangles > 0:
                 fd.write('\nAngle Coeffs\n\n')
                 for ant in self.antype:
                     fd.write('%4d %7.2f %7.2f  # %s\n' % \
-                             (ant.ityp + 1, float(ant.par[1]) / (2.0 * kcal),
-                              float(ant.par[0]), ant.name))
+                             (ant.ityp + 1, ant.par[1] / (2.0 * kcal),
+                              ant.par[0], ant.name))
 
             if ndiheds > 0:
                 fd.write('\nDihedral Coeffs\n\n')
                 for dht in self.dhtype:
                     fd.write('%4d %9.4f %9.4f %9.4f %9.4f  # %s\n' % \
                              (dht.ityp + 1,
-                              float(dht.par[0]) / kcal, float(dht.par[1]) / kcal,
-                              float(dht.par[2]) / kcal, float(dht.par[3]) / kcal,
-                              dht.name))
+                              dht.par[0] / kcal, dht.par[1] / kcal,
+                              dht.par[2] / kcal, dht.par[3] / kcal, dht.name))
                 for dit in self.ditype:
                     fd.write('%4d %9.4f %9.4f %9.4f %9.4f  # %s\n' % \
                              (ndht + dit.ityp + 1,
-                              float(dit.par[0]) / kcal, float(dit.par[1]) / kcal,
-                              float(dit.par[2]) / kcal, float(dit.par[3]) / kcal,
-                              dit.name))
+                              dit.par[0] / kcal, dit.par[1] / kcal,
+                              dit.par[2] / kcal, dit.par[3] / kcal, dit.name))
 
             fd.write('\nAtoms\n\n')
             i = 0
@@ -1230,21 +1237,19 @@ class system:
                 for bd in mol.bond:
                     if bd.pot == 'cons':
                         f.write('%4d %4d %6.3f  # %s\n' % \
-                                (bd.i + 1, bd.j + 1, float(bd.par[0]),
-                                 bd.name))
+                                (bd.i + 1, bd.j + 1, bd.par[0], bd.name))
                 f.write('bonds %d\n' % (len(mol.bond) - ncons))
                 for bd in mol.bond:
                     if bd.pot != 'cons':
                         f.write('%4s %4d %4d %7.1f %6.3f  # %s\n' % \
-                                (bd.pot, bd.i + 1, bd.j + 1,
-                                 float(bd.par[1]), float(bd.par[0]),
+                                (bd.pot, bd.i + 1, bd.j + 1, bd.par[1], bd.par[0],
                                  bd.name))
                                                                   
                 f.write('angles %d\n' % len(mol.angle))
                 for an in mol.angle:
                     f.write('%4s %4d %4d %4d %7.2f %7.2f  # %s\n' % \
                             (an.pot, an.i + 1, an.j + 1, an.k + 1,
-                             float(an.par[1]), float(an.par[0]), an.name))
+                             an.par[1], an.par[0], an.name))
                              
                 f.write('dihedrals %d\n' % (len(mol.dihed) + len(mol.dimpr)))
                 for dh in mol.dihed:
@@ -1253,41 +1258,35 @@ class system:
                         f.write('%4s %4d %4d %4d %4d %9.4f %9.4f %9.4f %9.4f'\
                                 ' %6.3f %6.3f  # %s\n' % \
                                 (pot, dh.i + 1, dh.j + 1, dh.k + 1, dh.l + 1,
-                                 float(dh.par[0]), float(dh.par[1]),
-                                 float(dh.par[2]), float(dh.par[3]), 0.5, 0.5,
-                                 dh.name))
+                                 dh.par[0], dh.par[1], dh.par[2], dh.par[3],
+                                 0.5, 0.5, dh.name))
                     else:
                         pot = 'cos3'
                         f.write('%4s %4d %4d %4d %4d %9.4f %9.4f %9.4f'\
                                 ' %6.3f %6.3f  # %s\n' % \
                                 (pot, dh.i + 1, dh.j + 1, dh.k + 1, dh.l + 1,
-                                 float(dh.par[0]), float(dh.par[1]),
-                                 float(dh.par[2]), 0.5, 0.5,
-                                 dh.name))
+                                 dh.par[0], dh.par[1], dh.par[2], 0.5, 0.5, dh.name))
                 for di in mol.dimpr:
                     if cos4:
                         pot = 'cos4'
                         f.write('%4s %4d %4d %4d %4d %9.4f %9.4f %9.4f %9.4f'\
                                 ' %6.3f %6.3f  # %s\n' % \
                                 (pot, di.i + 1, di.j + 1, di.k + 1, di.l + 1,
-                                 float(di.par[0]), float(di.par[1]),
-                                 float(di.par[2]), float(di.par[3]), 0.5, 0.5,
+                                 di.par[0], di.par[1], di.par[2], di.par[3], 0.5, 0.5,
                                  di.name))
                     else:
                         pot = 'cos3'
                         f.write('%4s %4d %4d %4d %4d %9.4f %9.4f %9.4f'\
                                 ' %6.3f %6.3f  # %s\n' % \
                                 (pot, di.i + 1, di.j + 1, di.k + 1, di.l + 1,
-                                 float(di.par[0]), float(di.par[1]),
-                                 float(di.par[2]), 0.5, 0.5,
-                                 di.name))
+                                 di.par[0], di.par[1], di.par[2], 0.5, 0.5, di.name))
                 f.write('finish\n')
 
             f.write('vdw %d\n' % len(self.vdw))
             for nb in self.vdw:
                 if nb.pot == 'lj':
                     f.write('%-5s %-5s %4s %10.6f %8.4f\n' % \
-                            (nb.i, nb.j, nb.pot, float(nb.par[1]), float(nb.par[0])))
+                            (nb.i, nb.j, nb.pot, nb.par[1], nb.par[0]))
                 
             f.write('close\n')
 
@@ -1338,6 +1337,8 @@ def main():
     parser.add_argument('-l', '--lammps', action = 'store_true', 
                         help = 'save in lammps format '\
                         '(needs simbox.xyz built using packmol)')
+    parser.add_argument('-a', '--allpairs', action = 'store_true', 
+                        help = 'write all I J pairs to lammps input files')
     parser.add_argument('-d', '--dlpoly', action = 'store_true',
                         help = 'save in dlpoly format '\
                         '(needs simbox.xyz built using packmol)')
@@ -1387,7 +1388,7 @@ def main():
     if args.lammps:
         if not args.quiet:
             print 'force field and coordinates\n  in.lmp\n  data.lmp'
-        s.writelmp(boxlen)
+        s.writelmp(boxlen, args.allpairs)
     elif args.dlpoly:
         if not args.quiet:
             print 'force field and coordinates\n  FIELD\n  CONFIG'
