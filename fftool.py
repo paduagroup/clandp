@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # fftool.py - generate force field parameters for molecular system
-# Agilio Padua <agilio.padua@univ-bpclermont.fr>, version 2013/10/13
+# Agilio Padua <agilio.padua@univ-bpclermont.fr>, version 2013/10/15
 # http://tim.univ-bpclermont.fr/apadua
 
 # Copyright (C) 2013 Agilio A.H. Padua
@@ -1038,8 +1038,8 @@ class system:
 
             fi.write('variable nsteps equal 10000\n')
             fi.write('variable nprint equal 1000\n')
-            fi.write('variable ndump equal 200\n')
-            fi.write('variable nrestart equal ${nsteps}/10\n\n')
+            fi.write('variable ndump equal 500\n')
+            fi.write('#variable nrestart equal ${nsteps}/10\n\n')
 
             fi.write('variable nevery equal 100\n')
             fi.write('variable nrepeat equal ${nsteps}/${nevery}\n')
@@ -1071,9 +1071,11 @@ class system:
                 fi.write(' %s' % atomic_symbol(att.name))
             fi.write('\n\n')
 
+            fi.write('#restart ${nrestart} restart.*.lmp\n\n')
+
             fi.write('timestep 1.0\n')
-            fi.write('restart ${nrestart} restart.*.lmp\n')
             fi.write('run ${nsteps}\n')
+            fi.write('write_data data.*.lmp\n')
 
         with open('data.lmp', 'w') as fd:
             fd.write('created by fftool\n\n')
