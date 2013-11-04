@@ -1037,13 +1037,13 @@ class system:
             fi.write('\n')
 
             fi.write('variable nsteps equal 10000\n')
-            fi.write('variable nprint equal 1000\n')
-            fi.write('variable ndump equal 500\n')
-            fi.write('#variable nrestart equal ${nsteps}/10\n\n')
+            fi.write('variable nprint equal ${nsteps}/100\n')
+            fi.write('variable ndump equal ${nsteps}/100\n')
+            fi.write('# variable nrestart equal ${nsteps}/10\n\n')
 
-            fi.write('variable nevery equal 100\n')
-            fi.write('variable nrepeat equal ${nsteps}/${nevery}\n')
-            fi.write('variable nfreq equal ${nsteps}\n\n')
+            fi.write('# variable nevery equal 100\n')
+            fi.write('# variable nrepeat equal ${nsteps}/${nevery}\n')
+            fi.write('# variable nfreq equal ${nsteps}\n\n')
 
             fi.write('variable temp equal 300.0\n')
             fi.write('variable press equal 1.0\n\n')
@@ -1071,7 +1071,11 @@ class system:
                 fi.write(' %s' % atomic_symbol(att.name))
             fi.write('\n\n')
 
-            fi.write('#restart ${nrestart} restart.*.lmp\n\n')
+            fi.write('# compute cRDF all rdf 100 1 1\n')
+            fi.write('# fix fRDF all ave/time ${nevery} ${nrepeat} ${nfreq} '\
+                     'c_cRDF file rdf.lammps mode vector\n\n')
+            
+            fi.write('# restart ${nrestart} restart.*.lmp\n\n')
 
             fi.write('timestep 1.0\n')
             fi.write('run ${nsteps}\n')
