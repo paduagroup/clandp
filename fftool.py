@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # fftool.py - generate force field parameters for molecular system
-# Agilio Padua <agilio.padua@univ-bpclermont.fr>, version 2013/10/15
+# Agilio Padua <agilio.padua@univ-bpclermont.fr>, version 2013/11/08
 # http://tim.univ-bpclermont.fr/apadua
 
 # Copyright (C) 2013 Agilio A.H. Padua
@@ -26,24 +26,25 @@ kcal = 4.184                            # kJ
 # --------------------------------------
 
 atomic_weights = {'H':    1.008,
-                 'Li':   6.941,
-                 'B':   10.811,
-                 'C':   12.011,
-                 'N':   14.006,
-                 'O':   15.999,
-                 'F':   18.998,
-                 'Na':  22.990,
-                 'Mg':  24.305,
-                 'Al':  26.982,
-                 'Si':  28.086,
-                 'P':   30.974,
-                 'S':   32.065,
-                 'Cl':  35.453,
-                 'Ar':  39.948,
-                 'K':   39.098,
-                 'Ca':  40.078,
-                 'Br':  79.904,
-                 'I':  126.904}
+                  'Li':   6.941,
+                  'B':   10.811,
+                  'C':   12.011,
+                  'N':   14.006,
+                  'O':   15.999,
+                  'F':   18.998,
+                  'Ne':  20.180,
+                  'Na':  22.990,
+                  'Mg':  24.305,
+                  'Al':  26.982,
+                  'Si':  28.086,
+                  'P':   30.974,
+                  'S':   32.065,
+                  'Cl':  35.453,
+                  'Ar':  39.948,
+                  'K':   39.098,
+                  'Ca':  40.078,
+                  'Br':  79.904,
+                  'I':  126.904}
 
 def atomic_weight(name):
     if name[:2] in atomic_weights:
