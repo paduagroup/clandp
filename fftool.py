@@ -1080,8 +1080,8 @@ class system:
 
             fi.write('velocity all create ${temp} 12345\n\n')
 
-            fi.write('fix fNPT all npt temp ${temp} ${temp} 100.0 '\
-                     'iso ${press} ${press} 1000.0\n\n')
+            fi.write('fix fNPT all npt temp ${temp} ${temp} 100 '\
+                     'iso ${press} ${press} 500\n\n')
 
             fi.write('thermo_style multi\n')
             fi.write('thermo ${nprint}\n\n')
@@ -1099,7 +1099,8 @@ class system:
             
             fi.write('# restart ${nrestart} restart.*.lmp\n\n')
 
-            fi.write('timestep 1.0\n')
+            fi.write('timestep 1.0\n\n')
+            
             fi.write('run ${nsteps}\n')
             fi.write('write_data data.*.lmp\n')
 
