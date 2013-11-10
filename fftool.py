@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # fftool.py - generate force field parameters for molecular system
-# Agilio Padua <agilio.padua@univ-bpclermont.fr>, version 2013/11/08
+# Agilio Padua <agilio.padua@univ-bpclermont.fr>, version 2013/11/10
 # http://tim.univ-bpclermont.fr/apadua
 
 # Copyright (C) 2013 Agilio A.H. Padua
@@ -770,7 +770,7 @@ class forcefield:
 class vdw:
     '''van der Waals interaction'''        
     
-    def __init__(self, iat, jat):
+    def __init__(self, iat, jat, mix = 'g'):
         self.i = iat.name
         self.j = jat.name
         self.ityp = iat.ityp
@@ -791,7 +791,10 @@ class vdw:
                 self.par = iat.par
             else:
                 self.par = [0.0, 0.0]
-                self.par[0] = math.sqrt(iat.par[0] * jat.par[0])
+                if mix == 'g':
+                    self.par[0] = math.sqrt(iat.par[0] * jat.par[0])
+                else:
+                    self.par[0] = (iat.par[0] + jat.par[0]) / 2.
                 self.par[1] = math.sqrt(iat.par[1] * jat.par[1])
                 
     def __str__(self):
@@ -827,7 +830,7 @@ def assign_type_index(term, termtype):
 class system:
     '''Molecular system to be simulated'''
                 
-    def __init__(self, molecules):
+    def __init__(self, molecules, mix):
         self.mol = molecules                       # list of molecules
         self.attype = []                           # atom types
         self.bdtype = []                           # bond types
@@ -953,7 +956,7 @@ class system:
         while i < nattypes:
             j = i
             while j < nattypes:
-                self.vdw.append(vdw(self.attype[i], self.attype[j]))
+                self.vdw.append(vdw(self.attype[i], self.attype[j], mix))
                 j += 1
             i += 1
 
@@ -989,7 +992,7 @@ class system:
                 f.write('end structure\n')
         return boxlen
                 
-    def writelmp(self, boxlen, allpairs = False):
+    def writelmp(self, boxlen, mix = 'g', allpairs = False):
         try:
             with open('simbox.xyz', 'r') as fx:
                 pass
@@ -1022,7 +1025,10 @@ class system:
 
             fi.write('pair_style hybrid lj/cut/coul/long 12.0 12.0\n')
             if not allpairs:
-                fi.write('pair_modify mix geometric tail yes\n')
+                if (mix == 'g'):
+                    fi.write('pair_modify mix geometric tail yes\n')
+                else:
+                    fi.write('pair_modify mix arithmetic tail yes\n')
                 fi.write('kspace_style pppm 1.0e-4\n\n')
                 for att in self.attype:
                     fi.write('pair_coeff %4d %4d  %s  %8.4f %8.4f  # %s %s\n' % \
@@ -1048,12 +1054,27 @@ class system:
 
             fi.write('variable temp equal 300.0\n')
             fi.write('variable press equal 1.0\n\n')
-            
-            fi.write('fix fSHAKE all shake 0.0001 20 ${nprint} b')
+
+            shakebd = shakean = False
             for bdt in self.bdtype:
                 if bdt.pot == 'cons':
-                    fi.write(' %d' % (bdt.ityp + 1))
-            fi.write('\n\n')
+                    shakebd = True
+            for ant in self.antype:
+                if ant.pot == 'cons':
+                    shakean = True
+            if shakebd or shakean:
+                fi.write('fix fSHAKE all shake 0.0001 20 ${nprint}')
+                if shakebd:
+                    fi.write(' b')
+                    for bdt in self.bdtype:
+                        if bdt.pot == 'cons':
+                            fi.write(' %d' % (bdt.ityp + 1))
+                if shakean:
+                    fi.write(' a')
+                    for ant in self.antype:
+                        if ant.pot == 'cons':
+                            fi.write(' %d' % (ant.ityp + 1))
+                fi.write('\n\n')
 
             fi.write('neighbor 2.0 bin\n\n')
 
@@ -1341,6 +1362,8 @@ def main():
         'Simulation box can be built using packmol with the file produced')
     parser.add_argument('-r', '--rho', type=float, default = 5.0,
                         help = 'density in mol/L for packmol (default: 5.0)')
+    parser.add_argument('-x', '--mix', default = 'g',
+                        help = '[a]rithmetic or [g]eometric sigma_ij (default: g)')
     parser.add_argument('-l', '--lammps', action = 'store_true', 
                         help = 'save in lammps format '\
                         '(needs simbox.xyz built using packmol)')
@@ -1384,7 +1407,7 @@ def main():
 
     boxlen = math.pow(nmol / (args.rho * 6.022e+23 * 1.0e-27), 1./3.) 
 
-    s = system(m)
+    s = system(m, args.mix)
     if not args.quiet:
         print 'charges'
         for spec in m:
@@ -1395,7 +1418,7 @@ def main():
     if args.lammps:
         if not args.quiet:
             print 'force field and coordinates\n  in.lmp\n  data.lmp'
-        s.writelmp(boxlen, args.allpairs)
+        s.writelmp(boxlen, args.mix, args.allpairs)
     elif args.dlpoly:
         if not args.quiet:
             print 'force field and coordinates\n  FIELD\n  CONFIG'
