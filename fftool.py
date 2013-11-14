@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # fftool.py - generate force field parameters for molecular system
-# Agilio Padua <agilio.padua@univ-bpclermont.fr>, version 2013/11/10
+# Agilio Padua <agilio.padua@univ-bpclermont.fr>, version 2013/11/14
 # http://tim.univ-bpclermont.fr/apadua
 
 # Copyright (C) 2013 Agilio A.H. Padua
@@ -161,26 +161,59 @@ class zmat:
                 shift = 1
             else:
                 shift = 0
-        
-            while line != '':
+
+            variables = False
+            while line != '' and not line.lower().startswith('var'):
                 tok = line.split()
                 name = tok[shift]
                 ir = ia = id = 0
                 r = a = d = 0.0
+                rvar = avar = dvar = ''
                 if (len(tok) - shift) > 1:
                     ir = int(tok[shift+1])
-                    r = float(tok[shift+2])
+                    if tok[shift+2][0].isalpha():
+                        rvar = tok[shift+2]
+                        variables = True
+                    else:
+                        r = float(tok[shift+2])
                     if (len(tok) - shift) > 3:
                         ia = int(tok[shift+3])
-                        a = float(tok[shift+4])
+                        if tok[shift+4][0].isalpha():
+                            avar = tok[shift+4]
+                            variables = True
+                        else:
+                            a = float(tok[shift+4])
                         if (len(tok) - shift) > 5:
                             id = int(tok[shift+5])
-                            d = float(tok[shift+6])
+                            if tok[shift+6][0].isalpha():
+                                dvar = tok[shift+6]
+                                variables = True
+                            else:
+                                d = float(tok[shift+6])
                 zatom = {'name': name,
-                        'ir': ir, 'r': r, 'ia': ia, 'a': a, 'id': id, 'd': d}
+                        'ir': ir, 'rvar': rvar, 'r': r,
+                        'ia': ia, 'avar': avar, 'a': a,
+                        'id': id, 'dvar': dvar, 'd': d}
                 self.zatom.append(zatom)
                 line = f.readline().strip()
-
+                
+            # read variables
+            if variables:
+                if line.lower().startswith('var') or line == '':
+                    line = f.readline().strip()
+                while line != '':
+                    tok = line.split('=')
+                    key = tok[0].strip()
+                    val = float(tok[1])
+                    for rec in self.zatom:
+                        if rec['rvar'] == key:
+                            rec['r'] = val
+                        if rec['avar'] == key:
+                            rec['a'] = val
+                        if rec['dvar'] == key:
+                            rec['d'] = val
+                    line = f.readline().strip()
+                        
             # read connects
             while line.startswith('#') or line == '':
                 line = f.readline().strip()
