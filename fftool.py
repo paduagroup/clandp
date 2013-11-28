@@ -1054,7 +1054,9 @@ class system:
                 fi.write('dihedral_style opls\n')
             fi.write('special_bonds lj/coul 0.0 0.0 0.5\n\n')
 
-            fi.write('read_data data.lmp\n\n')
+            fi.write('read_data data.lmp\n')
+            fi.write('# read_restart restart.*.lmp\n')
+            fi.write('# reset_timestep 0\n\n')
 
             fi.write('pair_style hybrid lj/cut/coul/long 12.0 12.0\n')
             if not allpairs:
@@ -1081,12 +1083,17 @@ class system:
             fi.write('variable ndump equal ${nsteps}/100\n')
             fi.write('# variable nrestart equal ${nsteps}/10\n\n')
 
-            fi.write('# variable nevery equal 100\n')
-            fi.write('# variable nrepeat equal ${nsteps}/${nevery}\n')
-            fi.write('# variable nfreq equal ${nsteps}\n\n')
-
             fi.write('variable temp equal 300.0\n')
             fi.write('variable press equal 1.0\n\n')
+
+            fi.write('neighbor 2.0 bin\n\n')
+
+            fi.write('timestep 1.0\n\n')
+
+            fi.write('velocity all create ${temp} 12345\n\n')            
+
+            fi.write('thermo_style multi\n')
+            fi.write('thermo ${nprint}\n\n')
 
             shakebd = shakean = False
             for bdt in self.bdtype:
@@ -1109,15 +1116,16 @@ class system:
                             fi.write(' %d' % (ant.ityp + 1))
                 fi.write('\n\n')
 
-            fi.write('neighbor 2.0 bin\n\n')
-
-            fi.write('velocity all create ${temp} 12345\n\n')
-
             fi.write('fix fNPT all npt temp ${temp} ${temp} 100 '\
                      'iso ${press} ${press} 500\n\n')
 
-            fi.write('thermo_style multi\n')
-            fi.write('thermo ${nprint}\n\n')
+            fi.write('# compute cRDF all rdf 100 1 1\n')
+            fi.write('# fix fRDF all ave/time 20 100 ${nsteps} '\
+                     'c_cRDF file rdf.lammps mode vector\n\n')
+            
+            fi.write('# compute cMSD all msd\n')
+            fi.write('# fix fMSD all ave/time 1 1 ${ndump} '\
+                     'c_cMSD[1] c_cMSD[2] c_cMSD[3] c_cMSD[4] file msd.lammps\n\n')
 
             fi.write('dump dCONF all custom ${ndump} dump.lammpstrj '\
                      'id mol type element x y z ix iy iz\n')
@@ -1126,15 +1134,11 @@ class system:
                 fi.write(' %s' % atomic_symbol(att.name))
             fi.write('\n\n')
 
-            fi.write('# compute cRDF all rdf 100 1 1\n')
-            fi.write('# fix fRDF all ave/time ${nevery} ${nrepeat} ${nfreq} '\
-                     'c_cRDF file rdf.lammps mode vector\n\n')
-            
             fi.write('# restart ${nrestart} restart.*.lmp\n\n')
 
-            fi.write('timestep 1.0\n\n')
-            
-            fi.write('run ${nsteps}\n')
+            fi.write('run ${nsteps}\n\n')
+
+            fi.write('write_restart restart.*.lmp\n')
             fi.write('write_data data.*.lmp\n')
 
         with open('data.lmp', 'w') as fd:
