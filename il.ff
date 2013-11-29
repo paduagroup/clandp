@@ -1,4 +1,4 @@
-# il.ff (kJ/mol, A, deg), version 2013/10/24
+# il.ff (kJ/mol, A, deg), version 2013/11/29
 # Molecular force field for ionic liquids
 # Agilio Padua, J.N. Canongia Lopes
 # contributors: K. Shimizu, A. Podgorsek, F. Hammami, L. Gontrani, M. Mishra
@@ -50,7 +50,7 @@ Cl    Cl  35.453  -1.00   lj    3.65   0.83000
 # bromide JPCB110(2006)19586
 Br    Br  79.904  -1.00   lj    3.97   0.86000
 # bistriflamide JPCB108(2004)16893
-F1    F   18.998  -0.16   lj    2.95   0.22175
+F1    FB  18.998  -0.16   lj    2.95   0.22175
 CBT   CF  12.011   0.35   lj    3.50   0.27614
 SBT   SB  32.066   1.02   lj    3.55   1.04600
 OBT   OB  15.999  -0.53   lj    2.96   0.87864
@@ -60,7 +60,7 @@ OTF   OB  15.999  -0.63   lj    2.96   0.87864
 # longer perfluoroalkanesulfonylamides
 C1F   CF  12.011   0.19   lj    3.50   0.27614
 # bis(fluorosulfonyl)amide
-FSI   F   18.998  -0.13   lj    2.95   0.22175
+FSI   FB  18.998  -0.13   lj    2.95   0.22175
 # dicyanamide JPCB110(2006)19586
 N3A   N3  14.000  -0.76   lj    3.25   0.71128
 CZA   CZ  12.011   0.64   lj    3.30   0.27614
@@ -98,12 +98,12 @@ B   F    harm   1.394   3235.0
 # hexafluorophosphate JCSPerkin2(1999)2365
 P   F    harm   1.606   3100.0
 # triflate and bistriflamide JPCB108(2004)16893
-F   CF   harm   1.323   3698.0
+FB  CF   harm   1.323   3698.0
 CF  SB   harm   1.818   1950.0
 SB  OB   harm   1.437   5331.0
 NB  SB   harm   1.570   3137.0
 # bis(fluorosulfonyl)amide
-F   SB   harm   1.575   1879.0
+FB  SB   harm   1.575   1879.0
 # dicyanamide JPCB110(2006)19586
 N3  CZ   harm   1.310   4206.0
 CZ  NZ   harm   1.157   7746.0
@@ -153,8 +153,8 @@ F   B   F    harm   109.5   669.5
 # hexafluorophosphate JCSPerkin2(1999)2365
 F   P   F    harm    90.0  1165.0  
 # triflate and bistriflamide JPCB108(2004)16893
-F   CF  F    harm   107.1   781.0
-F   CF  SB   harm   111.7   694.0
+FB  CF  FB   harm   107.1   781.0
+FB  CF  SB   harm   111.7   694.0
 OB  SB  OB   harm   118.5   969.0
 CF  SB  OB   harm   102.6   870.0
 NB  SB  OB   harm   113.6   789.0 
@@ -230,17 +230,17 @@ CT  PT  CT  CT   opls   0.0000    0.0000    1.1330    0.0000
 PT  CT  CT  HC   opls   0.0000    0.0000    0.4650    0.0000
 PT  CT  CT  CT   opls  -3.2480    0.9880   -0.7150    0.0000
 # triflate and bistriflamide JPCB108(2004)16893
-OB  SB  CF  F    opls   0.0000    0.0000    1.4510    0.0000
-NB  SB  CF  F    opls   0.0000    0.0000    1.3220    0.0000
+OB  SB  CF  FB   opls   0.0000    0.0000    1.4510    0.0000
+NB  SB  CF  FB   opls   0.0000    0.0000    1.3220    0.0000
 OB  SB  NB  SB   opls   0.0000    0.0000   -0.0150    0.0000
 SB  NB  SB  CF   opls  32.7730  -10.4200   -3.1950    0.0000
 # longer perfluoroalkanesulfonylamides
-SB  CF  CF  F    opls   0.0000    0.0000    1.4530    0.0000
+SB  CF  CF  FB   opls   0.0000    0.0000    1.4530    0.0000
 OB  SB  CF  CF   opls   0.0000    0.0000   -0.7400    0.0000
 NB  SB  CF  CF   opls  -3.0940    0.0000    0.0000    0.0000
 SB  CF  CF  CF   opls  50.0900    0.0000   -4.6260   -4.0080
 # bis(fluorosulfonyl)amide
-F   SB  NB  SB   opls  13.4514  -12.3373   -8.4874   -2.8654
+FB  SB  NB  SB   opls  13.4514  -12.3373   -8.4874   -2.8654
 # dicyanamide JPCB110(2006)19586
 NZ  CZ  N3  CZ   opls   4.0800    0.0000    0.0000    0.0000
 # acetate OPLS-AA JPCB (2004)
