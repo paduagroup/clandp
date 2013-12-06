@@ -1,5 +1,5 @@
-Force field builder for molecular and ionic liquids
-===================================================
+Force field for ionic liquids
+=============================
 
 _[Agilio Padua](http://tim.univ-bpclermont.fr/apadua)_
 
@@ -9,32 +9,18 @@ B (since 2004)_
 Contents
 --------
 
-* `fftool.py`: python script to build simulation box of ionic or
-    molecular liquids and their mixtures. Requires the
-    [Packmol](http://www.ime.unicamp.br/~martinez/packmol/) software
-    to create coordinates. Force field files are written in formats
-    suitable for the [LAMMPS](http://lammps.sandia.gov/) or
-    [DL_POLY](http://www.stfc.ac.uk/CSE/randd/ccg/software/DL_POLY/25526.aspx)
-    molecular dynamics packages.
-
 * `il.ff`: database of force field parameters for ions of several ionic
     liquids (under construction, compatible with `fftool.py`).
 
 * `old.il.ff`: database of force field parameters for ions of several ionic
     liquids (previous format, complete with many ions).
 
-* `oplsaa.ff`: database of OPLS-AA force field parameters for some
-    molecular compounds. Retrieved from several publications of the
-    W.L. Jorgensen group (under construction, compatible with `fftool.py`).
-
-* `old.oplsaa.ff`: database of force field parameters for some
-    molecular compounds (previous format, more molecules).
-
-* `examples`: directory with some `molecule.zmat` files.
-
+* `*.zmat`: z-matrix files for ions of ionic liquids.
 
 Requirements
 ------------
+
+* [fftool](http://www.github.com/agiliopadua/fftool)
 
 * [Python 2.7](http://www.python.org/)
 
@@ -55,14 +41,14 @@ How to use
 How to build an initial configuration of a molecular or ionic system.
 
 1. For each molecule or ion prepare a file containing a z-matrix
-   (`molecule.zmat`). See the `examples` directory and check the
-   Wikipedia entry for "Z-matrix (chemistry)". The `fftool.py` script
-   determines the connectivity (which atoms are linked by covalent
-   bonds) from the z-matrix. Cyclic molecules require additional
-   `connect` records to close rings. Improper dihedrals cannot be
-   inferred from connectivity and must be indicated by `improper`
-   records. After the z-matrix supply the name of a database of force
-   field parameters (`database.ff`).
+   (`molecule.zmat`). For explanations check the Wikipedia entry for
+   "Z-matrix (chemistry)". The `fftool.py` script determines the
+   connectivity (which atoms are linked by covalent bonds) from the
+   z-matrix. Cyclic molecules require additional `connect` records to
+   close rings. Improper dihedrals cannot be inferred from
+   connectivity and must be indicated by `improper` records. After the
+   z-matrix supply the name of a database of force field parameters
+   (`database.ff`).
 
 2. Use the `fftool.py` script to create `.xyz` files for the molecules
    in your system and an input file for `packmol`. For help type
