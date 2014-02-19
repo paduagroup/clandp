@@ -1,4 +1,4 @@
-# il-0.8.ff (kJ/mol, A, deg), version 2014/01/15
+# il-0.8.ff (kJ/mol, A, deg), version 2014/03/19
 # Molecular force field for ionic liquids, charges scaled by 0.8
 # Agilio Padua
 # questions to: agilio.padua@univ-bpclermont.fr
@@ -68,6 +68,16 @@ NZA   NZ  14.000  -0.608  lj    3.20   0.71128
 O2    O2  15.999  -0.640  lj    2.96   0.87860
 CO2   CO  12.011   0.560  lj    3.75   0.43930
 CTA   CT  12.011  -0.224  lj    3.50   0.27614
+# alkylsulfates JPCB112(2008)5039
+SO    SO  32.066   0.944  lj    3.55   1.04600
+OS4   OS  15.999  -0.520  lj    3.15   0.83700
+OC4   OC  15.999  -0.360  lj    2.90   0.58600
+CS4   CT  12.011   0.176  lj    3.50   0.27600
+HS4   HC   1.008   0.000  lj    2.50   0.12600
+# alkylsulfonates JPCB112(2008)5039
+OS3   OS  15.999  -0.544  lj    3.15   0.83700
+CS3   CT  12.011  -0.112  lj    3.50   0.27600
+HS3   HC   1.008   0.000  lj    2.50   0.12600
 
 BONDS
 # i j    pot    re/A    ka/kJmol-1
@@ -109,6 +119,12 @@ CZ  NZ   harm   1.157   7746.0
 # acetate OPLS-AA JPCB (2004)
 CO  O2   harm   1.250   5489.0
 CT  CO   harm   1.522   2653.0
+# alkylsulfates JPCB112(2008)5039
+CT  OC   harm   1.402    745.8
+OS  SO   harm   1.455   5331.0
+OC  SO   harm   1.633   1789.6
+# alkylsulfonates JPCB112(2008)
+CT  SO   harm   1.792   1970.0
 
 ANGLES
 # i j   k    pot    th/deg  ka/kjmol-1
@@ -171,6 +187,16 @@ N3  CZ  NZ   harm   175.2   425.0
 O2  CO  O2   harm   126.0   669.4
 CT  CO  O2   harm   117.0   585.8
 HC  CT  CO   harm   109.5   298.9
+# alkylsulfates JPCB112(2008)5039
+OS  SO  OS   harm   114.0   969.0
+OC  SO  OS   harm   103.5  1239.6
+CT  OC  SO   harm   116.6   300.5
+HC  CT  OC   harm   109.7   488.7
+CT  CT  OC   harm   107.8   765.6
+# alkylsulfonates JPCB112(2008)5039
+CT  SO  OS   harm   104.5   870.0
+HC  CT  SO   harm   107.3   390.3
+CT  CT  SO   harm   113.3   583.0
 
 DIHEDRALS
 # i j   k   l    pot    v1        v2        v3        v4
@@ -244,6 +270,17 @@ FB  SB  NB  SB   opls  13.4514  -12.3373   -8.4874   -2.8654
 NZ  CZ  N3  CZ   opls   4.0800    0.0000    0.0000    0.0000
 # acetate OPLS-AA JPCB (2004)
 HC  CT  CO  O2   opls   0.0000    0.0000    0.0000    0.0000
+# alkylsulfates JPCB112(2008)5039
+OS  SO  OC  CT   cos3   0.0000    0.0000    2.4815    0.0000
+SO  OC  CT  HC   cos3   0.0000    0.0000    1.6858    0.0000
+SO  OC  CT  CT   cos3  -6.0142   -3.1133    1.4941    0.0000
+OC  CT  CT  HC   cos3   0.0000    0.0000    2.0698    0.0000
+OC  CT  CT  CT   cos3   4.3893   -1.8273    2.9705    0.0000
+# alkylsulfonates JPCB112(2008)5039
+OS  SO  CT  HC   cos3   0.0000    0.0000    1.6250    0.0000
+OS  SO  CT  CT   cos3   0.0000    0.0000    1.3938    0.0000
+SO  CT  CT  HC   cos3   0.0000    0.0000    1.3797    0.0000
+SO  CT  CT  CT   cos3 -16.1000   -2.0046    0.7674    0.0000
 
 IMPROPER
 # improper imidazolium ring AMBER JACS117(1995)5179
