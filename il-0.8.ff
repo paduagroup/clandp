@@ -1,4 +1,4 @@
-# il-0.8.ff (kJ/mol, A, deg), version 2014/03/19
+# il-0.8.ff (kJ/mol, A, deg), version 2014/02/25
 # Molecular force field for ionic liquids, charges scaled by 0.8
 # Agilio Padua
 # questions to: agilio.padua@univ-bpclermont.fr
@@ -248,7 +248,7 @@ HN  NT  CT  HC   opls   0.0000    0.0000    0.0000    0.0000
 HN  NT  CT  CT   opls   0.0000    0.0000    0.0000    0.0000
 # cholinium: unpublished
 OH  CT  CT  NT   opls -44.0515   -5.4349    0.0000    0.0000
-#OH  CT  CT  NT   cos4 -44.0515   -5.0148    0.0000   -3.1510
+#OH  CT  CT  NT   opls -44.0515   -5.0148    0.0000   -3.1510
 # phosphonium OPLS-AA, JPCB110(2006)19586
 CT  PT  CT  HC   opls   0.0000    0.0000    0.9270    0.0000
 CT  PT  CT  CT   opls   0.0000    0.0000    1.1330    0.0000
@@ -271,16 +271,16 @@ NZ  CZ  N3  CZ   opls   4.0800    0.0000    0.0000    0.0000
 # acetate OPLS-AA JPCB (2004)
 HC  CT  CO  O2   opls   0.0000    0.0000    0.0000    0.0000
 # alkylsulfates JPCB112(2008)5039
-OS  SO  OC  CT   cos3   0.0000    0.0000    2.4815    0.0000
-SO  OC  CT  HC   cos3   0.0000    0.0000    1.6858    0.0000
-SO  OC  CT  CT   cos3  -6.0142   -3.1133    1.4941    0.0000
-OC  CT  CT  HC   cos3   0.0000    0.0000    2.0698    0.0000
-OC  CT  CT  CT   cos3   4.3893   -1.8273    2.9705    0.0000
+OS  SO  OC  CT   opls   0.0000    0.0000    2.4815    0.0000
+SO  OC  CT  HC   opls   0.0000    0.0000    1.6858    0.0000
+SO  OC  CT  CT   opls  -6.0142   -3.1133    1.4941    0.0000
+OC  CT  CT  HC   opls   0.0000    0.0000    2.0698    0.0000
+OC  CT  CT  CT   opls   4.3893   -1.8273    2.9705    0.0000
 # alkylsulfonates JPCB112(2008)5039
-OS  SO  CT  HC   cos3   0.0000    0.0000    1.6250    0.0000
-OS  SO  CT  CT   cos3   0.0000    0.0000    1.3938    0.0000
-SO  CT  CT  HC   cos3   0.0000    0.0000    1.3797    0.0000
-SO  CT  CT  CT   cos3 -16.1000   -2.0046    0.7674    0.0000
+OS  SO  CT  HC   opls   0.0000    0.0000    1.6250    0.0000
+OS  SO  CT  CT   opls   0.0000    0.0000    1.3938    0.0000
+SO  CT  CT  HC   opls   0.0000    0.0000    1.3797    0.0000
+SO  CT  CT  CT   opls -16.1000   -2.0046    0.7674    0.0000
 
 IMPROPER
 # improper imidazolium ring AMBER JACS117(1995)5179
