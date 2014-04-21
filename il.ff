@@ -1,4 +1,4 @@
-# il.ff (kJ/mol, A, deg), version 2014/02/25
+# il.ff (kJ/mol, A, deg), version 2014/04/08
 # Molecular force field for ionic liquids
 # Agilio Padua, J.N. Canongia Lopes
 # contributors: K. Shimizu, A. Podgorsek, F. Hammami, L. Gontrani, M. Mishra
@@ -37,6 +37,8 @@ H3    HN   1.008   0.31   lj    0.00   0.00000
 # phosphonium OPLS-AA, JPCB110(2006)19586
 P3    PT  30.974   0.68   lj    3.74   0.83680
 C1P   CT  12.011  -0.31   lj    3.50   0.27614
+# lithium cation Aqvist
+Li    Li   6.941  +1.00   lj    2.126  0.07648
 # sodium cation
 Na    Na  22.990  +1.00   lj    3.33   0.01160
 # tetrafluoroborate anion
