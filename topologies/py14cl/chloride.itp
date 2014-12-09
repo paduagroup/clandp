@@ -1,0 +1,6 @@
+[ moleculetype ]
+CL         1
+
+[ atoms ]     
+;   nr       type  resnr residue  atom   cgnr     charge       mass 
+     1        CL     1      CL     CL      1       -0.71      35.453

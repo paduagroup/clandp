@@ -1,0 +1,71 @@
+[ defaults ]
+; nbfunc	comb-rule	gen-pairs	fudgeLJ	fudgeQQ
+1		3		yes		0.5	0.5
+
+[ atomtypes ]
+; pyridinium
+CT   6      12.011   -0.18    A    0.350   0.27614  
+HC   1       1.008    0.06    A    0.250   0.12552 
+NA   7      14.007    0.15    A    0.325   0.71128  
+CA   6      12.011    0.00    A    0.355   0.29288  
+HA   1       1.008    0.15    A    0.242   0.12552  
+
+; dicyanamide JPCB110(2006)19586
+N3   7       14.00027  -0.76   A    0.325   0.71128
+CZ   6       12.011     0.64   A    0.330   0.27614
+NZ   7       14.00027  -0.76   A    0.320   0.71128
+
+[ bondtypes ]
+NA   CT   1    0.1466   282000
+HC   CT   1    0.1090  -284500
+CT   CT   1    0.1529   224200
+NA   HA   1    0.1010  -363200
+CA   HA   1    0.1080  -307100
+CA   CA   1    0.1380   392500
+CA   NA   1    0.1340   404200
+
+; dca-
+N3  CZ   1     0.1310   420600
+CZ  NZ   1     0.1157   774600
+
+[ angletypes ]
+CT   CT   CT    1      112.7    488.3
+CT   CT   HC    1      110.7    313.8 
+HC   CT   HC    1      107.8    276.1 
+NA   CT   CT    1      112.7    488.3
+CA   CA   CA    1      120.0    527.2
+CA   CA   HA    1      120.0    292.9
+CA   CA   NA    1      120.0    585.8
+CA   NA   CA    1      120.4    585.8
+CA   NA   CT    1      119.8    585.8
+NA   CA   HA    1      120.0    292.9
+NA   CT   HC    1      109.5    292.9
+
+CZ  N3  CZ    1        118.5   362.0
+N3  CZ  NZ    1        175.2   425.0
+
+[ dihedraltypes ]
+; alkanes OPLS-AA JACS118:11225(1996); JPC100:18010(1996)
+HC   CT   CT   HC   5     0.0000     0.0000      1.3305      0.0000
+CT   CT   CT   HC   5     0.0000     0.0000      1.5313      0.0000
+CT   CT   CT   CT   5     7.2800    -0.6569      1.1673      0.0000
+; dialkylimidazolium JPCB108:2038(2004)
+NA   CT   CT   CT   5    -7.4797     3.1642     -1.2026      0.0000
+NA   CT   CT   HC   5     0.0000     0.0000      0.3670      0.0000
+; pyridinium AMBER (cycle) and us
+CA   CA   CA   CA   5     0.0000    30.3340      0.0000      0.0000
+NA   CA   CA   CA   5     0.0000    30.3340      0.0000      0.0000
+HA   CA   CA   NA   5     0.0000    30.3340      0.0000      0.0000
+HA   CA   CA   HA   5     0.0000    30.3340      0.0000      0.0000
+CA   NA   CA   HA   5     0.0000    12.5520      0.0000      0.0000
+CT   NA   CA   HA   5     0.0000    12.5520      0.0000      0.0000
+CA   NA   CA   CA   5     0.0000    12.5520      0.0000      0.0000
+CT   NA   CA   CA   5     0.0000    12.5520      0.0000      0.0000
+HC   CT   NA   CA   5     0.0000     0.0000      0.0000      0.0000
+CT   CT   NA   CA   5     0.0000     1.1120      0.0000      0.6900
+; improper pyridinium ring AMBER
+CA   CA   CA   HA   5     0.0000     9.2000      0.0000      0.0000
+CA   CA   NA   HA   5     0.0000     9.2000      0.0000      0.0000
+NA   CA   CA   CT   5     0.0000     8.3700      0.0000      0.0000
+; dca- CL&P
+NZ  CZ  N3  CZ      5     4.0800     0.0000      0.0000      0.0000

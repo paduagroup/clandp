@@ -1,0 +1,76 @@
+[ defaults ]
+; nbfunc	comb-rule	gen-pairs	fudgeLJ	fudgeQQ
+1		3		yes		0.5	0.5
+
+[ atomtypes ]
+; pyridinium
+CT   6      12.011   -0.18    A    0.350   0.27614  
+HC   1       1.008    0.06    A    0.250   0.12552 
+NA   7      14.007    0.15    A    0.325   0.71128  
+CA   6      12.011    0.00    A    0.355   0.29288  
+HA   1       1.008    0.15    A    0.242   0.12552  
+
+;TF
+SB  16      32.064     1.02   A    0.355   1.04600 
+OB   8      15.9994   -0.63   A    0.296   0.87864
+FB   9      18.9984   -0.16   A    0.295   0.22175
+CB   6      12.011     0.35   A    0.350   0.27614
+                                  
+[ bondtypes ]
+NA   CT   1    0.1466   282000
+HC   CT   1    0.1090  -284500
+CT   CT   1    0.1529   224200
+NA   HA   1    0.1010  -363200
+CA   HA   1    0.1080  -307100
+CA   CA   1    0.1380   392500
+CA   NA   1    0.1340   404200
+
+;TF
+CB   FB   1    0.1323   369800
+CB   SB   1    0.1818   195000
+SB   OB   1    0.1437   533100
+
+[ angletypes ]
+CT   CT   CT    1      112.7    488.3
+CT   CT   HC    1      110.7    313.8 
+HC   CT   HC    1      107.8    276.1 
+NA   CT   CT    1      112.7    488.3
+CA   CA   CA    1      120.0    527.2
+CA   CA   HA    1      120.0    292.9
+CA   CA   NA    1      120.0    585.8
+CA   NA   CA    1      120.4    585.8
+CA   NA   CT    1      119.8    585.8
+NA   CA   HA    1      120.0    292.9
+NA   CT   HC    1      109.5    292.9
+
+;TF
+FB  CB  FB   1   107.1   781.0
+FB  CB  SB   1   111.7   694.0
+OB  SB  OB   1   118.5   969.0
+CB  SB  OB   1   102.6   870.0
+
+[ dihedraltypes ]
+; alkanes OPLS-AA JACS118:11225(1996); JPC100:18010(1996)
+HC   CT   CT   HC   5     0.0000     0.0000      1.3305      0.0000
+CT   CT   CT   HC   5     0.0000     0.0000      1.5313      0.0000
+CT   CT   CT   CT   5     7.2800    -0.6569      1.1673      0.0000
+; dialkylimidazolium JPCB108:2038(2004)
+NA   CT   CT   CT   5    -7.4797     3.1642     -1.2026      0.0000
+NA   CT   CT   HC   5     0.0000     0.0000      0.3670      0.0000
+; pyridinium AMBER (cycle) and us
+CA   CA   CA   CA   5     0.0000    30.3340      0.0000      0.0000
+NA   CA   CA   CA   5     0.0000    30.3340      0.0000      0.0000
+HA   CA   CA   NA   5     0.0000    30.3340      0.0000      0.0000
+HA   CA   CA   HA   5     0.0000    30.3340      0.0000      0.0000
+CA   NA   CA   HA   5     0.0000    12.5520      0.0000      0.0000
+CT   NA   CA   HA   5     0.0000    12.5520      0.0000      0.0000
+CA   NA   CA   CA   5     0.0000    12.5520      0.0000      0.0000
+CT   NA   CA   CA   5     0.0000    12.5520      0.0000      0.0000
+HC   CT   NA   CA   5     0.0000     0.0000      0.0000      0.0000
+CT   CT   NA   CA   5     0.0000     1.1120      0.0000      0.6900
+; improper pyridinium ring AMBER
+CA   CA   CA   HA   5     0.0000     9.2000      0.0000      0.0000
+CA   CA   NA   HA   5     0.0000     9.2000      0.0000      0.0000
+NA   CA   CA   CT   5     0.0000     8.3700      0.0000      0.0000
+;triflate JPCB108(2004)16893
+OB   SB   CB   FB   5     0.0000     0.0000      1.4510      0.0000

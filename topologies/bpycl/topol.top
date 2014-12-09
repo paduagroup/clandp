@@ -1,0 +1,11 @@
+#include "ff.itp"
+#include "bpy.itp"
+#include "chloride.itp"
+
+[system]
+BPY CL
+
+
+[molecules]
+BPY        175
+CL         175

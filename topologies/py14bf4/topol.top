@@ -1,0 +1,10 @@
+#include "ff.itp"
+#include "pyr.itp"
+#include "bf4.itp"
+
+[system]
+PYR BF4
+
+[molecules]
+PYR        150
+BF4        150

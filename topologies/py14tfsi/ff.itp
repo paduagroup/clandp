@@ -1,0 +1,58 @@
+[ defaults ]
+; nbfunc	comb-rule	gen-pairs	fudgeLJ	fudgeQQ
+1		3		yes		0.5	0.5
+
+[ atomtypes ]
+;pyrrolidinium   JPCB108(2004)16893
+CT   6      12.011   -0.18   A    0.350   0.27614  
+HC   1       1.008    0.06   A    0.250   0.12552 
+NT   7      14.007    0.12   A    0.325   0.71128
+; TFSI
+SO  16      32.064     1.02  A    0.355   1.04600 
+OS   8      15.9994   -0.53  A    0.296   0.87864
+FC   9      18.9984   -0.16  A    0.295   0.22175
+CF   6      12.011     0.35  A    0.350   0.27614
+NI   7      14.0027   -0.66  A    0.325   0.71128
+
+[ bondtypes ]
+; this is for pyrrolidinium
+HC   CT   1    0.1090  -284500    ;  -
+CT   CT   1    0.1529   224200    ;   
+NT   CT   1    0.1471   307100.0
+; TFSI
+CF   FC   1    0.1323   369700
+CF   SO   1    0.1818   197000
+SO   OS   1    0.1442   533100
+NI   SO   1    0.1570   311300
+
+[ angletypes ]
+CT   CT   CT    1      112.7    488.3
+CT   CT   HC    1      110.7    313.8 
+HC   CT   HC    1      107.8    276.1 
+NT   CT   CT    1      109.5    669.4
+CT   NT   CT    1      109.5    418.4
+HC   CT   NT    1      109.5    209.2
+; TFSI
+OS  SO    OS    1      118.5    969
+OS  SO    NI    1      113.6    789
+CF  SO    NI    1      100.2    816
+SO  NI    SO    1      125.6    671
+FC  CF    FC    1      107.1    781
+FC  CF    SO    1      111.7    694
+CF  SO    OS    1      102.6    870
+
+[ dihedraltypes ]
+; alkanes OPLS-AA JACS118:11225(1996); JPC100:18010(1996)
+HC   CT   CT   HC   5     0.0000     0.0000      1.3305      0.0000
+CT   CT   CT   HC   5     0.0000     0.0000      1.5313      0.0000
+CT   CT   CT   CT   5     7.2800    -0.6569      1.1673      0.0000
+;pyrrolidilium
+HC  CT  CT  NT  5   -4.2384   -2.9665    1.9790    0.0000
+CT  CT  CT  NT  5   10.0081   -2.8200    2.3012    0.0000
+CT  NT  CT  CT  5    1.7405   -0.5356    2.9079    0.0000
+HC  CT  NT  CT  5    0.0000    0.0000    2.3430    0.0000
+; TFSI
+OS  SO  CF  FC  5     0.0000     0.0000      1.4510      0.0000
+NI  SO  CF  FC  5     0.0000     0.0000      1.3220      0.0000
+OS  SO  NI  SO  5     0.0000     0.0000     -0.0150      0.0000
+SO  NI  SO  CF  5    32.7730   -10.4200     -3.1950      0.0000

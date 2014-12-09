@@ -1,0 +1,11 @@
+#include "ff.itp"
+#include "pyr.itp"
+#include "fsi.itp"
+
+[system]
+PYR FSI
+
+
+[molecules]
+PYR        125
+FSI        125

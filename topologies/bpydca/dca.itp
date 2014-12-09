@@ -1,0 +1,25 @@
+[ moleculetype ]
+DCA         3
+
+[ atoms ]
+;nr   type      resnr   residue  atom   cgnr  charge      mass
+1       N3        1       DCA    N31      1    -0.68    14.00027
+2       CZ        1       DCA    CZ2      2     0.64    12.011
+3       NZ        1       DCA    NZ3      3    -0.70    14.00027
+4       CZ        1       DCA    CZ4      4     0.64    12.011
+5       NZ        1       DCA    NZ5      5    -0.70    14.00027
+
+[ bonds ]
+1       2       1
+1       4       1
+2       3       1
+4       5       1 
+
+[ angles ]
+2       1       4       1
+1       2       3       1
+1       4       5       1
+
+[dihedrals]
+4       1       2       3        5
+2       1       4       5        5

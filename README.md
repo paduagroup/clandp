@@ -15,7 +15,13 @@ Contents
 * `old.il.ff`: database of force field parameters for ions of several ionic
     liquids (previous format, complete with many ions).
 
-* `*.zmat`: z-matrix files for ions of ionic liquids.
+* `*.zmat, *.mol, *.xyz`: input files for ions in different formats.
+
+* `topologies`: topology files in gromacs format for pyridinium and
+  pyrrolidinium ionic liquids, with refined parameters for better
+  representation of transport properties. Contributed by Vitaly
+  Chaban.
+
 
 Requirements
 ------------
