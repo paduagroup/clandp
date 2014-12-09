@@ -15,7 +15,7 @@ Contents
 * `old.il.ff`: database of force field parameters for ions of several ionic
     liquids (previous format, complete with many ions).
 
-* `*.zmat, *.mol, *.xyz`: input files for ions in different formats.
+* `*.zmat, *.mol, *.xyz`: input files for ions.
 
 * `topologies`: topology files in gromacs format for pyridinium and
   pyrrolidinium ionic liquids, with refined parameters for better
@@ -90,9 +90,10 @@ References
   117 (1995) 1, DOI:
   [10.1006/jcph.1995.1039](http://dx.doi.org/10.1006/jcph.1995.1039)
 
-* [DL_POLY](http://www.stfc.ac.uk/CSE/randd/ccg/software/DL_POLY/25526.aspx): I.T. Todorov and W. Smith, Daresbury Lab. 
+* [DL_POLY](http://www.stfc.ac.uk/CSE/randd/ccg/software/DL_POLY/25526.aspx):
+  I.T. Todorov and W. Smith, Daresbury Lab.
 
-* IL force field: A.A.H. Padua, J.N. Canongia Lopes et al.
+* IL force field: J.N. Canongia Lopes, A.A.H. Padua et al.
   J Phys Chem B 108 (2004) 2038, DOI:
   [10.1021/jp0362133](http://dx.doi.org/10.1021/jp0362133);
   J Phys Chem B 108 (2004) 11250, DOI:
