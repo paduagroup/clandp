@@ -66,7 +66,7 @@ FSI   FB  18.998  -0.13   lj    2.95   0.22175
 # dicyanamide JPCB110(2006)19586
 N3A   N3  14.000  -0.76   lj    3.25   0.71128
 CZA   CZ  12.011   0.64   lj    3.30   0.27614
-NZA   NZ  14.000  -0.76   lj    3.20   0.71128
+NZA   NZ  14.001  -0.76   lj    3.20   0.71128
 # acetate OPLS-AA
 O2    O2  15.999  -0.80   lj    2.96   0.87860
 CO2   CO  12.011   0.70   lj    3.75   0.43930
@@ -81,6 +81,10 @@ HS4   HC   1.008   0.00   lj    2.50   0.12600
 OS3   OS  15.999  -0.68   lj    3.15   0.83700
 CS3   CT  12.011  -0.14   lj    3.50   0.27600
 HS3   HC   1.008   0.00   lj    2.50   0.12600
+# thiocyanate JCP128(2008)154504
+SK    SK  32.066  -0.72   lj    3.55   1.04600
+CK    CK  12.011   0.44   lj    3.40   0.35980
+NK    NK  14.001  -0.72   lj    3.25   0.71128
 
 BONDS
 # i j    pot    re/A    ka/kJmol-1
@@ -128,6 +132,9 @@ OS  SO   harm   1.455   5331.0
 OC  SO   harm   1.633   1789.6
 # alkylsulfonates JPCB112(2008)
 CT  SO   harm   1.792   1970.0
+# thiocyanate JCP128(2008)154504, our MP2
+SK  CK   harm   1.67    2836.8
+CK  NK   harm   1.19   12221.5
 
 ANGLES
 # i j   k    pot    th/deg  ka/kjmol-1
@@ -200,6 +207,8 @@ CT  CT  OC   harm   107.8   765.6
 CT  SO  OS   harm   104.5   870.0
 HC  CT  SO   harm   107.3   390.3
 CT  CT  SO   harm   113.3   583.0
+# thiocyanate JCP128(2008)154504
+SK  CK  NK   harm   180.0   651.9
 
 DIHEDRALS
 # i j   k   l    pot    v1        v2        v3        v4
