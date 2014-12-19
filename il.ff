@@ -1,4 +1,4 @@
-# il.ff (kJ/mol, A, deg), version 2014/04/08
+# il.ff (kJ/mol, A, deg), version 2014/12/18
 # Molecular force field for ionic liquids
 # Agilio Padua, J.N. Canongia Lopes
 # contributors: K. Shimizu, A. Podgorsek, F. Hammami, L. Gontrani, M. Mishra
@@ -213,9 +213,9 @@ SK  CK  NK   harm   180.0   651.9
 DIHEDRALS
 # i j   k   l    pot    v1        v2        v3        v4
 # alkanes OPLS-AA JACS118(1996)11225, JPC100(1996)18010
-HC  CT  CT  HC   opls   0.0000    0.0000    1.3305    0.0000
-CT  CT  CT  HC   opls   0.0000    0.0000    1.5313    0.0000
-CT  CT  CT  CT   opls   7.2800   -0.6569    1.1673    0.0000
+HC  CT  CT  HC   opls   0.0000    0.0000    1.2552    0.0000
+CT  CT  CT  HC   opls   0.0000    0.0000    1.2552    0.0000
+CT  CT  CT  CT   opls   5.4392   -0.2092    0.8368    0.0000
 # dialkylimidazolium JPCB108(2004)2038
 CW  NA  CR  NA   opls   0.0000   19.4600    0.0000    0.0000
 CW  NA  CR  HA   opls   0.0000   19.4600    0.0000    0.0000
