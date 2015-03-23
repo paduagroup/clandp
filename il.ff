@@ -187,12 +187,13 @@ NB  SB  CF   harm   103.5   764.0
 SB  NB  SB   harm   125.6   671.0   
 # longer perfluoroalkanesulfonylamides
 SB  CF  CF   harm   115.9   418.4
+FB  CF  CF   harm   109.5   418.4
 # bis(fluorosulfonyl)amide
 F   SB  OB   harm   104.1  1077.0
 F   SB  NB   harm   103.0   902.0   
 # dicyanamide JPCB110(2006)19586
 CZ  N3  CZ   harm   118.5   362.0
-N3  CZ  NZ   cons   175.2   425.0
+N3  CZ  NZ   harm   175.2   425.0
 # acetate OPLS-AA JPCB (2004)
 O2  CO  O2   harm   126.0   669.4
 CT  CO  O2   harm   117.0   585.8
@@ -272,14 +273,16 @@ NB  SB  CF  FB   opls   0.0000    0.0000    1.3220    0.0000
 OB  SB  NB  SB   opls   0.0000    0.0000   -0.0150    0.0000
 SB  NB  SB  CF   opls  32.7730  -10.4200   -3.1950    0.0000
 # longer perfluoroalkanesulfonylamides
+F   CF  CF  FB   opls -10.4600    0.0000    1.0460    0.0000
 SB  CF  CF  FB   opls   0.0000    0.0000    1.4530    0.0000
+SB  CF  CF  F    opls   0.0000    0.0000    1.4530    0.0000
 OB  SB  CF  CF   opls   0.0000    0.0000   -0.7400    0.0000
 NB  SB  CF  CF   opls  -3.0940    0.0000    0.0000    0.0000
 SB  CF  CF  CF   opls  50.0900    0.0000   -4.6260   -4.0080
 # bis(fluorosulfonyl)amide
 FB  SB  NB  SB   opls  13.4514  -12.3373   -8.4874   -2.8654
 # dicyanamide JPCB110(2006)19586
-NZ  CZ  N3  CZ   opls   4.0800    0.0000    0.0000    0.0000
+# NZ  CZ  N3  CZ   opls   4.0800    0.0000    0.0000    0.0000
 # acetate OPLS-AA JPCB (2004)
 HC  CT  CO  O2   opls   0.0000    0.0000    0.0000    0.0000
 # alkylsulfates JPCB112(2008)5039
