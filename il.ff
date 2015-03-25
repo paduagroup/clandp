@@ -240,7 +240,6 @@ CW  NA  CR  CT   opls   0.0000   19.4600    0.0000    0.0000
 CT  NA  CR  CT   opls   0.0000   19.4600    0.0000    0.0000
 NA  CR  CT  HC   opls   0.0000    0.0000    0.0000    0.0000
 # fluoroalkyl JPCA105(2001)4118 JPCA106(2002)10116
-HC  CT  CF  F    opls   0.0000    0.0000    1.2134    0.0000
 F   CF  CT  HC   opls   0.0000    0.0000    1.2134    0.0000
 F   CF  CT  CT   opls   0.0000    0.0000    1.9372    0.0000
 F   CF  CF  CT   opls   0.0000    0.0000    2.7656    0.0000
