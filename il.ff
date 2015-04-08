@@ -1,8 +1,13 @@
-# il.ff (kJ/mol, A, deg), version 2014/12/18
+# il.ff, version 2015/04/08
 # Molecular force field for ionic liquids
 # Agilio Padua, J.N. Canongia Lopes
 # contributors: K. Shimizu, A. Podgorsek, F. Hammami, L. Gontrani, M. Mishra
 # questions to: agilio.padua@univ-bpclermont.fr
+#
+# units: kJ/mol, A, deg
+# bond and angle force constants are in the form k/2 (x - x0)^2
+# use cons for constrained bonds and angles
+# improper dihedrals are relative to the third atom in the list
 
 ATOMS
 #     typ  m/u     q/e    pot   pars

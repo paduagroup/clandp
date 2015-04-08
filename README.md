@@ -9,8 +9,11 @@ B (since 2004)_
 Contents
 --------
 
-* `il.ff`: database of force field parameters for ions of several ionic
-    liquids (under construction, compatible with `fftool.py`).
+* `il.ff`: database of force field parameters for ions of several
+    ionic liquids (under construction, compatible with the
+    [fftool][] script to create input files for molecular
+    simulation using the [LAMMPS][] or [DL_POLY][] molecular
+    dynamics codes.
 
 * `old.il.ff`: database of force field parameters for ions of several ionic
     liquids (previous format, complete with many ions).
@@ -46,24 +49,21 @@ How to use
 
 How to build an initial configuration of a molecular or ionic system.
 
-1. For each molecule or ion prepare a file containing a z-matrix
-   (`molecule.zmat`). For explanations check the Wikipedia entry for
-   "Z-matrix (chemistry)". The `fftool.py` script determines the
-   connectivity (which atoms are linked by covalent bonds) from the
-   z-matrix. Cyclic molecules require additional `connect` records to
-   close rings. Improper dihedrals cannot be inferred from
-   connectivity and must be indicated by `improper` records. After the
-   z-matrix supply the name of a database of force field parameters
-   (`database.ff`).
+1. For each molecule, ion or fragment of a material prepare a file
+   with atomic coordinates and/or connectivity (covalent bonds). The
+   formats accepted by this tool are `.zmat`, `.mol` or
+   `.xyz`. Detailed information is available in the [fftool][]
+   page.
+
 
 2. Use the `fftool.py` script to create `.xyz` files for the molecules
-   in your system and an input file for `packmol`. For help type
+   in your system and an input file for [Packmol][]. For help type
    `fftool.py -h`. To build a simulation box with 20 ion pairs and a
    density of 3.0 mol/L do:
 
         fftool.py 20 c4c1im.zmat 20 ntf2.zmat --rho 3.0
 
-3. Use `packmol` with the `pack.inp` file just created to buid the
+3. Use Packmol with the `pack.inp` file just created to buid the
    simulation box (adjust the density if necessary):
 
         packmol < pack.inp
@@ -82,10 +82,6 @@ How to build an initial configuration of a molecular or ionic system.
 References
 ----------
 
-* [Packmol](http://www.ime.unicamp.br/~martinez/packmol/):
-  L. Martinez et al. J Comp Chem 30 (2009) 2157, DOI:
-  [10.1002/jcc.21224](http://dx.doi.org/10.1002/jcc.21224) 
-  
 * [LAMMPS](http://lammps.sandia.gov/): S. Plimton, J Comp Phys
   117 (1995) 1, DOI:
   [10.1006/jcph.1995.1039](http://dx.doi.org/10.1006/jcph.1995.1039)
