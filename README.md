@@ -11,8 +11,8 @@ Contents
 
 * `il.ff`: database of force field parameters for ions of several
     ionic liquids (under construction, compatible with the
-    [fftool][] script to create input files for molecular
-    simulation using the [LAMMPS][] or [DL_POLY][] molecular
+    [fftool]() script to create input files for molecular
+    simulation using the [LAMMPS]() or [DL_POLY]() molecular
     dynamics codes.
 
 * `old.il.ff`: database of force field parameters for ions of several ionic
@@ -52,12 +52,12 @@ How to build an initial configuration of a molecular or ionic system.
 1. For each molecule, ion or fragment of a material prepare a file
    with atomic coordinates and/or connectivity (covalent bonds). The
    formats accepted by this tool are `.zmat`, `.mol` or
-   `.xyz`. Detailed information is available in the [fftool][]
+   `.xyz`. Detailed information is available in the [fftool]()
    page.
 
 
 2. Use the `fftool.py` script to create `.xyz` files for the molecules
-   in your system and an input file for [Packmol][]. For help type
+   in your system and an input file for [Packmol](). For help type
    `fftool.py -h`. To build a simulation box with 20 ion pairs and a
    density of 3.0 mol/L do:
 
