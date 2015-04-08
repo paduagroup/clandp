@@ -61,8 +61,8 @@ How to build an initial configuration of a molecular or ionic system.
 2. Use the `fftool.py` script to create `.xyz` files for the molecules
    in your system and an input file for
    [Packmol](http://www.ime.unicamp.br/~martinez/packmol/). For help
-   type `fftool.py -h`. To build a simulation box with 20 ion pairs
-   and a density of 3.0 mol/L do:
+   type `fftool.py -h`. For example, to build a simulation box with 20
+   ion pairs and a density of 3.0 mol/L do:
 
         fftool.py 20 c4c1im.zmat 20 ntf2.zmat --rho 3.0
 
@@ -71,19 +71,25 @@ How to build an initial configuration of a molecular or ionic system.
 
         packmol < pack.inp
 
-    Atom coordinates will be written to `simbox.xyz`. You can use a
-    molecular viewer such as RasMol or VMD to look at the `.xyz` files
-    (`fftool.py` has an option to write IUPAC atomic symbols instead
-    of the atom names from the force field).
+    Atom coordinates will be written to a file `simbox.xyz`. You can
+    use a molecular viewer such as VMD to look at the `.xyz` files.
 
 4. Use `fftool.py` to build the input files for LAMMPS or DL_POLY
-   containing the force field parameters and the coordinates:
+   containing the force field and the coordinates:
 
         fftool.py 20 c4c1im.zmat 20 ntf2.zmat --lammps
+
+Information on the force field file format and on more geeral or
+advanced used is available at the
+[fftool](http://www.github.com/agiliopadua/fftool) page.
 
 
 References
 ----------
+
+* [Packmol](http://www.ime.unicamp.br/~martinez/packmol/):
+  L. Martinez et al. J Comp Chem 30 (2009) 2157, DOI:
+  [10.1002/jcc.21224](http://dx.doi.org/10.1002/jcc.21224) 
 
 * [LAMMPS](http://lammps.sandia.gov/): S. Plimton, J Comp Phys
   117 (1995) 1, DOI:
