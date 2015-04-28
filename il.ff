@@ -102,7 +102,7 @@ CK    CK  12.011   0.44   lj    3.40   0.35980
 NK    NK  14.001  -0.72   lj    3.25   0.71128
 
 BONDS
-# i j    pot    re/A    ka/kJmol-1
+# i j    pot    re/A    kr/kJmol-1
 # alkanes OPLS-AA JACS118(1996)11225, JPC100(1996)18010
 HC  CT   cons   1.090   2845.0
 CT  CT   harm   1.529   2242.0
