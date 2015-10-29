@@ -55,6 +55,15 @@ F     F   18.998  -0.12   lj    2.95   0.22175
 N4    NT  14.007   0.12   lj    3.25   0.71128
 N3    NT  14.007   0.03   lj    3.25   0.71128
 H3    HN   1.008   0.31   lj    0.00   0.00000
+# alcohols OPLS-AA JACS118:11225(1996); JPC100:18010(1996)
+#cholinium same as OPLS-AA alcohols or ammonium (Ferid, Agilio)
+CTO   CT  12.011   0.145  lj    3.50   0.27614  
+C2O   CT  12.011   0.205  lj    3.50   0.27614  
+H1O   HC   1.008   0.040  lj    2.50   0.12552
+OH    OH  15.999  -0.683  lj    3.12   0.71128
+HO    HO   1.008   0.418  lj    0.00   0.00000
+# alkoxy imidazolium JPCB114(2010)3595
+COL   CT  12.011   0.275  lj    3.50   0.27614
 # phosphonium OPLS-AA, JPCB110(2006)19586
 P3    PT  30.974   0.68   lj    3.74   0.83680
 C1P   CT  12.011  -0.31   lj    3.50   0.27614
@@ -137,6 +146,9 @@ NT  CT   harm   1.471   3071.0
 HN  NT   cons   1.010   3632.0
 # phosphonium OPLS-AA JPCB110(2006)19586
 PT  CT   harm   1.81    3550.0
+# hydroxyl OPLS-AA JACS 118(1996)11225, JPC 100(1996)18010
+CT  OH   harm   1.410   2677.8
+HO  OH   cons   0.945   4627.5
 # tetrafluoroborate
 B   F    harm   1.394   3235.0
 # hexafluorophosphate JCSPerkin2(1999)2365
@@ -214,6 +226,10 @@ HN  NT  CT   harm   109.5   418.4
 CT  PT  CT   harm   109.5   607.8
 HC  CT  PT   harm   110.1   389.9
 CT  CT  PT   harm   115.2   509.1
+# hydroxyl JACS 118(1996)11225, JPC 100(1996)18010
+CT  CT  OH   harm   109.5   418.4
+HC  CT  OH   harm   109.5   292.9
+CT  OH  HO   harm   108.5   460.2
 # tetrafluoroborate anion
 F   B   F    harm   109.5   669.5
 # hexafluorophosphate JCSPerkin2(1999)2365
@@ -327,6 +343,11 @@ CT  PT  CT  HC   opls   0.0000    0.0000    0.9270    0.0000
 CT  PT  CT  CT   opls   0.0000    0.0000    1.1330    0.0000
 PT  CT  CT  HC   opls   0.0000    0.0000    0.4650    0.0000
 PT  CT  CT  CT   opls  -3.2480    0.9880   -0.7150    0.0000
+# hydroxyl JACS 118(1996)11225, AMBER98 (OCCO) 117(1995)5179
+HC  CT  OH  HO   opls   0.0000    0.0000    1.8828    0.0000
+CT  CT  OH  HO   opls  -1.4895   -0.7280    2.0585    0.0000
+HC  CT  CT  OH   opls   0.0000    0.0000    1.9581    0.0000
+OH  CT  CT  OH   opls   0.0000   -9.8324    1.2050    0.0000
 # triflate and bistriflamide JPCB108(2004)16893
 OB  SB  CF  FB   opls   0.0000    0.0000    1.4510    0.0000
 NB  SB  CF  FB   opls   0.0000    0.0000    1.3220    0.0000
