@@ -1,4 +1,4 @@
-# il.ff, version 2015/04/16
+# il.ff, version 2016/02/03
 # Molecular force field for ionic liquids
 # Agilio Padua, J.N. Canongia Lopes
 # contributors: K. Shimizu, A. Podgorsek, F. Hammami, L. Gontrani, M. Mishra
@@ -142,7 +142,7 @@ CT  CF   harm   1.529   2242.6
 F   CF   harm   1.332   3071.1
 CF  CF   harm   1.529   2242.6
 # ammonium, pyrrolidinium OPLS-AA JACS121(1999)4827, AMBER
-NT  CT   harm   1.471   3071.0
+NT  CT   harm   1.448   3196.6
 HN  NT   cons   1.010   3632.0
 # phosphonium OPLS-AA JPCB110(2006)19586
 PT  CT   harm   1.81    3550.0
@@ -218,10 +218,10 @@ F   CF  F    harm   109.1   644.3
 F   CF  CF   harm   109.5   418.4
 CF  CF  CF   harm   112.7   488.3
 # ammonium, pyrrolidinium OPLS-AA JACS121(1999)4827, AMBER
-NT  CT  CT   harm   109.5   669.4
-CT  NT  CT   harm   109.5   418.4
-HC  CT  NT   harm   109.5   209.2
-HN  NT  CT   harm   109.5   418.4
+NT  CT  CT   harm   109.5   470.3
+CT  NT  CT   harm   107.2   433.5
+HC  CT  NT   harm   109.5   292.9
+HN  NT  CT   harm   109.5   292.9
 # phosphonium OPLS-AA, JPCB110(2006)19586
 CT  PT  CT   harm   109.5   607.8
 HC  CT  PT   harm   110.1   389.9
@@ -333,8 +333,8 @@ HC  CT  CT  NT   opls  -4.2384   -2.9665    1.9790    0.0000
 CT  CT  CT  NT   opls  10.0081   -2.8200    2.3012    0.0000
 CT  NT  CT  CT   opls   1.7405   -0.5356    2.9079    0.0000
 HC  CT  NT  CT   opls   0.0000    0.0000    2.3430    0.0000
-HN  NT  CT  HC   opls   0.0000    0.0000    0.0000    0.0000
-HN  NT  CT  CT   opls   0.0000    0.0000    0.0000    0.0000
+HN  NT  CT  HC   opls   0.0000    0.0000    1.6736    0.0000
+HN  NT  CT  CT   opls  -0.7950   -1.7447    1.7489    0.0000
 # cholinium: unpublished
 OH  CT  CT  NT   opls -44.0515   -5.4349    0.0000    0.0000
 #OH  CT  CT  NT   opls -44.0515   -5.0148    0.0000   -3.1510
