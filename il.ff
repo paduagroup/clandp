@@ -1,4 +1,4 @@
-# il.ff, version 2016/02/03
+# il.ff, version 2016/04/22
 # Molecular force field for ionic liquids
 # Agilio Padua, J.N. Canongia Lopes
 # contributors: K. Shimizu, A. Podgorsek, F. Hammami, L. Gontrani, M. Mishra
@@ -115,6 +115,14 @@ HS3   HC   1.008   0.00   lj    2.50   0.12600
 SK    SK  32.066  -0.72   lj    3.55   1.04600
 CK    CK  12.011   0.44   lj    3.40   0.35980
 NK    NK  14.001  -0.72   lj    3.25   0.71128
+# tricyanomethanide MG Martin STTR report 2008, our charges
+#C3A  C3A  12.011  -0.910  lj    3.55   0.33742
+#CN   CN   12.011   0.655  lj    3.12   0.83680
+#NC   NC   14.001  -0.685  lj    3.30   2.51040
+# tricyanomethanide OPLS nitriles, our charges
+C3A  C3A  12.011  -0.910  lj    3.55   0.29288
+CN   CN   12.011   0.655  lj    3.30   0.27614
+NC   NC   14.001  -0.685  lj    3.20   0.71128
 
 BONDS
 # i j    pot    re/A    kr/kJmol-1
@@ -162,7 +170,7 @@ NB  SB   harm   1.570   3137.0
 FB  SB   harm   1.575   1879.0
 # dicyanamide JPCB110(2006)19586
 N3  CZ   harm   1.310   4206.0
-CZ  NZ   harm   1.157   7746.0
+CZ  NZ   harm   1.157   5439.2
 # acetate OPLS-AA
 CO  O2   harm   1.250   5489.0
 CT  CO   harm   1.522   2653.0
@@ -175,6 +183,12 @@ CT  SO   harm   1.792   1970.0
 # thiocyanate JCP128(2008)154504, our MP2
 SK  CK   harm   1.67    2836.8
 CK  NK   harm   1.19   12221.5
+# tricyanomethanide MG Martin STTR report 2008
+#C3A  CN  harm   1.408   1799.12
+#CN   NC  harm   1.167   5062.64
+# tricyanomethanide OPLS nitriles
+C3A  CN  harm   1.412   3347.2
+CN   NC  harm   1.157   5439.2
 
 ANGLES
 # i j   k    pot    th/deg  ka/kjmol-1
@@ -267,6 +281,12 @@ HC  CT  SO   harm   107.3   390.3
 CT  CT  SO   harm   113.3   583.0
 # thiocyanate JCP128(2008)154504
 SK  CK  NK   harm   180.0   651.9
+# tricyanomethanide MG Martin STTR report 2008
+#C3A CN  NB   harm   180.0   251.04
+#CN  C3A CN   harm   120.0   368.19
+# tricyanomethanide OPLS nitriles
+C3A CN  NC   harm   180.0   1255.2
+CN  C3A CN   harm   120.0    585.8
 
 DIHEDRALS
 # i j   k   l    pot    v1        v2        v3        v4
@@ -377,16 +397,20 @@ OS  SO  CT  HC   opls   0.0000    0.0000    1.6250    0.0000
 OS  SO  CT  CT   opls   0.0000    0.0000    1.3938    0.0000
 SO  CT  CT  HC   opls   0.0000    0.0000    1.3797    0.0000
 SO  CT  CT  CT   opls -16.1000   -2.0046    0.7674    0.0000
+# tricyanomethanide
+# NC  CN  C3A CN   opls   0.0000    0.0000    0.0000    0.0000
 
 IMPROPER
 # improper C aromatics AMBER JACS 117(1995)5179
-CA  CA  CA  HA   opls    0.0000    9.2048    0.0000    0.0000
-CA  CA  CA  CT   opls    0.0000    9.2048    0.0000    0.0000
-CA  CA  NA  CT   opls    0.0000    9.2048    0.0000    0.0000 
-CA  NA  CA  HA   opls    0.0000    9.2048    0.0000    0.0000 
+CA  CA  CA  HA   opls   0.0000    9.2048    0.0000    0.0000
+CA  CA  CA  CT   opls   0.0000    9.2048    0.0000    0.0000
+CA  CA  NA  CT   opls   0.0000    9.2048    0.0000    0.0000 
+CA  NA  CA  HA   opls   0.0000    9.2048    0.0000    0.0000 
 # improper imidazolium ring AMBER JACS117(1995)5179
 CR  CW  NA  CT   opls   0.0000    8.3700    0.0000    0.0000
 CR  CW  NA  HA   opls   0.0000    8.3700    0.0000    0.0000
 NA  NA  CR  HA   opls   0.0000    9.2000    0.0000    0.0000
 NA  NA  CR  CT   opls   0.0000    9.2000    0.0000    0.0000
 NA  CW  CW  HA   opls   0.0000    9.2000    0.0000    0.0000
+# improper tricyanomethanide AMBER JACS 117(1995)5179
+CN  CN  C3A CN   opls   0.0000    9.2048    0.0000    0.0000
