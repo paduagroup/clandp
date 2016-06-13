@@ -17,6 +17,8 @@ Input files in Gromacs format. This version of the force field has been refined 
 References
 ----
 
-*  I.V. Voroshylova, V.V. Chaban, J Phys Chem B 118 (2014) 10716, DOI:
+*  I.V. Voroshylova, V.V. Chaban, J Phys Chem B 118 (2014) 10716-24, DOI:
   [10.1021/jp5054875](http://dx.doi.org/10.1021/jp5054875)
 
+*  V.V. Chaban, I.V. Voroshylova, J Phys Chem B 119 (2015) 6242-9, DOI:
+  [10.1021/jp5122678](http://dx.doi.org/10.1021/jp5122678)
