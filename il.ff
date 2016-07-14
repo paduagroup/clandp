@@ -1,4 +1,4 @@
-# il.ff, version 2016/04/22
+# il.ff, version 2016/07/14
 # Molecular force field for ionic liquids
 # Agilio Padua, J.N. Canongia Lopes
 # contributors: K. Shimizu, A. Podgorsek, F. Hammami, L. Gontrani, M. Mishra
@@ -309,8 +309,8 @@ CA  NA  CA  CA   opls   0.0000   30.3340    0.0000    0.0000
 CA  NA  CA  HA   opls   0.0000   30.3340    0.0000    0.0000
 CT  NA  CA  CA   opls   0.0000   30.3340    0.0000    0.0000
 CT  NA  CA  HA   opls   0.0000   30.3340    0.0000    0.0000
-CA  NA  CT  CT   opls   0.0000    0.0000    0.0000    0.0000
-CA  NA  CT  HC   opls   0.0000    1.0920    0.0000    0.7930
+CA  NA  CT  HC   opls   0.0000    0.0000    0.0000    0.0000
+CA  NA  CT  CT   opls   0.0000    1.0920    0.0000    0.7930
 # dialkylimidazolium JPCB108(2004)2038
 CW  NA  CR  NA   opls   0.0000   19.4600    0.0000    0.0000
 CW  NA  CR  HA   opls   0.0000   19.4600    0.0000    0.0000
