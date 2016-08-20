@@ -1,4 +1,4 @@
-# il.ff, version 2016/07/14
+# il.ff, version 2016/08/20
 # Molecular force field for ionic liquids
 # Agilio Padua, J.N. Canongia Lopes
 # contributors: K. Shimizu, A. Podgorsek, F. Hammami, L. Gontrani, M. Mishra
@@ -305,10 +305,10 @@ CT  CA  CA  HA   opls   0.0000   30.3340    0.0000    0.0000
 # pyridinium JPCB110(2006)19586
 NA  CA  CA  CA   opls   0.0000   30.3340    0.0000    0.0000
 NA  CA  CA  HA   opls   0.0000   30.3340    0.0000    0.0000
-CA  NA  CA  CA   opls   0.0000   30.3340    0.0000    0.0000
-CA  NA  CA  HA   opls   0.0000   30.3340    0.0000    0.0000
-CT  NA  CA  CA   opls   0.0000   30.3340    0.0000    0.0000
-CT  NA  CA  HA   opls   0.0000   30.3340    0.0000    0.0000
+CA  NA  CA  CA   opls   0.0000   12.5500    0.0000    0.0000
+CA  NA  CA  HA   opls   0.0000   12.5500    0.0000    0.0000
+CT  NA  CA  CA   opls   0.0000   12.5500    0.0000    0.0000
+CT  NA  CA  HA   opls   0.0000   12.5500    0.0000    0.0000
 CA  NA  CT  HC   opls   0.0000    0.0000    0.0000    0.0000
 CA  NA  CT  CT   opls   0.0000    1.0920    0.0000    0.7930
 # dialkylimidazolium JPCB108(2004)2038
