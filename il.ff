@@ -1,4 +1,4 @@
-# il.ff, version 2016/08/20
+# il.ff, version 2016/10/14
 # Molecular force field for ionic liquids
 # Agilio Padua, J.N. Canongia Lopes
 # contributors: K. Shimizu, A. Podgorsek, F. Hammami, L. Gontrani, M. Mishra
@@ -407,10 +407,12 @@ CA  CA  CA  CT   opls   0.0000    9.2048    0.0000    0.0000
 CA  CA  NA  CT   opls   0.0000    9.2048    0.0000    0.0000 
 CA  NA  CA  HA   opls   0.0000    9.2048    0.0000    0.0000 
 # improper imidazolium ring AMBER JACS117(1995)5179
-CR  CW  NA  CT   opls   0.0000    8.3700    0.0000    0.0000
-CR  CW  NA  HA   opls   0.0000    8.3700    0.0000    0.0000
-NA  NA  CR  HA   opls   0.0000    9.2000    0.0000    0.0000
-NA  NA  CR  CT   opls   0.0000    9.2000    0.0000    0.0000
-NA  CW  CW  HA   opls   0.0000    9.2000    0.0000    0.0000
+CR  CW  NA  CT   opls   0.0000    8.3680    0.0000    0.0000
+CR  CW  NA  HA   opls   0.0000    8.3680    0.0000    0.0000
+NA  NA  CR  HA   opls   0.0000    9.2048    0.0000    0.0000
+NA  NA  CR  CT   opls   0.0000    9.2048    0.0000    0.0000
+NA  CW  CW  HA   opls   0.0000    9.2048    0.0000    0.0000
 # improper tricyanomethanide AMBER JACS 117(1995)5179
 CN  CN  C3A CN   opls   0.0000    9.2048    0.0000    0.0000
+# improper carbonyl AMBER JACS117(1995)5179
+CT  O2  CO  O2   opls   0.0000   87.8640   0.0000    0.0000
