@@ -260,8 +260,8 @@ SB  NB  SB   harm   125.6   671.0
 SB  CF  CF   harm   115.9   418.4
 FB  CF  CF   harm   109.5   418.4
 # bis(fluorosulfonyl)amide
-F   SB  OB   harm   104.1  1077.0
-F   SB  NB   harm   103.0   902.0   
+FB  SB  OB   harm   104.1  1077.0
+FB  SB  NB   harm   103.0   902.0
 # dicyanamide JPCB110(2006)19586
 CZ  N3  CZ   harm   118.5   362.0
 N3  CZ  NZ   harm   175.2   425.0
