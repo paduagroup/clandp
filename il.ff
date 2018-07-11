@@ -1,4 +1,4 @@
-# il.ff, version 2018/04/05
+# il.ff, version 2018/07/11
 # Molecular force field for ionic liquids
 # Agilio Padua, J.N. Canongia Lopes
 # contributors: K. Shimizu, A. Podgorsek, F. Hammami, L. Gontrani, M. Mishra,
@@ -100,6 +100,7 @@ F1    FB  18.998  -0.16   lj    3.118  0.25540
 OTF   OB  15.999  -0.63   lj    3.15   0.83736
 # longer perfluoroalkanesulfonylamides
 C1F   CF  12.011   0.19   lj    3.50   0.27614
+CEF   CF  12.011   0.36   lj    3.50   0.27614
 # bis(fluorosulfonyl)amide PCCP 43 (2017) 29617
 FSI   FB  18.998  -0.13   lj    3.118  0.25540
 # dicyanamide JPCB 110 (2006) 19586
