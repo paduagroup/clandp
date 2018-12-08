@@ -1,4 +1,4 @@
-# il.ff, version 2018/09/06
+# il.ff, version 2018/12/04
 # Molecular force field for ionic liquids
 # Agilio Padua, J.N. Canongia Lopes
 # contributors: K. Shimizu, A. Podgorsek, F. Hammami, L. Gontrani, M. Mishra,
@@ -56,7 +56,7 @@ CAQ   CA  12.011   0.185  lj    3.55   0.29288
 # imidazolium fluoroalkyl JPCB 114 (2010) 3592
 # fluoroalkyl OPLS-AA JPCA 105 (2001) 4118 
 C1H   CT  12.011  -0.05   lj    3.50   0.27614
-C3F   CF  12.011   0.12   lj    3.50   0.27614
+CFH   CF  12.011   0.12   lj    3.50   0.27614
 CTF   CF  12.011   0.36   lj    3.50   0.27614
 CSF   CF  12.011   0.24   lj    3.50   0.27614
 F     F   18.998  -0.12   lj    2.95   0.22175
