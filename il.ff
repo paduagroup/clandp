@@ -1,4 +1,4 @@
-# il.ff, version 2018/12/04
+# il.ff, version 2018/12/18
 # Molecular force field for ionic liquids
 # Agilio Padua, J.N. Canongia Lopes
 # contributors: K. Shimizu, A. Podgorsek, F. Hammami, L. Gontrani, M. Mishra,
@@ -441,4 +441,7 @@ NA  CW  CW  HA   opls   0.0000    9.2048    0.0000    0.0000
 # improper tricyanomethanide AMBER JACS 117 (1995) 5179
 CN  CN  C3A CN   opls   0.0000    9.2048    0.0000    0.0000
 # improper carbonyl AMBER JACS 117 (1995 )5179
-CT  O2  CO  O2   opls   0.0000   87.8640   0.0000    0.0000
+CT  O2  CO  O2   opls   0.0000   87.8640    0.0000    0.0000
+# improper guanidinium AMBER JACS 117 (1995 )5179
+NG  NG  CG  NG   opls   0.0000    8.3680    0.0000    0.0000
+CG  HG  NG  HG   opls   0.0000    9.2048    0.0000    0.0000
