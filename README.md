@@ -3,7 +3,7 @@ Force field for ionic liquids
 
 [![DOI](https://zenodo.org/badge/doi/10.5281/zenodo.18619.svg)](http://dx.doi.org/10.5281/zenodo.18619)
 
-_[Agilio Padua](http://perso.ens-lyon.fr/apadua)_
+_[Agilio Padua](http://perso.ens-lyon.fr/agilio.padua)_
 
 _series of papers by A. Padua, J.N. Canongia Lopes et al. J Phys Chem
 B (since 2004)_
