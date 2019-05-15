@@ -3,7 +3,7 @@ Force field for ionic liquids
 
 [![DOI](https://zenodo.org/badge/doi/10.5281/zenodo.18619.svg)](http://dx.doi.org/10.5281/zenodo.18619)
 
-_[Agilio Padua](http://tim.univ-bpclermont.fr/apadua)_
+_[Agilio Padua](http://perso.ens-lyon.fr/apadua)_
 
 _series of papers by A. Padua, J.N. Canongia Lopes et al. J Phys Chem
 B (since 2004)_
@@ -15,8 +15,9 @@ Contents
     ionic liquids (under construction, compatible with the
     [fftool](http://www.github.com/agiliopadua/fftool) script to
     create input files for molecular simulation using the
-    [LAMMPS](http://lammps.sandia.gov/) or
+    [LAMMPS](http://lammps.sandia.gov),
     [DL_POLY](http://www.stfc.ac.uk/CSE/randd/ccg/software/DL_POLY/25526.aspx)
+    or [Gromacs](http://www.gromacs.org)
     molecular dynamics codes.
 
 * `old.il.ff`: database of force field parameters for ions of several ionic
@@ -35,7 +36,7 @@ Requirements
 
 * [fftool](http://www.github.com/agiliopadua/fftool)
 
-* [Python 2.7](http://www.python.org/)
+* [Python](http://www.python.org/)
 
 * [Packmol](http://www.ime.unicamp.br/~martinez/packmol/)
 
@@ -76,7 +77,7 @@ How to build an initial configuration of a molecular or ionic system.
     Atom coordinates will be written to a file `simbox.xyz`. You can
     use a molecular viewer such as VMD to look at the `.xyz` files.
 
-4. Use `fftool` to build the input files for LAMMPS or DL_POLY
+4. Use `fftool` to build the input files for LAMMPS, DL_POLY or Gromacs
    containing the force field and the coordinates:
 
         fftool 20 c4c1im.zmat 20 ntf2.zmat --lammps
