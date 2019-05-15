@@ -17,7 +17,7 @@ Contents
     create input files for molecular simulation using the
     [LAMMPS](http://lammps.sandia.gov),
     [DL_POLY](http://www.stfc.ac.uk/CSE/randd/ccg/software/DL_POLY/25526.aspx)
-    or [Gromacs](http://www.gromacs.org)
+    or [GROMACS](http://www.gromacs.org)
     molecular dynamics codes.
 
 * `old.il.ff`: database of force field parameters for ions of several ionic
@@ -100,6 +100,9 @@ References
 
 * [DL_POLY](http://www.stfc.ac.uk/CSE/randd/ccg/software/DL_POLY/25526.aspx):
   I.T. Todorov and W. Smith, Daresbury Lab.
+
+* [GROMACS](http://www.gromacs.org) M. Abraham , D. van der Spoel,
+B. Hess, E. Lindahl, et al.
 
 * IL force field: J.N. Canongia Lopes, A.A.H. Padua et al.
   J Phys Chem B 108 (2004) 2038, DOI:
