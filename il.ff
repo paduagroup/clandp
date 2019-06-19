@@ -16,6 +16,8 @@ ATOMS
 #     typ  m/u     q/e    pot   pars
 # dialkylimidazolium JPCB 108 (2004) 2038
 C1    CT  12.011  -0.17   lj    3.50   0.27614
+# C1A - only for polarisable FF
+C1A   CT  12.011  -0.17   lj    3.50   0.27614
 C2    CT  12.011   0.01   lj    3.50   0.27614
 CE    CT  12.011  -0.05   lj    3.50   0.27614
 CS    CT  12.011  -0.12   lj    3.50   0.27614
@@ -56,6 +58,7 @@ CAQ   CA  12.011   0.185  lj    3.55   0.29288
 # imidazolium fluoroalkyl JPCB 114 (2010) 3592
 # fluoroalkyl OPLS-AA JPCA 105 (2001) 4118 
 C1H   CT  12.011  -0.05   lj    3.50   0.27614
+C3F   CF  12.011   0.12   lj    3.50   0.27614
 CFH   CF  12.011   0.12   lj    3.50   0.27614
 CTF   CF  12.011   0.36   lj    3.50   0.27614
 CSF   CF  12.011   0.24   lj    3.50   0.27614
@@ -137,6 +140,14 @@ NK    NK  14.001  -0.72   lj    3.25   0.71128
 C3A  C3A  12.011  -0.910  lj    3.55   0.29288
 CN   CN   12.011   0.655  lj    3.30   0.27614
 NC   NC   14.001  -0.685  lj    3.20   0.71128
+# tosylate OPLS toluene, SO3- JPCB 112 (2008) 5039, our charges
+CAPS  CA  12.011  -0.140  lj    3.55   0.29288
+CAMS  CA  12.011   0.000  lj    3.55   0.29288
+CAOS  CA  12.011  -0.270  lj    3.55   0.29288
+CATS  CA  12.011   0.157  lj    3.55   0.29288
+CTTS  CT  12.011  -0.197  lj    3.50   0.27614
+HATS  HA   1.008   0.100  lj    2.42   0.12552
+HTS   HC   1.008   0.060  lj    2.42   0.12552
 
 BONDS
 # i j    pot    re/A    kr/kJmol-1
@@ -206,6 +217,8 @@ CK  NK   harm   1.19   12221.5
 # tricyanomethanide OPLS nitriles
 C3A  CN  harm   1.412   3347.2
 CN   NC  harm   1.157   5439.2
+# tosylate JPCB 112 (2008) 5039
+CA   SO  harm   1.797   1970.0
 
 ANGLES
 # i j   k    pot    th/deg  ka/kjmol-1
@@ -308,6 +321,9 @@ SK  CK  NK   harm   180.0   651.9
 # tricyanomethanide OPLS nitriles
 C3A CN  NC   harm   180.0   1255.2
 CN  C3A CN   harm   120.0    585.8
+# tosylate OPLS, JPCB 112 (2008) 5039
+CA  CA  SO   harm   120.5    711.28
+CA  SO  OS   harm   104.2    870.0
 
 DIHEDRALS
 # i j   k   l    pot    v1        v2        v3        v4
@@ -424,6 +440,11 @@ SO  CT  CT  HC   opls   0.0000    0.0000    1.3797    0.0000
 SO  CT  CT  CT   opls -16.1000   -2.0046    0.7674    0.0000
 # tricyanomethanide
 # NC  CN  C3A CN   opls   0.0000    0.0000    0.0000    0.0000
+# tosylate our MP2, OPLS aromatics
+CA  CA  SO  OS     opls   0.0000    0.0000    0.0000    0.0000 
+SO  CA  CA  CA     opls   0.0000   30.3340    0.0000    0.0000
+SO  CA  CA  HA     opls   0.0000   30.3340    0.0000    0.0000 
+HC  CT  CA  CA     opls   0.0000    0.0000    0.0000    0.0000
 
 IMPROPER
 # improper C aromatics AMBER JACS 117 (1995) 5179
@@ -445,3 +466,5 @@ CT  O2  CO  O2   opls   0.0000   87.8640    0.0000    0.0000
 # improper guanidinium AMBER JACS 117 (1995 )5179
 NG  NG  CG  NG   opls   0.0000    8.3680    0.0000    0.0000
 CG  HG  NG  HG   opls   0.0000    9.2048    0.0000    0.0000
+#tosylate aromatics AMBER JACS 117 (1995) 5179
+CA  CA  CA  SO  opls   0.0000    9.2048    0.0000    0.0000
