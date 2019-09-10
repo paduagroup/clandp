@@ -302,7 +302,7 @@ N3  CZ  NZ   harm   175.2   425.0
 # acetate OPLS-AA JPCB (2004)
 O2  CO  O2   harm   126.0   669.4
 CT  CO  O2   harm   117.0   585.8
-HC  CT  CO   harm   109.5   298.9
+HC  CT  CO   harm   109.5   292.9
 # trifluoroacetate OPLS-AA
 F   CF  CO   harm   109.5   418.4
 CF  CO  O2   harm   117.0   585.8
