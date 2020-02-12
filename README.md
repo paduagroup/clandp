@@ -1,7 +1,7 @@
 Force field for ionic liquids
 =============================
 
-[![DOI](https://zenodo.org/badge/doi/10.5281/zenodo.18619.svg)](http://dx.doi.org/10.5281/zenodo.18619)
+[![DOI](https://zenodo.org/badge/doi/10.5281/zenodo.593705.svg)](http://dx.doi.org/10.5281/zenodo.593705)
 
 _[Agilio Padua](http://perso.ens-lyon.fr/agilio.padua)_
 
