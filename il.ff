@@ -29,6 +29,11 @@ HCW   HA   1.008   0.21   lj    2.42   0.12552
 HC    HC   1.008   0.06   lj    2.50   0.12552
 H1    HC   1.008   0.13   lj    2.50   0.12552
 NA    NA  14.007   0.15   lj    3.25   0.71128
+# alkylimidazolium JPCB 110 (2006) 19586
+CRH   CR  12.011   0.00   lj    3.55   0.29288
+NAH   NA  14.007  -0.21   lj    3.25   0.71128
+CWH   CW  12.011  -0.03   lj    2.93   0.29288
+HNA   HA   1.008   0.37   lj    0.00   0.00000
 # dialkylmethylmidazolium JPCB 112 (2008) 5039
 CRM   CR  12.011   0.19   lj    3.55   0.29288
 NAM   NA  14.007   0.04   lj    3.25   0.71128
@@ -167,6 +172,8 @@ CR  NA   harm   1.315   3992.0
 CW  NA   harm   1.378   3574.0
 CW  CW   harm   1.341   4352.0
 NA  CT   harm   1.466   2820.0
+# alkylimidazolium JPCB 110 (2006) 19586
+HA  NA   harm   1.010   3632.0
 # dialkylimethylmidazolium JPCB112(2008)5039
 CR  CT   harm   1.510   2653.0
 # fluoroalkyl JPCA105(2001)4118, JPCA106(2002)10116
@@ -247,6 +254,9 @@ NA  CW  HA   harm   122.0   292.9
 CW  CW  HA   harm   130.9   292.9
 NA  CT  HC   harm   110.7   313.8
 NA  CT  CT   harm   112.7   488.3
+# alkylimidazolium JPCB 110 (2006) 19586
+CR  NA  HA   harm   125.4    292.9
+CW  NA  HA   harm   126.6    292.9
 # dialkylimethylmidazolium JPCB112(2008)5039
 CT  CR  NA   harm   125.8   585.8
 CR  CT  HC   harm   110.7   313.8
@@ -301,7 +311,7 @@ N3  CZ  NZ   harm   175.2   425.0
 # acetate OPLS-AA JPCB (2004)
 O2  CO  O2   harm   126.0   669.4
 CT  CO  O2   harm   117.0   585.8
-HC  CT  CO   harm   109.5   298.9
+HC  CT  CO   harm   109.5   292.9
 # trifluoroacetate OPLS-AA
 F   CF  CO   harm   109.5   418.4
 CF  CO  O2   harm   117.0   585.8
@@ -365,6 +375,11 @@ CW  NA  CT  CT   opls  -7.1535    6.1064    0.7939    0.0000
 CR  NA  CT  CT   opls  -5.2691    0.0000    0.0000    0.0000
 NA  CT  CT  CT   opls  -7.4797    3.1642   -1.2026    0.0000
 NA  CT  CT  HC   opls   0.0000    0.0000    0.3670    0.0000
+# alkylimidazolium JPCB 110 (2006) 19586
+HA  NA  CR  NA   olsa   0.0000   19.4600    0.0000    0.0000
+HA  NA  CR  HA   olsa   0.0000   19.4600    0.0000    0.0000
+HA  NA  CW  CW   olsa   0.0000   12.5500    0.0000    0.0000
+HA  NA  CW  HA   olsa   0.0000   12.5500    0.0000    0.0000
 # dialkylimethylmidazolium JPCB 112 (2008) 5039
 CW  NA  CR  CT   opls   0.0000   19.4600    0.0000    0.0000
 CT  NA  CR  CT   opls   0.0000   19.4600    0.0000    0.0000
