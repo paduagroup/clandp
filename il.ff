@@ -61,7 +61,7 @@ HAP   HA   1.008   0.15   lj    2.42   0.12552
 NAQ   NA  14.007   0.305  lj    3.25   0.71128
 CAQ   CA  12.011   0.185  lj    3.55   0.29288
 # imidazolium fluoroalkyl JPCB 114 (2010) 3592
-# fluoroalkyl OPLS-AA JPCA 105 (2001) 4118 
+# fluoroalkyl OPLS-AA JPCA 105 (2001) 4118
 C1H   CT  12.011  -0.05   lj    3.50   0.27614
 CFH   CF  12.011   0.12   lj    3.50   0.27614
 CTF   CF  12.011   0.36   lj    3.50   0.27614
@@ -72,7 +72,7 @@ N4    NT  14.007   0.12   lj    3.25   0.71128
 N3    NT  14.007   0.03   lj    3.25   0.71128
 H3    HN   1.008   0.31   lj    0.00   0.00000
 # alcohols OPLS-AA JACS 118 (1996) 11225; JPC 100 (1996) 18010
-CTO   CT  12.011   0.145  lj    3.50   0.27614  
+CTO   CT  12.011   0.145  lj    3.50   0.27614
 H1O   HC   1.008   0.040  lj    2.50   0.12552
 OH    OH  15.999  -0.683  lj    3.12   0.71128
 HO    HO   1.008   0.418  lj    0.00   0.00000
@@ -230,7 +230,7 @@ ANGLES
 # i j   k    pot    th/deg  ka/kjmol-1
 # alkyl OPLS-AA JACS118(1996)11225, JPC100(1996)18010
 CT  CT  CT   harm   112.7   488.3
-CT  CT  HC   harm   110.7   313.8 
+CT  CT  HC   harm   110.7   313.8
 HC  CT  HC   harm   107.8   276.1
 # aromatics AMBER JACS 117(1995)5179
 CA  CA  HA   harm   120.0   292.9
@@ -290,15 +290,15 @@ CT  OH  HO   harm   108.5   460.2
 # tetrafluoroborate anion
 F   B   F    harm   109.5   669.5
 # hexafluorophosphate JCSPerkin2(1999)2365
-F   P   F    harm    90.0  1165.0  
+F   P   F    harm    90.0  1165.0
 # triflate and bistriflamide JPCB108(2004)16893
 FB  CF  FB   harm   107.1   781.0
 FB  CF  SB   harm   111.7   694.0
 OB  SB  OB   harm   118.5   969.0
 CF  SB  OB   harm   102.6   870.0
-NB  SB  OB   harm   113.6   789.0 
-NB  SB  CF   harm   103.5   764.0 
-SB  NB  SB   harm   125.6   671.0   
+NB  SB  OB   harm   113.6   789.0
+NB  SB  CF   harm   103.5   764.0
+SB  NB  SB   harm   125.6   671.0
 # longer perfluoroalkanesulfonylamides
 SB  CF  CF   harm   115.9   418.4
 FB  CF  CF   harm   109.5   418.4
@@ -376,10 +376,10 @@ CR  NA  CT  CT   opls  -5.2691    0.0000    0.0000    0.0000
 NA  CT  CT  CT   opls  -7.4797    3.1642   -1.2026    0.0000
 NA  CT  CT  HC   opls   0.0000    0.0000    0.3670    0.0000
 # alkylimidazolium JPCB 110 (2006) 19586
-HA  NA  CR  NA   olsa   0.0000   19.4600    0.0000    0.0000
-HA  NA  CR  HA   olsa   0.0000   19.4600    0.0000    0.0000
-HA  NA  CW  CW   olsa   0.0000   12.5500    0.0000    0.0000
-HA  NA  CW  HA   olsa   0.0000   12.5500    0.0000    0.0000
+HA  NA  CR  NA   opls   0.0000   19.4600    0.0000    0.0000
+HA  NA  CR  HA   opls   0.0000   19.4600    0.0000    0.0000
+HA  NA  CW  CW   opls   0.0000   12.5500    0.0000    0.0000
+HA  NA  CW  HA   opls   0.0000   12.5500    0.0000    0.0000
 # dialkylimethylmidazolium JPCB 112 (2008) 5039
 CW  NA  CR  CT   opls   0.0000   19.4600    0.0000    0.0000
 CT  NA  CR  CT   opls   0.0000   19.4600    0.0000    0.0000
@@ -452,12 +452,13 @@ OS  SO  CT  HC   opls   0.0000    0.0000    1.6250    0.0000
 OS  SO  CT  CT   opls   0.0000    0.0000    1.3938    0.0000
 SO  CT  CT  HC   opls   0.0000    0.0000    1.3797    0.0000
 SO  CT  CT  CT   opls -16.1000   -2.0046    0.7674    0.0000
-# tricyanomethanide
-# NC  CN  C3A CN   opls   0.0000    0.0000    0.0000    0.0000
+# dicyanoamide & tricyanomethanide
+NZ  CZ  N3  CZ     opls   0.0000    0.0000    0.0000    0.0000
+NC  CN  C3A CN     opls   0.0000    0.0000    0.0000    0.0000
 # tosylate our MP2, OPLS aromatics
-CA  CA  SO  OS     opls   0.0000    0.0000    0.0000    0.0000 
+CA  CA  SO  OS     opls   0.0000    0.0000    0.0000    0.0000
 SO  CA  CA  CA     opls   0.0000   30.3340    0.0000    0.0000
-SO  CA  CA  HA     opls   0.0000   30.3340    0.0000    0.0000 
+SO  CA  CA  HA     opls   0.0000   30.3340    0.0000    0.0000
 HC  CT  CA  CA     opls   0.0000    0.0000    0.0000    0.0000
 
 IMPROPER
@@ -465,8 +466,8 @@ IMPROPER
 CA  CA  CA  HA   opls   0.0000    9.2048    0.0000    0.0000
 CA  CA  CA  CA   opls   0.0000    9.2048    0.0000    0.0000
 CA  CA  CA  CT   opls   0.0000    9.2048    0.0000    0.0000
-CA  CA  NA  CT   opls   0.0000    9.2048    0.0000    0.0000 
-CA  NA  CA  HA   opls   0.0000    9.2048    0.0000    0.0000 
+CA  CA  NA  CT   opls   0.0000    9.2048    0.0000    0.0000
+CA  NA  CA  HA   opls   0.0000    9.2048    0.0000    0.0000
 # improper imidazolium ring AMBER JACS 117 (1995) 5179
 CR  CW  NA  CT   opls   0.0000    8.3680    0.0000    0.0000
 CR  CW  NA  HA   opls   0.0000    8.3680    0.0000    0.0000
