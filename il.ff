@@ -187,7 +187,7 @@ HN  NT   cons   1.010   3632.0
 HG  NG   cons   1.010   3632.0
 NG  CG   harm   1.340   4027.7
 # phosphonium OPLS-AA JPCB110(2006)19586
-PT  CT   harm   1.81    3550.0
+PT  CT   harm   1.81    1775.0
 # hydroxyl OPLS-AA JACS 118(1996)11225, JPC 100(1996)18010
 CT  OH   harm   1.410   2677.8
 HO  OH   cons   0.945   4627.5
