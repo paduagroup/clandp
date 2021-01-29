@@ -13,146 +13,149 @@
 # use with fftool to build input files for LAMMPS (or DLPOLY, GROMACS)
 
 ATOMS
-#     typ  m/u     q/e    pot   pars
-# dialkylimidazolium JPCB 108 (2004) 2038
-C1    CT  12.011  -0.17   lj    3.50   0.27614
-# C1A - only for polarisable FF
-C1A   CT  12.011  -0.17   lj    3.50   0.27614
-C2    CT  12.011   0.01   lj    3.50   0.27614
-CE    CT  12.011  -0.05   lj    3.50   0.27614
-CS    CT  12.011  -0.12   lj    3.50   0.27614
-CT    CT  12.011  -0.18   lj    3.50   0.27614
-CR    CR  12.011  -0.11   lj    3.55   0.29288
-CW    CW  12.011  -0.13   lj    3.55   0.29288
-HCR   HA   1.008   0.21   lj    2.42   0.12552
-HCW   HA   1.008   0.21   lj    2.42   0.12552
-HC    HC   1.008   0.06   lj    2.50   0.12552
-H1    HC   1.008   0.13   lj    2.50   0.12552
-NA    NA  14.007   0.15   lj    3.25   0.71128
-# alkylimidazolium JPCB 110 (2006) 19586
-CRH   CR  12.011   0.00   lj    3.55   0.29288
-NAH   NA  14.007  -0.21   lj    3.25   0.71128
-CWH   CW  12.011  -0.03   lj    2.93   0.29288
-HNA   HA   1.008   0.37   lj    0.00   0.00000
-# dialkylmethylmidazolium JPCB 112 (2008) 5039
-CRM   CR  12.011   0.19   lj    3.55   0.29288
-NAM   NA  14.007   0.04   lj    3.25   0.71128
-CCR   CT  12.011  -0.26   lj    3.50   0.27614
+#     typ   m/u     q/e    pot   pars
+# alkyl side chains OPLS-AA
+CT    CT   12.011  -0.18   lj    3.50   0.27614
+CS    CT   12.011  -0.12   lj    3.50   0.27614
+CT2   CT   12.011  -0.12   lj    3.50   0.27614
+CT3   CT   12.011  -0.06   lj    3.50   0.27614
+HC    HC    1.008   0.06   lj    2.50   0.12552
 # aromatic OPLS-AA
-CA    CA  12.011  -0.115  lj    3.55   0.29288
-HA    HA   1.008   0.115  lj    2.42   0.12552
+CA    CA   12.011  -0.115  lj    3.55   0.29288
+HA    HA    1.008   0.115  lj    2.42   0.12552
+# dialkylimidazolium JPCB 108 (2004) 2038
+C1    CT   12.011  -0.17   lj    3.50   0.27614
+# C1A - only for polarisable FF
+C1A   CT   12.011  -0.17   lj    3.50   0.27614
+C2    CT   12.011   0.01   lj    3.50   0.27614
+CE    CT   12.011  -0.05   lj    3.50   0.27614
+CR    CR   12.011  -0.11   lj    3.55   0.29288
+CW    CW   12.011  -0.13   lj    3.55   0.29288
+HCR   HA    1.008   0.21   lj    2.42   0.12552
+HCW   HA    1.008   0.21   lj    2.42   0.12552
+H1    HC    1.008   0.13   lj    2.50   0.12552
+NA    NA   14.007   0.15   lj    3.25   0.71128
+# alkylimidazolium JPCB 110 (2006) 19586
+CRH   CR   12.011   0.00   lj    3.55   0.29288
+NAH   NA   14.007  -0.21   lj    3.25   0.71128
+CWH   CW   12.011  -0.03   lj    2.93   0.29288
+HNA   HA    1.008   0.37   lj    0.00   0.00000
+# dialkylmethylmidazolium JPCB 112 (2008) 5039
+CRM   CR   12.011   0.19   lj    3.55   0.29288
+NAM   NA   14.007   0.04   lj    3.25   0.71128
+CCR   CT   12.011  -0.26   lj    3.50   0.27614
 # benzylimidazolium JPCB 117 (2013) 7416 (OPLS-AA benzyl ok)
-C1T   CT  12.011   0.039  lj    3.50   0.27614
+C1T   CT   12.011   0.039  lj    3.50   0.27614
 # toluene JACS 118 (1996) 11217; JCC 25 (2004) 1322
-CAP   CA  12.011  -0.154  lj    3.55   0.29288
-CAM   CA  12.011  -0.145  lj    3.55   0.29288
-CAO   CA  12.011  -0.147  lj    3.55   0.29288
-CAT   CA  12.011  -0.081  lj    3.55   0.29288
-# CTT   CT  12.011  -0.197  lj    3.50   0.27614
-HAT   HA   1.008   0.148  lj    2.42   0.12552
-HT    HC   1.008   0.092  lj    2.42   0.12552
+CAP   CA   12.011  -0.154  lj    3.55   0.29288
+CAM   CA   12.011  -0.145  lj    3.55   0.29288
+CAO   CA   12.011  -0.147  lj    3.55   0.29288
+CAT   CA   12.011  -0.081  lj    3.55   0.29288
+# CTT   CT   12.011  -0.197  lj    3.50   0.27614
+HAT   HA    1.008   0.148  lj    2.42   0.12552
+HT    HC    1.008   0.092  lj    2.42   0.12552
 # pyridinium JPCB 110 (2006) 19586
-NAP   NA  14.007   0.15   lj    3.25   0.71128
-CAPO  CA  12.011   0.00   lj    3.55   0.29288
-CAPM  CA  12.011  -0.07   lj    3.55   0.29288
-CAPP  CA  12.011   0.02   lj    3.55   0.29288
-HAP   HA   1.008   0.15   lj    2.42   0.12552
+NAP   NA   14.007   0.15   lj    3.25   0.71128
+CAPO  CA   12.011   0.00   lj    3.55   0.29288
+CAPM  CA   12.011  -0.07   lj    3.55   0.29288
+CAPP  CA   12.011   0.02   lj    3.55   0.29288
+HAP   HA    1.008   0.15   lj    2.42   0.12552
 # isoquinolinium
-NAQ   NA  14.007   0.305  lj    3.25   0.71128
-CAQ   CA  12.011   0.185  lj    3.55   0.29288
+NAQ   NA   14.007   0.305  lj    3.25   0.71128
+CAQ   CA   12.011   0.185  lj    3.55   0.29288
 # imidazolium fluoroalkyl JPCB 114 (2010) 3592
 # fluoroalkyl OPLS-AA JPCA 105 (2001) 4118
-C1H   CT  12.011  -0.05   lj    3.50   0.27614
-CFH   CF  12.011   0.12   lj    3.50   0.27614
-CTF   CF  12.011   0.36   lj    3.50   0.27614
-CSF   CF  12.011   0.24   lj    3.50   0.27614
-F     F   18.998  -0.12   lj    2.95   0.22175
+C1H   CT   12.011  -0.05   lj    3.50   0.27614
+CFH   CF   12.011   0.12   lj    3.50   0.27614
+CTF   CF   12.011   0.36   lj    3.50   0.27614
+CSF   CF   12.011   0.24   lj    3.50   0.27614
+F     F    18.998  -0.12   lj    2.95   0.22175
 # ammonium, pyrrolidinium JPCB 108 (2004) 16893
-N4    NT  14.007   0.12   lj    3.25   0.71128
-N3    NT  14.007   0.03   lj    3.25   0.71128
-H3    HN   1.008   0.31   lj    0.00   0.00000
+N4    NT   14.007   0.12   lj    3.25   0.71128
+N3    NT   14.007   0.03   lj    3.25   0.71128
+H3    HN    1.008   0.31   lj    0.00   0.00000
 # alcohols OPLS-AA JACS 118 (1996) 11225; JPC 100 (1996) 18010
-CTO   CT  12.011   0.145  lj    3.50   0.27614
-H1O   HC   1.008   0.040  lj    2.50   0.12552
-OH    OH  15.999  -0.683  lj    3.12   0.71128
-HO    HO   1.008   0.418  lj    0.00   0.00000
+CTO   CT   12.011   0.145  lj    3.50   0.27614
+H1O   HC    1.008   0.040  lj    2.50   0.12552
+OH    OH   15.999  -0.683  lj    3.12   0.71128
+HO    HO    1.008   0.418  lj    0.00   0.00000
 # alkoxy imidazolium JPCB 114 (2010) 3595
-C2O   CT  12.011   0.275  lj    3.50   0.27614
+C2O   CT   12.011   0.275  lj    3.50   0.27614
 # cholinium same as OPLS-AA alcohols or ammonium (Ferid, Agilio)
-COL   CT  12.011   0.275  lj    3.50   0.27614
+COL   CT   12.011   0.275  lj    3.50   0.27614
 # guanidinium
-NG    NG  14.007  -0.94   lj    3.25   0.71128
-CG    CG  12.011   1.06   lj    2.25   0.20900
-HG    HG   1.008   0.46   lj    0.00   0.00000
+NG    NG   14.007  -0.94   lj    3.25   0.71128
+CG    CG   12.011   1.06   lj    2.25   0.20900
+HG    HG    1.008   0.46   lj    0.00   0.00000
 # phosphonium OPLS-AA, JPCB 110 (2006) 19586
-P3    PT  30.974   0.68   lj    3.74   0.83680
-C1P   CT  12.011  -0.31   lj    3.50   0.27614
+P3    PT   30.974   0.68   lj    3.74   0.83680
+C1P   CT   12.011  -0.31   lj    3.50   0.27614
 # lithium cation Aqvist
-Li    Li   6.941  +1.00   lj    2.126  0.07648
+Li    Li    6.941  +1.00   lj    2.126  0.07648
 # sodium cation
-Na    Na  22.990  +1.00   lj    3.33   0.01160
+Na    Na   22.990  +1.00   lj    3.33   0.01160
 # tetrafluoroborate anion
-B     B   10.811   0.96   lj    3.58   0.39750
-FB    F   18.998  -0.49   lj    3.12   0.25520
+B     B    10.811   0.96   lj    3.58   0.39750
+FB    F    18.998  -0.49   lj    3.12   0.25520
 # hexafluorophosphate JCSPerkin2 (1999) 2365
-P     P   30.974   1.34   lj    3.74   0.83680
-FP    F   18.998  -0.39   lj    3.12   0.25520
+P     P    30.974   1.34   lj    3.74   0.83680
+FP    F    18.998  -0.39   lj    3.12   0.25520
 # chloride JPCB 108 (2004) 2038
-Cl    Cl  35.453  -1.00   lj    3.65   0.83000
+Cl    Cl   35.453  -1.00   lj    3.65   0.83000
 # bromide JPCB 110 (2006) 19586
-Br    Br  79.904  -1.00   lj    3.97   0.86000
+Br    Br   79.904  -1.00   lj    3.97   0.86000
 # bistriflamide JPCB 108 (2004) 16893, PCCP 43 (2017) 29617
-CBT   CF  12.011   0.35   lj    3.50   0.27614
-SBT   SB  32.066   1.02   lj    3.55   1.04600
-NBT   NB  14.000  -0.66   lj    3.25   0.71128
-OBT   OB  15.999  -0.53   lj    3.15   0.83736
-F1    FB  18.998  -0.16   lj    3.118  0.25540
+CBT   CF   12.011   0.35   lj    3.50   0.27614
+SBT   SB   32.066   1.02   lj    3.55   1.04600
+NBT   NB   14.000  -0.66   lj    3.25   0.71128
+OBT   OB   15.999  -0.53   lj    3.15   0.83736
+F1    FB   18.998  -0.16   lj    3.118  0.25540
 # triflate PCCP 43 (2017) 29617
-OTF   OB  15.999  -0.63   lj    3.15   0.83736
+OTF   OB   15.999  -0.63   lj    3.15   0.83736
 # longer perfluoroalkanesulfonylamides
-C1F   CF  12.011   0.19   lj    3.50   0.27614
-CEF   CF  12.011   0.36   lj    3.50   0.27614
+C1F   CF   12.011   0.19   lj    3.50   0.27614
+CEF   CF   12.011   0.36   lj    3.50   0.27614
 # bis(fluorosulfonyl)amide PCCP 43 (2017) 29617
-FSI   FB  18.998  -0.13   lj    3.118  0.25540
+FSI   FB   18.998  -0.13   lj    3.118  0.25540
 # dicyanamide JPCB 110 (2006) 19586
-N3A   N3  14.000  -0.76   lj    3.25   0.71128
-CZA   CZ  12.011   0.64   lj    3.30   0.27614
-NZA   NZ  14.001  -0.76   lj    3.20   0.71128
+N3A   N3   14.000  -0.76   lj    3.25   0.71128
+CZA   CZ   12.011   0.64   lj    3.30   0.27614
+NZA   NZ   14.001  -0.76   lj    3.20   0.71128
 # acetate, carboxylates OPLS-AA
-O2    O2  15.999  -0.80   lj    2.96   0.87864
-CO2   CO  12.011   0.70   lj    3.75   0.43932
-CTA   CT  12.011  -0.28   lj    3.50   0.27614
-C2C   CT  12.011  -0.22   lj    3.50   0.27614
+O2    O2   15.999  -0.80   lj    2.96   0.87864
+CO2   CO   12.011   0.70   lj    3.75   0.43932
+CTA   CT   12.011  -0.28   lj    3.50   0.27614
+C2C   CT   12.011  -0.22   lj    3.50   0.27614
 # trifluorocetate PCCP 17 (2015) 22321
-O2F   OC  15.999  -0.75   lj    2.96   0.87864
-CFA   CF  12.011   0.40   lj    3.50   0.27614
-FFA   F   18.998  -0.20   lj    2.95   0.22175
+O2F   OC   15.999  -0.75   lj    2.96   0.87864
+CFA   CF   12.011   0.40   lj    3.50   0.27614
+FFA   F    18.998  -0.20   lj    2.95   0.22175
 # alkylsulfates JPCB 112 (2008) 5039
-SO    SO  32.066   1.18   lj    3.55   1.04600
-OS4   OS  15.999  -0.65   lj    3.15   0.83700
-OC4   OC  15.999  -0.45   lj    2.90   0.58600
-CS4   CT  12.011   0.22   lj    3.50   0.27600
-HS4   HC   1.008   0.00   lj    2.50   0.12600
+SO    SO   32.066   1.18   lj    3.55   1.04600
+OS4   OS   15.999  -0.65   lj    3.15   0.83700
+OC4   OC   15.999  -0.45   lj    2.90   0.58600
+CS4   CT   12.011   0.22   lj    3.50   0.27600
+HS4   HC    1.008   0.00   lj    2.50   0.12600
 # alkylsulfonates JPCB 112 (2008) 5039
-OS3   OS  15.999  -0.68   lj    3.15   0.83700
-CS3   CT  12.011  -0.14   lj    3.50   0.27600
-HS3   HC   1.008   0.00   lj    2.50   0.12600
+OS3   OS   15.999  -0.68   lj    3.15   0.83700
+CS3   CT   12.011  -0.14   lj    3.50   0.27600
+HS3   HC    1.008   0.00   lj    2.50   0.12600
 # thiocyanate JCP 128 (2008) 154504
-SK    SK  32.066  -0.72   lj    3.55   1.04600
-CK    CK  12.011   0.44   lj    3.40   0.35980
-NK    NK  14.001  -0.72   lj    3.25   0.71128
+SK    SK   32.066  -0.72   lj    3.55   1.04600
+CK    CK   12.011   0.44   lj    3.40   0.35980
+NK    NK   14.001  -0.72   lj    3.25   0.71128
 # tricyanomethanide OPLS nitriles, our charges
-C3A  C3A  12.011  -0.910  lj    3.55   0.29288
-CN   CN   12.011   0.655  lj    3.30   0.27614
-NC   NC   14.001  -0.685  lj    3.20   0.71128
+C3A   C3A  12.011  -0.910  lj    3.55   0.29288
+CN    CN   12.011   0.655  lj    3.30   0.27614
+NC    NC   14.001  -0.685  lj    3.20   0.71128
 # tosylate OPLS toluene, SO3- JPCB 112 (2008) 5039, our charges
-CAPS  CA  12.011  -0.140  lj    3.55   0.29288
-CAMS  CA  12.011   0.000  lj    3.55   0.29288
-CAOS  CA  12.011  -0.270  lj    3.55   0.29288
-CATS  CA  12.011   0.157  lj    3.55   0.29288
-CTTS  CT  12.011  -0.197  lj    3.50   0.27614
-HATS  HA   1.008   0.100  lj    2.42   0.12552
-HTS   HC   1.008   0.060  lj    2.42   0.12552
+CAPS  CA   12.011  -0.140  lj    3.55   0.29288
+CAMS  CA   12.011   0.000  lj    3.55   0.29288
+CAOS  CA   12.011  -0.270  lj    3.55   0.29288
+CATS  CA   12.011   0.157  lj    3.55   0.29288
+CTTS  CT   12.011  -0.197  lj    3.50   0.27614
+HATS  HA    1.008   0.100  lj    2.42   0.12552
+HTS   HC    1.008   0.060  lj    2.42   0.12552
 
 BONDS
 # i j    pot    re/A    kr/kJmol-1
