@@ -1,4 +1,4 @@
-# il.ff, version 2020/12/09
+# il.ff, version 2021/01/29
 # Molecular force field for ionic liquids
 # Agilio Padua, J.N. Canongia Lopes
 # contributors: K. Shimizu, A. Podgorsek, F. Hammami, L. Gontrani, M. Mishra,
@@ -118,10 +118,11 @@ FSI   FB  18.998  -0.13   lj    3.118  0.25540
 N3A   N3  14.000  -0.76   lj    3.25   0.71128
 CZA   CZ  12.011   0.64   lj    3.30   0.27614
 NZA   NZ  14.001  -0.76   lj    3.20   0.71128
-# acetate OPLS-AA
+# acetate, carboxylates OPLS-AA
 O2    O2  15.999  -0.80   lj    2.96   0.87864
 CO2   CO  12.011   0.70   lj    3.75   0.43932
 CTA   CT  12.011  -0.28   lj    3.50   0.27614
+C2C   CT  12.011  -0.22   lj    3.50   0.27614
 # trifluorocetate PCCP 17 (2015) 22321
 O2F   OC  15.999  -0.75   lj    2.96   0.87864
 CFA   CF  12.011   0.40   lj    3.50   0.27614
@@ -205,7 +206,7 @@ FB  SB   harm   1.575   1879.0
 # dicyanamide JPCB110(2006)19586
 N3  CZ   harm   1.310   4206.0
 CZ  NZ   harm   1.157   5439.2
-# acetate OPLS-AA
+# acetate, carboxylates
 CO  O2   harm   1.250   5489.0
 CT  CO   harm   1.522   2653.0
 # alkylsulfates JPCB112(2008)5039
@@ -308,10 +309,11 @@ FB  SB  NB   harm   103.0   902.0
 # dicyanamide JPCB110(2006)19586
 CZ  N3  CZ   harm   118.5   362.0
 N3  CZ  NZ   harm   175.2   425.0
-# acetate OPLS-AA JPCB (2004)
+# acetate, carboxylates OPLS-AA
 O2  CO  O2   harm   126.0   669.4
 CT  CO  O2   harm   117.0   585.8
 HC  CT  CO   harm   109.5   292.9
+CT  CT  CO   harm   111.1   527.2
 # trifluoroacetate OPLS-AA
 F   CF  CO   harm   109.5   418.4
 CF  CO  O2   harm   117.0   585.8
@@ -335,151 +337,154 @@ CA  CA  SO   harm   120.5    711.28
 CA  SO  OS   harm   104.2    870.0
 
 DIHEDRALS
-# i j   k   l    pot    v1        v2        v3        v4
+# i j   k   l    pot     v1        v2        v3        v4
 # alkanes OPLS-AA JACS 118 (1996) 11225; JPC 100 (1996) 18010
-HC  CT  CT  HC   opls   0.0000    0.0000    1.2552    0.0000
-CT  CT  CT  HC   opls   0.0000    0.0000    1.2552    0.0000
-CT  CT  CT  CT   opls   5.4392   -0.2092    0.8368    0.0000
+HC  CT  CT  HC   opls    0.0000    0.0000    1.2552    0.0000
+CT  CT  CT  HC   opls    0.0000    0.0000    1.2552    0.0000
+CT  CT  CT  CT   opls    5.4392   -0.2092    0.8368    0.0000
 # aromatics AMBER JACS 117 (1995) 5179
-CA  CA  CA  CA   opls   0.0000   30.3340    0.0000    0.0000
-CA  CA  CA  HA   opls   0.0000   30.3340    0.0000    0.0000
-HA  CA  CA  HA   opls   0.0000   30.3340    0.0000    0.0000
+CA  CA  CA  CA   opls    0.0000   30.3340    0.0000    0.0000
+CA  CA  CA  HA   opls    0.0000   30.3340    0.0000    0.0000
+HA  CA  CA  HA   opls    0.0000   30.3340    0.0000    0.0000
 # toluene AMBER JACS 117 (1995) 5179
-CT  CA  CA  CA   opls   0.0000   30.3340    0.0000    0.0000
-CT  CA  CA  HA   opls   0.0000   30.3340    0.0000    0.0000
-# CA  CA  CT  HC   opls   0.0000    0.0000    0.0000    0.0000
+CT  CA  CA  CA   opls    0.0000   30.3340    0.0000    0.0000
+CT  CA  CA  HA   opls    0.0000   30.3340    0.0000    0.0000
+# CA  CA  CT  HC   opls    0.0000    0.0000    0.0000    0.0000
 # pyridinium JPCB 110 (2006) 19586
-NA  CA  CA  CA   opls   0.0000   30.3340    0.0000    0.0000
-NA  CA  CA  HA   opls   0.0000   30.3340    0.0000    0.0000
-CA  NA  CA  CA   opls   0.0000   12.5520    0.0000    0.0000
-CA  NA  CA  HA   opls   0.0000   12.5520    0.0000    0.0000
-CT  NA  CA  CA   opls   0.0000   12.5520    0.0000    0.0000
-CT  NA  CA  HA   opls   0.0000   12.5520    0.0000    0.0000
-CA  NA  CT  HC   opls   0.0000    0.0000    0.0000    0.0000
-CA  NA  CT  CT   opls   0.0000    1.0920    0.0000    0.7930
+NA  CA  CA  CA   opls    0.0000   30.3340    0.0000    0.0000
+NA  CA  CA  HA   opls    0.0000   30.3340    0.0000    0.0000
+CA  NA  CA  CA   opls    0.0000   12.5520    0.0000    0.0000
+CA  NA  CA  HA   opls    0.0000   12.5520    0.0000    0.0000
+CT  NA  CA  CA   opls    0.0000   12.5520    0.0000    0.0000
+CT  NA  CA  HA   opls    0.0000   12.5520    0.0000    0.0000
+CA  NA  CT  HC   opls    0.0000    0.0000    0.0000    0.0000
+CA  NA  CT  CT   opls    0.0000    1.0920    0.0000    0.7930
 # dialkylimidazolium JPCB 108 (2004) 2038
-CW  NA  CR  NA   opls   0.0000   19.4600    0.0000    0.0000
-CW  NA  CR  HA   opls   0.0000   19.4600    0.0000    0.0000
-CT  NA  CR  NA   opls   0.0000   19.4600    0.0000    0.0000
-CT  NA  CR  HA   opls   0.0000   19.4600    0.0000    0.0000
-CR  NA  CW  CW   opls   0.0000   12.5520    0.0000    0.0000
-CR  NA  CW  HA   opls   0.0000   12.5520    0.0000    0.0000
-CT  NA  CW  CW   opls   0.0000   12.5520    0.0000    0.0000
-CT  NA  CW  HA   opls   0.0000   12.5520    0.0000    0.0000
-NA  CW  CW  NA   opls   0.0000   44.9800    0.0000    0.0000
-NA  CW  CW  HA   opls   0.0000   44.9800    0.0000    0.0000
-HA  CW  CW  HA   opls   0.0000   44.9800    0.0000    0.0000
-CW  NA  CT  HC   opls   0.0000    0.0000    0.5190    0.0000
-CR  NA  CT  HC   opls   0.0000    0.0000    0.0000    0.0000
-CW  NA  CT  CT   opls  -7.1535    6.1064    0.7939    0.0000
-CR  NA  CT  CT   opls  -5.2691    0.0000    0.0000    0.0000
-NA  CT  CT  CT   opls  -7.4797    3.1642   -1.2026    0.0000
-NA  CT  CT  HC   opls   0.0000    0.0000    0.3670    0.0000
+CW  NA  CR  NA   opls    0.0000   19.4600    0.0000    0.0000
+CW  NA  CR  HA   opls    0.0000   19.4600    0.0000    0.0000
+CT  NA  CR  NA   opls    0.0000   19.4600    0.0000    0.0000
+CT  NA  CR  HA   opls    0.0000   19.4600    0.0000    0.0000
+CR  NA  CW  CW   opls    0.0000   12.5520    0.0000    0.0000
+CR  NA  CW  HA   opls    0.0000   12.5520    0.0000    0.0000
+CT  NA  CW  CW   opls    0.0000   12.5520    0.0000    0.0000
+CT  NA  CW  HA   opls    0.0000   12.5520    0.0000    0.0000
+NA  CW  CW  NA   opls    0.0000   44.9800    0.0000    0.0000
+NA  CW  CW  HA   opls    0.0000   44.9800    0.0000    0.0000
+HA  CW  CW  HA   opls    0.0000   44.9800    0.0000    0.0000
+CW  NA  CT  HC   opls    0.0000    0.0000    0.5190    0.0000
+CR  NA  CT  HC   opls    0.0000    0.0000    0.0000    0.0000
+CW  NA  CT  CT   opls   -7.1535    6.1064    0.7939    0.0000
+CR  NA  CT  CT   opls   -5.2691    0.0000    0.0000    0.0000
+NA  CT  CT  CT   opls   -7.4797    3.1642   -1.2026    0.0000
+NA  CT  CT  HC   opls    0.0000    0.0000    0.3670    0.0000
 # alkylimidazolium JPCB 110 (2006) 19586
-HA  NA  CR  NA   opls   0.0000   19.4600    0.0000    0.0000
-HA  NA  CR  HA   opls   0.0000   19.4600    0.0000    0.0000
-HA  NA  CW  CW   opls   0.0000   12.5500    0.0000    0.0000
-HA  NA  CW  HA   opls   0.0000   12.5500    0.0000    0.0000
+HA  NA  CR  NA   opls    0.0000   19.4600    0.0000    0.0000
+HA  NA  CR  HA   opls    0.0000   19.4600    0.0000    0.0000
+HA  NA  CW  CW   opls    0.0000   12.5500    0.0000    0.0000
+HA  NA  CW  HA   opls    0.0000   12.5500    0.0000    0.0000
 # dialkylimethylmidazolium JPCB 112 (2008) 5039
-CW  NA  CR  CT   opls   0.0000   19.4600    0.0000    0.0000
-CT  NA  CR  CT   opls   0.0000   19.4600    0.0000    0.0000
-NA  CR  CT  HC   opls   0.0000    0.0000    0.0000    0.0000
+CW  NA  CR  CT   opls    0.0000   19.4600    0.0000    0.0000
+CT  NA  CR  CT   opls    0.0000   19.4600    0.0000    0.0000
+NA  CR  CT  HC   opls    0.0000    0.0000    0.0000    0.0000
 # benzylimidazolium AMBER wildcards
 # NA  CT  CA  CA   opls    0.0000    0.0000    0.0000    0.0000
 # CA  CT  NA  CR   opls    0.0000    0.0000    0.0000    0.0000
 # fluoroalkyl JPCA 105 (2001) 4118; JPCA 106 (2002) 10116
-F   CF  CT  HC   opls   0.0000    0.0000    1.2134    0.0000
-F   CF  CT  CT   opls   0.0000    0.0000    1.9372    0.0000
-F   CF  CF  CT   opls   0.0000    0.0000    2.7656    0.0000
-HC  CT  CT  CF   opls   0.0000    0.0000    0.5565    0.0000
-HC  CT  CF  CF   opls   0.0000    0.0000    0.7573    0.0000
-CF  CF  CF  CT   opls  14.6750   -0.9179   -2.8980   -2.0174
-CF  CF  CT  CT   opls  -0.5881   -0.7642   -0.3170   -0.3179
-CF  CT  CT  NA   opls   0.0000    0.0000    0.0000    0.0000
-F   CF  CF  F    opls -10.4600    0.0000    1.0460    0.0000
-F   CF  CF  CF   opls   1.2552    0.0000    1.6736    0.0000
-CF  CF  CF  CF   opls  27.7064    3.9664   -5.8074   -8.8617
+F   CF  CT  HC   opls    0.0000    0.0000    1.2134    0.0000
+F   CF  CT  CT   opls    0.0000    0.0000    1.9372    0.0000
+F   CF  CF  CT   opls    0.0000    0.0000    2.7656    0.0000
+HC  CT  CT  CF   opls    0.0000    0.0000    0.5565    0.0000
+HC  CT  CF  CF   opls    0.0000    0.0000    0.7573    0.0000
+CF  CF  CF  CT   opls   14.6750   -0.9179   -2.8980   -2.0174
+CF  CF  CT  CT   opls   -0.5881   -0.7642   -0.3170   -0.3179
+CF  CT  CT  NA   opls    0.0000    0.0000    0.0000    0.0000
+F   CF  CF  F    opls  -10.4600    0.0000    1.0460    0.0000
+F   CF  CF  CF   opls    1.2552    0.0000    1.6736    0.0000
+CF  CF  CF  CF   opls   27.7064    3.9664   -5.8074   -8.8617
 # ammonium, pyrrolidinium OPLS-AA JACS 121 (1999) 4827
-HC  CT  CT  NT   opls  -4.2384   -2.9665    1.9790    0.0000
-CT  CT  CT  NT   opls  10.0081   -2.8200    2.3012    0.0000
-CT  NT  CT  CT   opls   1.7405   -0.5356    2.9079    0.0000
-HC  CT  NT  CT   opls   0.0000    0.0000    2.3430    0.0000
-HN  NT  CT  HC   opls   0.0000    0.0000    1.6736    0.0000
-HN  NT  CT  CT   opls  -0.7950   -1.7447    1.7489    0.0000
+HC  CT  CT  NT   opls   -4.2384   -2.9665    1.9790    0.0000
+CT  CT  CT  NT   opls   10.0081   -2.8200    2.3012    0.0000
+CT  NT  CT  CT   opls    1.7405   -0.5356    2.9079    0.0000
+HC  CT  NT  CT   opls    0.0000    0.0000    2.3430    0.0000
+HN  NT  CT  HC   opls    0.0000    0.0000    1.6736    0.0000
+HN  NT  CT  CT   opls   -0.7950   -1.7447    1.7489    0.0000
 # cholinium: unpublished
-OH  CT  CT  NT   opls -44.0515   -5.4349    0.0000    0.0000
-#OH  CT  CT  NT   opls -44.0515   -5.0148    0.0000   -3.1510
+OH  CT  CT  NT   opls  -44.0515   -5.4349    0.0000    0.0000
+# OH  CT  CT  NT   opls  -44.0515   -5.0148    0.0000   -3.1510
 # guanidinium
-HG  NG  CG  NG   opls   0.0000   16.3285    0.0000    0.0000
+HG  NG  CG  NG   opls    0.0000   16.3285    0.0000    0.0000
 # phosphonium OPLS-AA, JPCB 110 (2006) 19586
-CT  PT  CT  HC   opls   0.0000    0.0000    0.9270    0.0000
-CT  PT  CT  CT   opls   0.0000    0.0000    1.1330    0.0000
-PT  CT  CT  HC   opls   0.0000    0.0000    0.4650    0.0000
-PT  CT  CT  CT   opls  -3.2480    0.9880   -0.7150    0.0000
+CT  PT  CT  HC   opls    0.0000    0.0000    0.9270    0.0000
+CT  PT  CT  CT   opls    0.0000    0.0000    1.1330    0.0000
+PT  CT  CT  HC   opls    0.0000    0.0000    0.4650    0.0000
+PT  CT  CT  CT   opls   -3.2480    0.9880   -0.7150    0.0000
 # hydroxyl JACS 118 (1996) 11225; AMBER98 (OCCO) 117 (1995) 5179
-HC  CT  OH  HO   opls   0.0000    0.0000    1.8828    0.0000
-CT  CT  OH  HO   opls  -1.4895   -0.7280    2.0585    0.0000
-HC  CT  CT  OH   opls   0.0000    0.0000    1.9581    0.0000
-OH  CT  CT  OH   opls   0.0000   -9.8324    1.2050    0.0000
+HC  CT  OH  HO   opls    0.0000    0.0000    1.8828    0.0000
+CT  CT  OH  HO   opls   -1.4895   -0.7280    2.0585    0.0000
+HC  CT  CT  OH   opls    0.0000    0.0000    1.9581    0.0000
+OH  CT  CT  OH   opls    0.0000   -9.8324    1.2050    0.0000
 # triflate and bistriflamide JPCB 108 (2004) 16893
-OB  SB  CF  FB   opls   0.0000    0.0000    1.4510    0.0000
-NB  SB  CF  FB   opls   0.0000    0.0000    1.3220    0.0000
-OB  SB  NB  SB   opls   0.0000    0.0000   -0.0150    0.0000
-SB  NB  SB  CF   opls  32.7730  -10.4200   -3.1950    0.0000
+OB  SB  CF  FB   opls    0.0000    0.0000    1.4510    0.0000
+NB  SB  CF  FB   opls    0.0000    0.0000    1.3220    0.0000
+OB  SB  NB  SB   opls    0.0000    0.0000   -0.0150    0.0000
+SB  NB  SB  CF   opls   32.7730  -10.4200   -3.1950    0.0000
 # longer perfluoroalkanesulfonylamides
-F   CF  CF  FB   opls -10.4600    0.0000    1.0460    0.0000
-SB  CF  CF  FB   opls   0.0000    0.0000    1.4530    0.0000
-SB  CF  CF  F    opls   0.0000    0.0000    1.4530    0.0000
-OB  SB  CF  CF   opls   0.0000    0.0000   -0.7400    0.0000
-NB  SB  CF  CF   opls  -3.0940    0.0000    0.0000    0.0000
-SB  CF  CF  CF   opls  50.0900    0.0000   -4.6260   -4.0080
+F   CF  CF  FB   opls  -10.4600    0.0000    1.0460    0.0000
+SB  CF  CF  FB   opls    0.0000    0.0000    1.4530    0.0000
+SB  CF  CF  F    opls    0.0000    0.0000    1.4530    0.0000
+OB  SB  CF  CF   opls    0.0000    0.0000   -0.7400    0.0000
+NB  SB  CF  CF   opls   -3.0940    0.0000    0.0000    0.0000
+SB  CF  CF  CF   opls   50.0900    0.0000   -4.6260   -4.0080
 # bis(fluorosulfonyl)amide
-FB  SB  NB  SB   opls  11.4450  -15.1860   -3.2120    0.0000
+FB  SB  NB  SB   opls   11.4450  -15.1860   -3.2120    0.0000
 # dicyanamide JPCB 110 (2006) 19586
-# NZ  CZ  N3  CZ   opls   4.0800    0.0000    0.0000    0.0000
-# acetate OPLS-AA JPCB (2004)
-HC  CT  CO  O2   opls   0.0000    0.0000    0.0000    0.0000
+# NZ  CZ  N3  CZ   opls    4.0800    0.0000    0.0000    0.0000
+# acetate, carboxylates OPLS-AA
+HC  CT  CO  O2   opls    0.0000    0.0000    0.0000    0.0000
+CT  CT  CO  O2   opls    0.0000    3.4309    0.0000    0.0000
+HC  CT  CT  CO   opls    0.0000    0.0000   -0.9414    0.0000
+CT  CT  CT  CO   opls  -13.3260   -3.4518    2.0627    0.0000
 # trifluoroacetate
-F   CF  CO  O2   opls   0.0000    0.0000    0.0000    0.0000
+F   CF  CO  O2   opls    0.0000    0.0000    0.0000    0.0000
 # alkylsulfates JPCB 112 (2008) 5039
-OS  SO  OC  CT   opls   0.0000    0.0000    2.4815    0.0000
-SO  OC  CT  HC   opls   0.0000    0.0000    1.6858    0.0000
-SO  OC  CT  CT   opls  -6.0142   -3.1133    1.4941    0.0000
-OC  CT  CT  HC   opls   0.0000    0.0000    2.0698    0.0000
-OC  CT  CT  CT   opls   4.3893   -1.8273    2.9705    0.0000
+OS  SO  OC  CT   opls    0.0000    0.0000    2.4815    0.0000
+SO  OC  CT  HC   opls    0.0000    0.0000    1.6858    0.0000
+SO  OC  CT  CT   opls   -6.0142   -3.1133    1.4941    0.0000
+OC  CT  CT  HC   opls    0.0000    0.0000    2.0698    0.0000
+OC  CT  CT  CT   opls    4.3893   -1.8273    2.9705    0.0000
 # alkylsulfonates JPCB 112 (2008) 5039
-OS  SO  CT  HC   opls   0.0000    0.0000    1.6250    0.0000
-OS  SO  CT  CT   opls   0.0000    0.0000    1.3938    0.0000
-SO  CT  CT  HC   opls   0.0000    0.0000    1.3797    0.0000
-SO  CT  CT  CT   opls -16.1000   -2.0046    0.7674    0.0000
+OS  SO  CT  HC   opls    0.0000    0.0000    1.6250    0.0000
+OS  SO  CT  CT   opls    0.0000    0.0000    1.3938    0.0000
+SO  CT  CT  HC   opls    0.0000    0.0000    1.3797    0.0000
+SO  CT  CT  CT   opls  -16.1000   -2.0046    0.7674    0.0000
 # dicyanoamide & tricyanomethanide
-NZ  CZ  N3  CZ     opls   0.0000    0.0000    0.0000    0.0000
-NC  CN  C3A CN     opls   0.0000    0.0000    0.0000    0.0000
+NZ  CZ  N3  CZ   opls    0.0000    0.0000    0.0000    0.0000
+NC  CN  C3A CN   opls    0.0000    0.0000    0.0000    0.0000
 # tosylate our MP2, OPLS aromatics
-CA  CA  SO  OS     opls   0.0000    0.0000    0.0000    0.0000
-SO  CA  CA  CA     opls   0.0000   30.3340    0.0000    0.0000
-SO  CA  CA  HA     opls   0.0000   30.3340    0.0000    0.0000
-HC  CT  CA  CA     opls   0.0000    0.0000    0.0000    0.0000
+CA  CA  SO  OS   opls    0.0000    0.0000    0.0000    0.0000
+SO  CA  CA  CA   opls    0.0000   30.3340    0.0000    0.0000
+SO  CA  CA  HA   opls    0.0000   30.3340    0.0000    0.0000
+HC  CT  CA  CA   opls    0.0000    0.0000    0.0000    0.0000
 
 IMPROPER
 # improper C aromatics AMBER JACS 117 (1995) 5179
-CA  CA  CA  HA   opls   0.0000    9.2048    0.0000    0.0000
-CA  CA  CA  CA   opls   0.0000    9.2048    0.0000    0.0000
-CA  CA  CA  CT   opls   0.0000    9.2048    0.0000    0.0000
-CA  CA  NA  CT   opls   0.0000    9.2048    0.0000    0.0000
-CA  NA  CA  HA   opls   0.0000    9.2048    0.0000    0.0000
+CA  CA  CA  HA   opls    0.0000    9.2048    0.0000    0.0000
+CA  CA  CA  CA   opls    0.0000    9.2048    0.0000    0.0000
+CA  CA  CA  CT   opls    0.0000    9.2048    0.0000    0.0000
+CA  CA  NA  CT   opls    0.0000    9.2048    0.0000    0.0000
+CA  NA  CA  HA   opls    0.0000    9.2048    0.0000    0.0000
 # improper imidazolium ring AMBER JACS 117 (1995) 5179
-CR  CW  NA  CT   opls   0.0000    8.3680    0.0000    0.0000
-CR  CW  NA  HA   opls   0.0000    8.3680    0.0000    0.0000
-NA  NA  CR  HA   opls   0.0000    9.2048    0.0000    0.0000
-NA  NA  CR  CT   opls   0.0000    9.2048    0.0000    0.0000
-NA  CW  CW  HA   opls   0.0000    9.2048    0.0000    0.0000
+CR  CW  NA  CT   opls    0.0000    8.3680    0.0000    0.0000
+CR  CW  NA  HA   opls    0.0000    8.3680    0.0000    0.0000
+NA  NA  CR  HA   opls    0.0000    9.2048    0.0000    0.0000
+NA  NA  CR  CT   opls    0.0000    9.2048    0.0000    0.0000
+NA  CW  CW  HA   opls    0.0000    9.2048    0.0000    0.0000
 # improper tricyanomethanide AMBER JACS 117 (1995) 5179
-CN  CN  C3A CN   opls   0.0000    9.2048    0.0000    0.0000
+CN  CN  C3A CN   opls    0.0000    9.2048    0.0000    0.0000
 # improper carbonyl AMBER JACS 117 (1995 )5179
-CT  O2  CO  O2   opls   0.0000   87.8640    0.0000    0.0000
+CT  O2  CO  O2   opls    0.0000   87.8640    0.0000    0.0000
 # improper guanidinium AMBER JACS 117 (1995 )5179
-NG  NG  CG  NG   opls   0.0000    8.3680    0.0000    0.0000
-CG  HG  NG  HG   opls   0.0000    9.2048    0.0000    0.0000
+NG  NG  CG  NG   opls    0.0000    8.3680    0.0000    0.0000
+CG  HG  NG  HG   opls    0.0000    9.2048    0.0000    0.0000
 #tosylate aromatics AMBER JACS 117 (1995) 5179
-CA  CA  CA  SO  opls   0.0000    9.2048    0.0000    0.0000
+CA  CA  CA  SO   opls    0.0000    9.2048    0.0000    0.0000
