@@ -1,4 +1,4 @@
-# il.ff, version 2021/01/29
+# il.ff, version 2021/02/18
 # Molecular force field for ionic liquids
 # Agilio Padua, J.N. Canongia Lopes
 # contributors: K. Shimizu, A. Podgorsek, F. Hammami, L. Gontrani, M. Mishra,
@@ -14,7 +14,7 @@
 
 ATOMS
 #     typ   m/u     q/e    pot   pars
-# alkyl side chains OPLS-AA
+# alkyl groups OPLS-AA
 CT    CT   12.011  -0.18   lj    3.50   0.27614
 CS    CT   12.011  -0.12   lj    3.50   0.27614
 CT2   CT   12.011  -0.12   lj    3.50   0.27614
@@ -23,17 +23,18 @@ HC    HC    1.008   0.06   lj    2.50   0.12552
 # aromatic OPLS-AA
 CA    CA   12.011  -0.115  lj    3.55   0.29288
 HA    HA    1.008   0.115  lj    2.42   0.12552
-# dialkylimidazolium JPCB 108 (2004) 2038
+# side chains on imidazolium, ammonium, pyrrolidinium
 C1    CT   12.011  -0.17   lj    3.50   0.27614
-# C1A - only for polarisable FF
+# C1A for polarisable FF in side chain > methyl
 C1A   CT   12.011  -0.17   lj    3.50   0.27614
+H1    HC    1.008   0.13   lj    2.50   0.12552
 C2    CT   12.011   0.01   lj    3.50   0.27614
 CE    CT   12.011  -0.05   lj    3.50   0.27614
+# dialkylimidazolium JPCB 108 (2004) 2038
 CR    CR   12.011  -0.11   lj    3.55   0.29288
 CW    CW   12.011  -0.13   lj    3.55   0.29288
 HCR   HA    1.008   0.21   lj    2.42   0.12552
 HCW   HA    1.008   0.21   lj    2.42   0.12552
-H1    HC    1.008   0.13   lj    2.50   0.12552
 NA    NA   14.007   0.15   lj    3.25   0.71128
 # alkylimidazolium JPCB 110 (2006) 19586
 CRH   CR   12.011   0.00   lj    3.55   0.29288
