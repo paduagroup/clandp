@@ -1,6 +1,6 @@
-# il.ff, version 2021/02/18
-# Molecular force field for ionic liquids
-# Agilio Padua, J.N. Canongia Lopes
+# il.ff, version 2021/04/08
+# CL&P molecular force field for ionic liquids
+# J.N. Canongia Lopes, Agilio Padua
 # contributors: K. Shimizu, A. Podgorsek, F. Hammami, L. Gontrani, M. Mishra,
 #               C. Bernardes, K. Goloviznina
 # questions to: agilio.padua@ens-lyon.fr
@@ -10,7 +10,7 @@
 # use 'cons' to indicate constrained bonds and angles
 # in improper dihedrals the central atom is the third in the list
 #
-# use with fftool to build input files for LAMMPS (or DLPOLY, GROMACS)
+# use with fftool to build input files for LAMMPS (or DLPOLY, GROMACS, OpenMM)
 
 ATOMS
 #     typ   m/u     q/e    pot   pars
@@ -102,9 +102,13 @@ FB    F    18.998  -0.49   lj    3.12   0.25520
 P     P    30.974   1.34   lj    3.74   0.83680
 FP    F    18.998  -0.39   lj    3.12   0.25520
 # chloride JPCB 108 (2004) 2038
-Cl    Cl   35.453  -1.00   lj    3.65   0.83000
+#Cl    Cl   35.453  -1.00   lj    3.65   0.83000
+# chloride OPLS
+Cl    Cl   35.453  -1.00   lj    4.41724 0.492833
 # bromide JPCB 110 (2006) 19586
-Br    Br   79.904  -1.00   lj    3.97   0.86000
+#Br    Br   79.904  -1.00   lj    3.97   0.86000
+# bromide OPLS
+Br    Br   79.904  -1.00   lj    4.62376 0.376560
 # bistriflamide JPCB 108 (2004) 16893, PCCP 43 (2017) 29617
 CBT   CF   12.011   0.35   lj    3.50   0.27614
 SBT   SB   32.066   1.02   lj    3.55   1.04600
