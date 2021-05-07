@@ -1,4 +1,4 @@
-Force field for ionic liquids
+CL&P force field for ionic liquids
 =============================
 
 [![DOI](https://zenodo.org/badge/doi/10.5281/zenodo.593705.svg)](http://dx.doi.org/10.5281/zenodo.593705)
