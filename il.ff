@@ -1,4 +1,4 @@
-# il.ff, version 2021/04/08
+# il.ff, version 2021/05/07
 # CL&P molecular force field for ionic liquids
 # J.N. Canongia Lopes, Agilio Padua
 # contributors: K. Shimizu, A. Podgorsek, F. Hammami, L. Gontrani, M. Mishra,
@@ -49,8 +49,8 @@ CCR   CT   12.011  -0.26   lj    3.50   0.27614
 C1T   CT   12.011   0.039  lj    3.50   0.27614
 # toluene JACS 118 (1996) 11217; JCC 25 (2004) 1322
 CAP   CA   12.011  -0.154  lj    3.55   0.29288
-CAM   CA   12.011  -0.145  lj    3.55   0.29288
-CAO   CA   12.011  -0.147  lj    3.55   0.29288
+CAM   CA   12.011  -0.146  lj    3.55   0.29288
+CAO   CA   12.011  -0.146  lj    3.55   0.29288
 CAT   CA   12.011  -0.081  lj    3.55   0.29288
 # CTT   CT   12.011  -0.197  lj    3.50   0.27614
 HAT   HA    1.008   0.148  lj    2.42   0.12552
@@ -131,6 +131,9 @@ O2    O2   15.999  -0.80   lj    2.96   0.87864
 CO2   CO   12.011   0.70   lj    3.75   0.43932
 CTA   CT   12.011  -0.28   lj    3.50   0.27614
 C2C   CT   12.011  -0.22   lj    3.50   0.27614
+C3C   CT   12.011  -0.16   lj    3.50   0.27614
+# benzoic acid
+CBA   CA   12.011   0.105  lj    3.55   0.29288
 # trifluorocetate PCCP 17 (2015) 22321
 O2F   OC   15.999  -0.75   lj    2.96   0.87864
 CFA   CF   12.011   0.40   lj    3.50   0.27614
@@ -217,6 +220,8 @@ CZ  NZ   harm   1.157   5439.2
 # acetate, carboxylates
 CO  O2   harm   1.250   5489.0
 CT  CO   harm   1.522   2653.0
+# benzoate OPLS
+CA  CO   harm   1.490   3347.2
 # alkylsulfates JPCB112(2008)5039
 CT  OC   harm   1.402    745.8
 OS  SO   harm   1.455   5331.0
@@ -322,6 +327,11 @@ O2  CO  O2   harm   126.0   669.4
 CT  CO  O2   harm   117.0   585.8
 HC  CT  CO   harm   109.5   292.9
 CT  CT  CO   harm   111.1   527.2
+# benzoate OPLS-AA
+CA  CO  O2   harm   120.4   669.4
+CA  CA  CO   harm   120.0   711.3
+# phenylacetate ion OPLS-AA
+CA  CT  CO   harm   112.0   527.2
 # trifluoroacetate OPLS-AA
 F   CF  CO   harm   109.5   418.4
 CF  CO  O2   harm   117.0   585.8
@@ -452,6 +462,14 @@ HC  CT  CO  O2   opls    0.0000    0.0000    0.0000    0.0000
 CT  CT  CO  O2   opls    0.0000    3.4309    0.0000    0.0000
 HC  CT  CT  CO   opls    0.0000    0.0000   -0.9414    0.0000
 CT  CT  CT  CO   opls  -13.3260   -3.4518    2.0627    0.0000
+# benzoate OPLS-AA
+CA  CA  CA  CO   opls    0.0000   30.3340    0.0000    0.0000
+HA  CA  CA  CO   opls    0.0000   30.3340    0.0000    0.0000
+CA  CA  CO  O2   opls    0.0000    8.7864    0.0000    0.0000
+# phenylacetate ion (OPLS) us
+#CA  CT  CO  O2   opls    0.0000    2.2845    0.0000    0.0000
+CA  CT  CO  O2   opls    0.8296    1.7843    0.0000   -0.8589
+CA  CA  CT  CO   opls    0.0000    0.8473    0.0000   -1.7213
 # trifluoroacetate
 F   CF  CO  O2   opls    0.0000    0.0000    0.0000    0.0000
 # alkylsulfates JPCB 112 (2008) 5039
@@ -465,7 +483,7 @@ OS  SO  CT  HC   opls    0.0000    0.0000    1.6250    0.0000
 OS  SO  CT  CT   opls    0.0000    0.0000    1.3938    0.0000
 SO  CT  CT  HC   opls    0.0000    0.0000    1.3797    0.0000
 SO  CT  CT  CT   opls  -16.1000   -2.0046    0.7674    0.0000
-# dicyanoamide & tricyanomethanide
+# dicyanamide & tricyanomethanide
 NZ  CZ  N3  CZ   opls    0.0000    0.0000    0.0000    0.0000
 NC  CN  C3A CN   opls    0.0000    0.0000    0.0000    0.0000
 # tosylate our MP2, OPLS aromatics
@@ -491,8 +509,10 @@ NA  CW  CW  HA   opls    0.0000    9.2048    0.0000    0.0000
 CN  CN  C3A CN   opls    0.0000    9.2048    0.0000    0.0000
 # improper carbonyl AMBER JACS 117 (1995 )5179
 CT  O2  CO  O2   opls    0.0000   87.8640    0.0000    0.0000
+O2  O2  CO  CA   opls    0.0000   87.8640    0.0000    0.0000
 # improper guanidinium AMBER JACS 117 (1995 )5179
 NG  NG  CG  NG   opls    0.0000    8.3680    0.0000    0.0000
 CG  HG  NG  HG   opls    0.0000    9.2048    0.0000    0.0000
-#tosylate aromatics AMBER JACS 117 (1995) 5179
+# tosylate, benzoate aromatics AMBER JACS 117 (1995) 5179
 CA  CA  CA  SO   opls    0.0000    9.2048    0.0000    0.0000
+CA  CA  CA  CO   opls    0.0000    9.2048    0.0000    0.0000
