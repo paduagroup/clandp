@@ -1,4 +1,4 @@
-# il.ff, version 2021/05/07
+# il.ff, version 2021/05/10
 # CL&P molecular force field for ionic liquids
 # J.N. Canongia Lopes, Agilio Padua
 # contributors: K. Shimizu, A. Podgorsek, F. Hammami, L. Gontrani, M. Mishra,
@@ -136,7 +136,9 @@ C3C   CT   12.011  -0.16   lj    3.50   0.27614
 C2V   CT   12.011  -0.30   lj    3.50   0.27614
 C3V   CT   12.011   0.42   lj    3.50   0.27614
 CTV   CT   12.011  -0.38   lj    3.50   0.27614
-# benzoic acid
+# phenylacetate
+CPH   CA   12.011   0.163  lj    3.55   0.29288
+# p-methyl benzoate
 CBI   CA   12.011  -0.040  lj    3.55   0.29288
 CBP   CA   12.011   0.064  lj    3.55   0.29288
 # trifluorocetate PCCP 17 (2015) 22321
