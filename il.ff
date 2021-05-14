@@ -1,4 +1,4 @@
-# il.ff, version 2021/05/10
+# il.ff, version 2021/05/14
 # CL&P molecular force field for ionic liquids
 # J.N. Canongia Lopes, Agilio Padua
 # contributors: K. Shimizu, A. Podgorsek, F. Hammami, L. Gontrani, M. Mishra,
@@ -335,7 +335,7 @@ CT  CO  O2   harm   117.0   585.8
 HC  CT  CO   harm   109.5   292.9
 CT  CT  CO   harm   111.1   527.2
 # benzoate OPLS-AA
-CA  CO  O2   harm   120.4   669.4
+CA  CO  O2   harm   117.0   586.2
 CA  CA  CO   harm   120.0   711.3
 # phenylacetate ion OPLS-AA
 CA  CT  CO   harm   112.0   527.2
