@@ -1,4 +1,4 @@
-# il.ff, version 2021/04/08
+# il.ff, version 2021/09/21
 # CL&P molecular force field for ionic liquids
 # J.N. Canongia Lopes, Agilio Padua
 # contributors: K. Shimizu, A. Podgorsek, F. Hammami, L. Gontrani, M. Mishra,
@@ -91,6 +91,11 @@ HG    HG    1.008   0.46   lj    0.00   0.00000
 # phosphonium OPLS-AA, JPCB 110 (2006) 19586
 P3    PT   30.974   0.68   lj    3.74   0.83680
 C1P   CT   12.011  -0.31   lj    3.50   0.27614
+C1PS  CT   12.011  -0.18   lj    3.50   0.27614
+# ethers OPLS-AA JACS 118 (1996) 11225; JPC 100 (1996) 18010
+CSO   CT  12.011   0.14   lj    3.50   0.27614
+HY    HC   1.008   0.03   lj    2.50   0.12552
+OY    OY  15.999  -0.40   lj    2.90   0.58576
 # lithium cation Aqvist
 Li    Li    6.941  +1.00   lj    2.126  0.07648
 # sodium cation
@@ -197,6 +202,8 @@ HG  NG   cons   1.010   3632.0
 NG  CG   harm   1.340   4027.7
 # phosphonium OPLS-AA JPCB110(2006)19586
 PT  CT   harm   1.81    1775.0
+# ethers OPLS-AA JACS 118 (1996) 11225; JPC 100 (1996) 18010
+CT   OY  harm   1.410   2677.8
 # hydroxyl OPLS-AA JACS 118(1996)11225, JPC 100(1996)18010
 CT  OH   harm   1.410   2677.8
 HO  OH   cons   0.945   4627.5
@@ -292,6 +299,10 @@ NG  CG  NG   harm   120.0   586.2
 CT  PT  CT   harm   109.5   607.8
 HC  CT  PT   harm   110.1   389.9
 CT  CT  PT   harm   115.2   509.1
+# ethers OPLS-AA JACS 118 (1996) 11225; JPC 100 (1996) 18010
+CT  CT  OY   harm   109.5   418.4
+HC  CT  OY   harm   109.5   292.9
+CT  OY  CT   harm   109.5   502.1
 # hydroxyl JACS 118(1996)11225, JPC 100(1996)18010
 CT  CT  OH   harm   109.5   418.4
 HC  CT  OH   harm   109.5   292.9
@@ -426,6 +437,13 @@ CT  PT  CT  HC   opls    0.0000    0.0000    0.9270    0.0000
 CT  PT  CT  CT   opls    0.0000    0.0000    1.1330    0.0000
 PT  CT  CT  HC   opls    0.0000    0.0000    0.4650    0.0000
 PT  CT  CT  CT   opls   -3.2480    0.9880   -0.7150    0.0000
+# ethers OPLS-AA JACS 118 (1996) 11225; JPC 100 (1996) 18010; 
+CT  CT  CT  OY    opls   7.1588   -2.0920    2.7740    0.0000
+CT  CT  OY  CT    opls   2.7196   -1.0460    2.8033    0.0000
+CT  OY  CT  HC    opls   0.0000    0.0000    3.1798    0.0000
+HC  CT  CT  OY    opls   0.0000    0.0000    1.9581    0.0000
+# alkoxy phosphonium: unpublished
+OY  CT  CT  PT    opls -16.8287    1.8080    1.3519   -2.6634
 # hydroxyl JACS 118 (1996) 11225; AMBER98 (OCCO) 117 (1995) 5179
 HC  CT  OH  HO   opls    0.0000    0.0000    1.8828    0.0000
 CT  CT  OH  HO   opls   -1.4895   -0.7280    2.0585    0.0000
