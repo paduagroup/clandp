@@ -1,4 +1,4 @@
-# il.ff, version 2021/09/21
+# il.ff, version 2021/09/22
 # CL&P molecular force field for ionic liquids
 # J.N. Canongia Lopes, Agilio Padua
 # contributors: K. Shimizu, A. Podgorsek, F. Hammami, L. Gontrani, M. Mishra,
@@ -94,6 +94,7 @@ C1P   CT   12.011  -0.31   lj    3.50   0.27614
 C1PS  CT   12.011  -0.18   lj    3.50   0.27614
 # ethers OPLS-AA JACS 118 (1996) 11225; JPC 100 (1996) 18010
 CSO   CT  12.011   0.14   lj    3.50   0.27614
+C3O   CT  12.011   0.11   lj    3.50   0.27614
 HY    HC   1.008   0.03   lj    2.50   0.12552
 OY    OY  15.999  -0.40   lj    2.90   0.58576
 # lithium cation Aqvist
@@ -457,6 +458,7 @@ PT  CT  CT  CT   opls   -3.2480    0.9880   -0.7150    0.0000
 # ethers OPLS-AA JACS 118 (1996) 11225; JPC 100 (1996) 18010; 
 CT  CT  CT  OY    opls   7.1588   -2.0920    2.7740    0.0000
 CT  CT  OY  CT    opls   2.7196   -1.0460    2.8033    0.0000
+OY  CT  CT  OY    opls  -2.3012    0.0000    0.0000    0.0000
 CT  OY  CT  HC    opls   0.0000    0.0000    3.1798    0.0000
 HC  CT  CT  OY    opls   0.0000    0.0000    1.9581    0.0000
 # alkoxy phosphonium: unpublished
