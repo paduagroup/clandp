@@ -1,0 +1,200 @@
+# des.ff, version 2023/09/06
+# Molecular force field for ionic liquids
+# Agilio Padua, J.N. Canongia Lopes
+# contributors: K. Shimizu, A. Podgorsek, F. Hammami, L. Gontrani, M. Mishra,
+#               C. Bernardes, K.Goloviznina
+# questions to: agilio.padua@ens-lyon.fr
+#
+# units: kJ/mol, A, deg
+# bond and angle force constants are in the form k/2 (x - x0)^2
+# use 'cons' to indicate constrained bonds and angles
+# in improper dihedrals the central atom is the third in the list
+#
+# use with fftool to build input files for LAMMPS (or DLPOLY)
+ATOMS
+#     typ  m/u     q/e    pot   pars
+# side chain JPCB 108 (2004) 2038
+C1    CT  12.011  -0.17   lj    3.50   0.27614
+C1A   CT  12.011  -0.17   lj    3.50   0.27614
+C2    CT  12.011   0.01   lj    3.50   0.27614
+CE    CT  12.011  -0.05   lj    3.50   0.27614
+CS    CT  12.011  -0.12   lj    3.50   0.27614
+CT    CT  12.011  -0.18   lj    3.50   0.27614
+CQ    CT  12.011  -0.06   lj    3.50   0.27614
+HC    HC   1.008   0.06   lj    2.50   0.12552
+H1    HC   1.008   0.13   lj    2.50   0.12552
+# ammonium JPCB 108 (2004) 16893
+N4    NT  14.007   0.12   lj    3.25   0.71128
+N3    NT  14.007   0.03   lj    3.25   0.71128
+H3    HN   1.008   0.31   lj    0.00   0.00000
+# phosphonium OPLS-AA, JPCB 110 (2006) 19586
+P3    PT  30.974   0.68   lj    3.74   0.83680
+C1P   CT  12.011  -0.31   lj    3.50   0.27614
+C1B   CT  12.011  -0.31   lj    3.50   0.27614
+# chloride JPCB 108 (2004) 2038
+#Cl    Cl   35.453  -1.00   lj    3.65   0.83000
+# chloride OPLS
+Cl    Cl   35.453  -1.00   lj    4.41724 0.492833
+# bromide JPCB 110 (2006) 19586
+#Br    Br   79.904  -1.00   lj    3.97   0.86000
+# bromide OPLS
+Br    Br   79.904  -1.00   lj    4.62376 0.376560
+# alcohols OPLS-AA JACS 118 (1996) 11225; JPC 100 (1996) 18010
+CTO   CT  12.011   0.145  lj    3.50   0.27614  
+C2O   CT  12.011   0.205  lj    3.50   0.27614  
+#H1O   HC   1.008   0.040  lj    2.50   0.12552
+OH    OH  15.999  -0.683  lj    3.12   0.71128
+HO    HO   1.008   0.418  lj    0.00   0.00000
+# cholinium same as OPLS-AA alcohols or ammonium
+COL   CT  12.011   0.275  lj    3.50   0.27614
+OHC   OH  15.999  -0.563  lj    3.12   0.71128
+HOC   HO   1.008   0.298  lj    0.00   0.00000
+# urea
+CU    C   12.011  +0.142  lj    3.50   0.43932
+OU    O   15.999  -0.390  lj    2.96   0.87864
+NU    N   14.007  -0.542  lj    3.25   0.71128
+HU    H    1.008   0.333  lj    0.00   0.00000
+# carboxilic acid OPLS-AA JACS 118 (1996) 11225; JPC 100 (1996) 18010
+# our charges for CX, HX
+CO2   CO  12.011   0.70   lj    3.75   0.43932
+O3    O3  15.999  -0.44   lj    2.96   0.87864
+O2    OH  15.999  -0.53   lj    3.00   0.71128
+HO2   HO   1.008   0.45   lj    0.00   0.00000
+CX    CT  12.011  -0.30   lj    3.50   0.27614
+CXT   CT  12.011  -0.36   lj    3.50   0.27614
+# ketone OPLS-AA JACS 118 (1996) 11225; JPC 100 (1996) 18010
+CK    CK  12.011   0.47   lj    3.75   0.43932
+OK    OK  15.999  -0.47   lj    2.96   0.87864
+# diols at thiols OPLS-AA JACS 118 (1996) 11225; JPC 100 (1996) 18010
+H1O   HC   1.008   0.060  lj    2.50   0.12552 
+CSO   CT  12.011   0.205  lj    3.50   0.27614
+# diol
+OHG   OH  15.999  -0.580  lj    3.12   0.71128
+HOG   HO   1.008   0.315  lj    0.00   0.00000 
+# triol
+# OHG   OH  15.999  -0.730  lj    3.12   0.71128
+# HOG   HO   1.008   0.465  lj    0.00   0.00000
+
+BONDS
+# i j    pot    re/A    kr/kJmol-1
+# alkanes OPLS-AA JACS118(1996)11225, JPC100(1996)18010
+HC  CT   cons   1.090   2845.0
+CT  CT   harm   1.529   2242.0
+# ammonium, pyrrolidinium OPLS-AA JACS121(1999)4827, AMBER
+NT  CT   harm   1.448   3196.6
+HN  NT   cons   1.010   3632.0
+# phosphonium OPLS-AA JPCB110(2006)19586
+PT  CT   harm   1.81    3550.0
+# hydroxyl OPLS-AA JACS 118(1996)11225, JPC 100(1996)18010
+CT  OH   harm   1.410   2677.8
+HO  OH   cons   0.945   4627.5
+# urea OPLS-AA
+C   O    harm   1.229   4769.8
+C   N    harm   1.335   4100.3
+N   H    cons   1.010   3631.7
+# carboxilic acid OPLS-AA
+CO  O3   harm   1.229   4769.8
+CO  OH   cons   1.364   3765.6
+CT  CO   harm   1.522   2653.0 
+# ketone OPLS-AA
+CK  OK   harm   1.229   4769.8
+CT  CK   harm   1.522   2653.0
+
+
+ANGLES
+# i j   k    pot    th/deg  ka/kjmol-1
+# alkyl OPLS-AA JACS118(1996)11225, JPC100(1996)18010
+CT  CT  CT   harm   112.7   488.3
+CT  CT  HC   harm   110.7   313.8 
+HC  CT  HC   harm   107.8   276.1
+# ammonium, pyrrolidinium OPLS-AA JACS121(1999)4827, AMBER
+NT  CT  CT   harm   109.5   470.3
+CT  NT  CT   harm   107.2   433.5
+HC  CT  NT   harm   109.5   292.9
+HN  NT  CT   harm   109.5   292.9
+# phosphonium OPLS-AA, JPCB110(2006)19586
+CT  PT  CT   harm   109.5   607.8
+HC  CT  PT   harm   110.1   389.9
+CT  CT  PT   harm   115.2   509.1
+# hydroxyl JACS 118(1996)11225, JPC 100(1996)18010
+CT  CT  OH   harm   109.5   418.4
+HC  CT  OH   harm   109.5   292.9
+CT  OH  HO   harm   108.5   460.2
+# amides, pyrrolidones, urea
+N   C   O    harm   122.9   669.4
+N   C   N    harm   114.2   585.8
+C   N   H    harm   119.8   292.9
+H   N   H    harm   120.0   292.9
+# carboxilic acid
+CT  CO  O3   harm   120.4   669.4
+CT  CO  OH   harm   108.0   585.8
+O3  CO  OH   harm   121.0   669.4
+CO  OH  HO   harm   113.0   292.9
+CO  CT  CT   harm   111.1   527.2
+HC  CT  CO   harm   109.5   292.9
+# ketone
+CT  CK  OK   harm   120.4   669.4
+CT  CK  CT   harm   116.0   585.8
+CK  CT  HC   harm   109.5   292.9
+CK  CT  CT   harm   111.1   527.2
+
+DIHEDRALS
+# i j   k   l    pot    v1        v2        v3        v4
+# alkanes OPLS-AA JACS 118 (1996) 11225; JPC 100 (1996) 18010
+HC  CT  CT  HC   opls   0.0000    0.0000    1.2552    0.0000
+CT  CT  CT  HC   opls   0.0000    0.0000    1.2552    0.0000
+CT  CT  CT  CT   opls   5.4392   -0.2092    0.8368    0.0000
+# ammonium, pyrrolidinium OPLS-AA JACS 121 (1999) 4827
+HC  CT  CT  NT   opls  -4.2384   -2.9665    1.9790    0.0000
+CT  CT  CT  NT   opls  10.0081   -2.8200    2.3012    0.0000
+CT  NT  CT  CT   opls   1.7405   -0.5356    2.9079    0.0000
+HC  CT  NT  CT   opls   0.0000    0.0000    2.3430    0.0000
+HN  NT  CT  HC   opls   0.0000    0.0000    1.6736    0.0000
+HN  NT  CT  CT   opls  -0.7950   -1.7447    1.7489    0.0000
+# cholinium: unpublished
+OH  CT  CT  NT   opls -44.0515   -5.4349    0.0000    0.0000
+#OH  CT  CT  NT   opls -44.0515   -5.0148    0.0000   -3.1510
+# phosphonium OPLS-AA, JPCB 110 (2006) 19586
+CT  PT  CT  HC   opls   0.0000    0.0000    0.9270    0.0000
+CT  PT  CT  CT   opls   0.0000    0.0000    1.1330    0.0000
+PT  CT  CT  HC   opls   0.0000    0.0000    0.4650    0.0000
+PT  CT  CT  CT   opls  -3.2480    0.9880   -0.7150    0.0000
+# hydroxyl JACS 118 (1996) 11225; AMBER98 (OCCO) 117 (1995) 5179
+HC  CT  OH  HO   opls   0.0000    0.0000    1.8828    0.0000
+CT  CT  OH  HO   opls  -1.4895   -0.7280    2.0585    0.0000
+HC  CT  CT  OH   opls   0.0000    0.0000    1.9581    0.0000
+OH  CT  CT  OH   opls   0.0000   -9.8324    1.2050    0.0000
+CT  CT  CT  OH   opls    7.1588	  -2.0920	 2.7740	   0.000
+# amides, pyrrolidones, urea
+H   N   C   O    opls    0.0000   20.5016    0.0000    0.0000
+H   N   C   N    opls    0.0000   20.5016    0.0000    0.0000
+# carboxilic acids
+CT  CO  OH  HO  opls     6.2760	   23.012    0.0000	   0.0000
+HO  OH  CO  O3  opls     0.0000	   23.012    0.0000	   0.0000
+CT  CT  CO  OH  opls     4.1840	   2.2845    1.8828	   0.0000
+HC  CT  CO  OH  opls     0.0000	   0.0000    0.0000	   0.0000
+CT  CT  CO  O3  opls     0.0000	   2.2845    0.0000	   0.0000
+HC  CT  CO  O3  opls     0.0000	   0.0000    0.0000	   0.0000
+CO  CT  OH  HO  opls    -1.4895	  -0.7280    2.0585	   0.0000
+CO  CT  CT  HC  opls     0.0000	   0.0000  -0.41840	   0.0000
+OH  CT  CO  OH  opls     37.932	   0.0000    0.0000	   0.0000
+OH  CT  CO  O3  opls     37.932	   0.0000    0.0000	   0.0000
+CO  CT  CT  CT  opls    -8.6190   -1.3096    1.3180    0.0000
+CO  CT  CT  CO  opls    -8.6190	  -1.3096	 1.3180	   0.0000
+# ketone
+CK  CT  CT  CT  opls    -7.1003	  -1.9079	 2.4476	   0.0000
+CK  CT  CT  HC  opls     0.0000	   0.0000	-0.3180	   0.0000
+CT  CT  CK  OK  opls    -1.1590    5.1380	-2.9037	   0.0000
+HC  CT  CK  OK  opls     0.0000	   0.0000	 0.0000	   0.0000
+CT  CK  CT  CT  opls     6.0835	  -0.6025	-3.2426	   0.0000
+CT  CK  CT  HC  opls     0.0000	   0.0000	 1.1506	   0.0000
+CO  CT  CT  CK  opls     -8.6190  -1.3096    1.3180    0.0000
+
+IMPROPER
+# improper N sp2
+H   H   N   C    opls    0.0000    8.3680    0.0000    0.0000
+N   N   C   O    opls    0.0000   87.8640    0.0000    0.0000
+# carboxilic acids
+CT  O3  CO  OH   opls    0.0000   87.8640    0.0000    0.0000
+# ketone
+CT  OK  CK  CT   opls    0.0000   87.8640    0.0000    0.0000

@@ -1,4 +1,4 @@
-# il.ff, version 2021/09/22
+# il.ff, version 2023/09/11
 # CL&P molecular force field for ionic liquids
 # J.N. Canongia Lopes, Agilio Padua
 # contributors: K. Shimizu, A. Podgorsek, F. Hammami, L. Gontrani, M. Mishra,
@@ -82,8 +82,6 @@ OH    OH   15.999  -0.683  lj    3.12   0.71128
 HO    HO    1.008   0.418  lj    0.00   0.00000
 # alkoxy imidazolium JPCB 114 (2010) 3595
 C2O   CT   12.011   0.275  lj    3.50   0.27614
-# cholinium same as OPLS-AA alcohols or ammonium (Ferid, Agilio)
-COL   CT   12.011   0.275  lj    3.50   0.27614
 # guanidinium
 NG    NG   14.007  -0.94   lj    3.25   0.71128
 CG    CG   12.011   1.06   lj    2.25   0.20900
@@ -93,10 +91,10 @@ P3    PT   30.974   0.68   lj    3.74   0.83680
 C1P   CT   12.011  -0.31   lj    3.50   0.27614
 C1PS  CT   12.011  -0.18   lj    3.50   0.27614
 # ethers OPLS-AA JACS 118 (1996) 11225; JPC 100 (1996) 18010
-CSO   CT  12.011   0.14   lj    3.50   0.27614
-C3O   CT  12.011   0.11   lj    3.50   0.27614
-HY    HC   1.008   0.03   lj    2.50   0.12552
-OY    OY  15.999  -0.40   lj    2.90   0.58576
+CSO   CT   12.011   0.14   lj    3.50   0.27614
+C3O   CT   12.011   0.11   lj    3.50   0.27614
+HY    HC    1.008   0.03   lj    2.50   0.12552
+OY    OY   15.999  -0.40   lj    2.90   0.58576
 # lithium cation Aqvist
 Li    Li    6.941  +1.00   lj    2.126  0.07648
 # sodium cation
