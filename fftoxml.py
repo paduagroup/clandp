@@ -4,24 +4,6 @@ import argparse
 import xml.etree.ElementTree as ET
 
 
-def indent_xml(elem, level=0, hor=' ', ver='\n'):
-    '''pretty-print xml tree'''
-
-    spc = ver + level * hor
-    if len(elem):
-        if not elem.text or not elem.text.strip():
-            elem.text = spc + hor
-        if not elem.tail or not elem.tail.strip():
-            elem.tail = spc
-        for elem in elem:
-            indent_xml(elem, level + 1, hor, ver)
-        if not elem.tail or not elem.tail.strip():
-            elem.tail = spc
-    else:
-        if level and (not elem.tail or not elem.tail.strip()):
-            elem.tail = spc
-
-
 class forcefield(object):
     '''force field parameter database'''
 
@@ -59,37 +41,37 @@ class forcefield(object):
                 at = ET.SubElement(atoms, 'Atom')
                 at.set('type', tok[0])
                 at.set('class', tok[1])
-                at.set('mass', str(tok[2]))
-                at.set('charge', str(tok[3]))
+                at.set('mass', tok[2])
+                at.set('charge', tok[3])
                 at.set('potential', tok[4])
-                at.set('sigma', str(tok[5]))
-                at.set('epsilon', str(tok[6]))
+                at.set('sigma', tok[5])
+                at.set('epsilon', tok[6])
             elif section == 'bonds':
                 bd = ET.SubElement(bonds, 'Bond')
                 bd.set('class1', tok[0])
                 bd.set('class2', tok[1])
                 bd.set('potential', tok[2])
-                bd.set('length', str(tok[3]))
-                bd.set('k', str(tok[4]))
+                bd.set('length', tok[3])
+                bd.set('k', tok[4])
             elif section == 'angles':
-                an = ET.SubElement(angles, 'Angles')
+                an = ET.SubElement(angles, 'Angle')
                 an.set('class1', tok[0])
                 an.set('class2', tok[1])
                 an.set('class3', tok[2])
                 an.set('potential', tok[3])
-                an.set('angle', str(tok[4]))
-                an.set('k', str(tok[5]))
+                an.set('angle', tok[4])
+                an.set('k', tok[5])
             elif section == 'dihedrals':
-                di = ET.SubElement(dihedrals, 'Dihedrals')
+                di = ET.SubElement(dihedrals, 'Dihedral')
                 di.set('class1', tok[0])
                 di.set('class2', tok[1])
                 di.set('class3', tok[2])
                 di.set('class4', tok[3])
                 di.set('potential', tok[4])
-                di.set('v1', str(tok[5]))
-                di.set('v2', str(tok[6]))
-                di.set('v3', str(tok[7]))
-                di.set('v4', str(tok[8]))
+                di.set('v1', tok[5])
+                di.set('v2', tok[6])
+                di.set('v3', tok[7])
+                di.set('v4', tok[8])
             elif section == 'improper':
                 im = ET.SubElement(improper, 'Improper')
                 im.set('class1', tok[0])
@@ -97,15 +79,15 @@ class forcefield(object):
                 im.set('class3', tok[2])
                 im.set('class4', tok[3])
                 im.set('potential', tok[4])
-                im.set('v1', str(tok[5]))
-                im.set('v2', str(tok[6]))
-                im.set('v3', str(tok[7]))
-                im.set('v4', str(tok[8]))
+                im.set('v1', tok[5])
+                im.set('v2', tok[6])
+                im.set('v3', tok[7])
+                im.set('v4', tok[8])
 
     def write(self, outfile):
         '''write force field to xml file'''
 
-        indent_xml(self.ftree.getroot())
+        ET.indent(self.ftree.getroot(), space=' ')
         self.ftree.write(outfile)
 
 
