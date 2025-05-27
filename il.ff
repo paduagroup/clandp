@@ -1,4 +1,4 @@
-# il.ff, version 2024/06/05
+# il.ff, version 2025/05/27
 # CL&P molecular force field for ionic liquids
 # J.N. Canongia Lopes, Agilio Padua
 # contributors: K. Shimizu, A. Podgorsek, F. Hammami, L. Gontrani, M. Mishra,
@@ -152,7 +152,7 @@ CPH   CA   12.011   0.163  lj    3.55   0.29288
 CBI   CA   12.011  -0.040  lj    3.55   0.29288
 CBP   CA   12.011   0.064  lj    3.55   0.29288
 # trifluorocetate PCCP 17 (2015) 22321
-O2F   OC   15.999  -0.75   lj    2.96   0.87864
+O2F   O2   15.999  -0.75   lj    2.96   0.87864
 CFA   CF   12.011   0.40   lj    3.50   0.27614
 FFA   F    18.998  -0.20   lj    2.95   0.22175
 # alkylsulfates JPCB 112 (2008) 5039
@@ -241,6 +241,8 @@ CO  O2   harm   1.250   5489.0
 CT  CO   harm   1.522   2653.0
 # benzoate OPLS
 CA  CO   harm   1.490   3347.2
+# trifluoroacetate
+CF  CO   harm   1.522   2653.0
 # alkylsulfates JPCB112(2008)5039
 CT  OC   harm   1.402    745.8
 OS  SO   harm   1.455   5331.0
@@ -543,6 +545,7 @@ CN  CN  C3A CN   opls    0.0000    9.2048    0.0000    0.0000
 # improper carbonyl AMBER JACS 117 (1995 )5179
 CT  O2  CO  O2   opls    0.0000   87.8640    0.0000    0.0000
 O2  O2  CO  CA   opls    0.0000   87.8640    0.0000    0.0000
+CF  O2  CO  O2   opls    0.0000   87.8640    0.0000    0.0000
 # improper guanidinium AMBER JACS 117 (1995 )5179
 NG  NG  CG  NG   opls    0.0000    8.3680    0.0000    0.0000
 CG  HG  NG  HG   opls    0.0000    9.2048    0.0000    0.0000
