@@ -1,4 +1,4 @@
-# des.ff, version 2024/01/17
+# des.ff, version 2025/12/19
 # Molecular force field for DES
 # Agilio Padua
 # contributors: K.Goloviznina, V. Piccoli
@@ -25,7 +25,7 @@ H1    HC   1.008   0.13   lj    2.50   0.12552
 # ammonium JPCB 108 (2004) 16893
 N4    NT  14.007   0.12   lj    3.25   0.71128
 N3    NT  14.007   0.03   lj    3.25   0.71128
-H3    HN   1.008   0.31   lj    0.00   0.00000
+H3    HN   1.008   0.31   lj    1.00   0.00000
 # betaine - GHELPG (Vinicius)
 N4B   NT  14.007   0.340  lj    3.25   0.71128
 # phosphonium OPLS-AA, JPCB 110 (2006) 19586
@@ -45,16 +45,16 @@ CTO   CT  12.011   0.145  lj    3.50   0.27614
 C2O   CT  12.011   0.205  lj    3.50   0.27614  
 #H1O   HC   1.008   0.040  lj    2.50   0.12552
 OH    OH  15.999  -0.683  lj    3.12   0.71128
-HO    HO   1.008   0.418  lj    0.00   0.00000
+HO    HO   1.008   0.418  lj    1.00   0.00000
 # cholinium same as OPLS-AA alcohols or ammonium
 COL   CT  12.011   0.275  lj    3.50   0.27614
 OHC   OH  15.999  -0.563  lj    3.12   0.71128
-HOC   HO   1.008   0.298  lj    0.00   0.00000
+HOC   HO   1.008   0.298  lj    1.00   0.00000
 # urea
 CU    C   12.011  +0.142  lj    3.50   0.43932
 OU    O   15.999  -0.390  lj    2.96   0.87864
 NU    N   14.007  -0.542  lj    3.25   0.71128
-HU    H    1.008   0.333  lj    0.00   0.00000
+HU    H    1.008   0.333  lj    1.00   0.00000
 # acetate, carboxylates OPLS-AA
 O2    O2   15.999  -0.80   lj   2.96   0.87864
 CO2   CO   12.011   0.70   lj   3.75   0.43932
@@ -65,7 +65,7 @@ C3C   CT   12.011  -0.16   lj   3.50   0.27614
 # our charges for CX, HX
 O3    O3  15.999  -0.44   lj    2.96   0.87864
 OOH   OH  15.999  -0.53   lj    3.00   0.71128
-HOO   HO   1.008   0.45   lj    0.00   0.00000
+HOO   HO   1.008   0.45   lj    1.00   0.00000
 CX    CT  12.011  -0.30   lj    3.50   0.27614
 CXT   CT  12.011  -0.36   lj    3.50   0.27614
 # ketone OPLS-AA JACS 118 (1996) 11225; JPC 100 (1996) 18010
@@ -76,13 +76,13 @@ H1O   HC   1.008   0.060  lj    2.50   0.12552
 CSO   CT  12.011   0.205  lj    3.50   0.27614
 # diol
 #OHG   OH  15.999  -0.580  lj    3.12   0.71128
-#HOG   HO   1.008   0.315  lj    0.00   0.00000 
+#HOG   HO   1.008   0.315  lj    1.00   0.00000 
 # diols OPLS-AA
 OHG   OH  15.999  -0.700  lj    3.12   0.71128
-HOG   HO   1.008   0.435  lj    0.00   0.00000 
+HOG   HO   1.008   0.435  lj    1.00   0.00000 
 # triols OPLS-AA
 OHT   OH  15.999  -0.730  lj    3.12   0.71128
-HOT   HO   1.008   0.465  lj    0.00   0.00000
+HOT   HO   1.008   0.465  lj    1.00   0.00000
 
 BONDS
 # i j    pot    re/A    kr/kJmol-1
