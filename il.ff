@@ -1,4 +1,4 @@
-# il.ff, version 2025/12/19
+# il.ff, version 2026/04/16
 # CL&P molecular force field for ionic liquids
 # J.N. Canongia Lopes, Agilio Padua
 # contributors: K. Shimizu, A. Podgorsek, F. Hammami, L. Gontrani, M. Mishra,
@@ -75,6 +75,13 @@ F     F    18.998  -0.12   lj    2.95   0.22175
 N4    NT   14.007   0.12   lj    3.25   0.71128
 N3    NT   14.007   0.03   lj    3.25   0.71128
 H3    HN    1.008   0.31   lj    1.00   0.00000
+# ethylammonium 
+N1    NT  14.007  -0.48   lj    3.25   0.71128
+HN    HN   1.008   0.35   lj    0.00   0.00000   
+C1N   CT  12.011   0.20   lj    3.50   0.27614
+CEN   CT  12.011  -0.32   lj    3.50   0.27614   
+H1N   HC   1.008   0.08   lj    2.50   0.12552
+HCN   HC   1.008   0.13   lj    2.50   0.12552
 # alcohols OPLS-AA JACS 118 (1996) 11225; JPC 100 (1996) 18010
 CTO   CT   12.011   0.145  lj    3.50   0.27614
 H1O   HC    1.008   0.040  lj    2.50   0.12552
@@ -181,6 +188,9 @@ CATS  CA   12.011   0.157  lj    3.55   0.29288
 CTTS  CT   12.011  -0.197  lj    3.50   0.27614
 HATS  HA    1.008   0.100  lj    2.42   0.12552
 HTS   HC    1.008   0.060  lj    2.42   0.12552
+# nitrate OPLSAA
+NO    NO  14.001   1.04   lj    3.25   0.71128
+ON    ON  15.999  -0.68   lj    2.96   0.87864
 
 BONDS
 # i j    pot    re/A    kr/kJmol-1
@@ -260,6 +270,8 @@ C3A  CN  harm   1.412   3347.2
 CN   NC  harm   1.157   5439.2
 # tosylate JPCB 112 (2008) 5039
 CA   SO  harm   1.797   1970.0
+# nitrate JCTC 13 (2017) 6131
+NO   ON  harm   1.256   2653.5
 
 ANGLES
 # i j   k    pot    th/deg  ka/kjmol-1
@@ -310,6 +322,8 @@ NT  CT  CT   harm   109.5   470.3
 CT  NT  CT   harm   107.2   433.5
 HC  CT  NT   harm   109.5   292.9
 HN  NT  CT   harm   109.5   292.9
+# ethylammonium 
+HN  NT  HN   harm   109.5   292.9
 # guanidinium
 CG  NG  HG   harm   121.6   293.1
 HG  NG  HG   harm   116.8   293.1
@@ -378,6 +392,8 @@ CN  C3A CN   harm   120.0    585.8
 # tosylate OPLS, JPCB 112 (2008) 5039
 CA  CA  SO   harm   120.5    711.28
 CA  SO  OS   harm   104.2    870.0
+# nitrate JCTC 13 (2017) 6131
+ON  NO  ON   harm   120.0    505.5
 
 DIHEDRALS
 # i j   k   l    pot     v1        v2        v3        v4
@@ -552,3 +568,5 @@ CG  HG  NG  HG   opls    0.0000    9.2048    0.0000    0.0000
 # tosylate, benzoate aromatics AMBER JACS 117 (1995) 5179
 CA  CA  CA  SO   opls    0.0000    9.2048    0.0000    0.0000
 CA  CA  CA  CO   opls    0.0000    9.2048    0.0000    0.0000
+# nitrate JCTC 13 (2017) 6131
+ON  ON  NO  ON  opls   0.0000    87.8640    0.0000    0.0000
