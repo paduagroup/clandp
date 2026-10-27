@@ -1,4 +1,4 @@
-# il.ff, version 2026/04/16
+# il.ff, version 2026/10/09
 # CL&P molecular force field for ionic liquids
 # J.N. Canongia Lopes, Agilio Padua
 # contributors: K. Shimizu, A. Podgorsek, F. Hammami, L. Gontrani, M. Mishra,
@@ -84,6 +84,7 @@ H1N   HC   1.008   0.08   lj    2.50   0.12552
 HCN   HC   1.008   0.13   lj    2.50   0.12552
 # alcohols OPLS-AA JACS 118 (1996) 11225; JPC 100 (1996) 18010
 CTO   CT   12.011   0.145  lj    3.50   0.27614
+HCO   HC    1.008   0.06   lj    2.50   0.12552
 H1O   HC    1.008   0.040  lj    2.50   0.12552
 OH    OH   15.999  -0.683  lj    3.12   0.71128
 HO    HO    1.008   0.418  lj    1.00   0.00000
@@ -108,6 +109,8 @@ HY    HC    1.008   0.03   lj    2.50   0.12552
 OY    OY   15.999  -0.40   lj    2.90   0.58576
 # ether chain on ammonium, pyrrolidinium
 COM   CT   12.011   0.210  lj    3.50   0.27614
+# ether with OH
+COB   CT   12.011   0.205  lj    3.50   0.27614
 # lithium cation Aqvist
 Li    Li    6.941  +1.00   lj    2.126  0.07648
 # sodium cation
@@ -468,9 +471,13 @@ HC  CT  NT  CT   opls    0.0000    0.0000    2.3430    0.0000
 HN  NT  CT  HC   opls    0.0000    0.0000    1.6736    0.0000
 HN  NT  CT  CT   opls   -0.7950   -1.7447    1.7489    0.0000
 # ether chain on ammonium, pyrrolidinium
-NT  CT  CT  OY   opls    -44.0515  -5.4349   0.0000    0.0000
+# NT  CT  CT  OY   opls    -44.0515  -5.4349   0.0000    0.0000
+NT  CT  CT  OY   opls    5.4392   -0.2092    0.8368    0.0000
+NA  CT  CT  OY   opls    5.4392   -0.2092    0.8368    0.0000
 # cholinium: unpublished
 OH  CT  CT  NT   opls  -44.0515   -5.4349    0.0000    0.0000
+# ammonium OPLS-AA
+NT  CT  CT  OH   opls   22.71495  -3.6777    4.4267    0.0000
 # OH  CT  CT  NT   opls  -44.0515   -5.0148    0.0000   -3.1510
 # guanidinium
 HG  NG  CG  NG   opls    0.0000   16.3285    0.0000    0.0000
@@ -479,12 +486,13 @@ CT  PT  CT  HC   opls    0.0000    0.0000    0.9270    0.0000
 CT  PT  CT  CT   opls    0.0000    0.0000    1.1330    0.0000
 PT  CT  CT  HC   opls    0.0000    0.0000    0.4650    0.0000
 PT  CT  CT  CT   opls   -3.2480    0.9880   -0.7150    0.0000
-# ethers OPLS-AA JACS 118 (1996) 11225; JPC 100 (1996) 18010; 
-CT  CT  CT  OY    opls   7.1588   -2.0920    2.7740    0.0000
-CT  CT  OY  CT    opls   2.7196   -1.0460    2.8033    0.0000
-OY  CT  CT  OY    opls  -2.3012    0.0000    0.0000    0.0000
-CT  OY  CT  HC    opls   0.0000    0.0000    3.1798    0.0000
-HC  CT  CT  OY    opls   0.0000    0.0000    1.9581    0.0000
+# ethers OPLS-AA JACS 118 (1996) 11225; JPC 100 (1996) 18010 
+CT  CT  CT  OY   opls    7.1588   -2.0920    2.7740    0.0000
+CT  CT  OY  CT   opls    2.7196   -1.0460    2.8033    0.0000
+OY  CT  CT  OY   opls   -2.3012    0.0000    0.0000    0.0000
+CT  OY  CT  HC   opls    0.0000    0.0000    3.1798    0.0000
+HC  CT  CT  OY   opls    0.0000    0.0000    1.9581    0.0000
+OY  CT  CT  OH   opls   18.0707    0.0000    0.0000    0.0000
 # alkoxy phosphonium: unpublished
 OY  CT  CT  PT    opls -16.8287    1.8080    1.3519   -2.6634
 # hydroxyl JACS 118 (1996) 11225; AMBER98 (OCCO) 117 (1995) 5179
